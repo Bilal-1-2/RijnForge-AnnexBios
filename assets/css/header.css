@@ -1,3 +1,55 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 header{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+#header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+.logo {
+    width: 200px;
+}
+#header-links {
+    display: flex;
+    /* gap: 20px; */
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+.links a:link{
+    margin: 0 10px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.links a:visited {
+  color: rgb(30, 30, 30);
+  background-color: transparent;
+  text-decoration: none;
+}
+ 
+ .links a:hover {
+  color: rgb(0, 0, 0);
+  background-color: transparent;
+  /* text-decoration: underline; */
+}
+
+.links a:active {
+  color: rgb(30, 30, 30);
+  background-color: transparent;
+  /* text-decoration: underline; */
+}
+#header-bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #399CFF
 }
