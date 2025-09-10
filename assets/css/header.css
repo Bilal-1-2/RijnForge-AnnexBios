@@ -16,7 +16,7 @@ header{
 .logo {
     width: 200px;
 }
-#header-links {
+#header-top-links {
     display: flex;
     /* gap: 20px; */
     font-family: Arial, sans-serif;
@@ -48,8 +48,67 @@ header{
 }
 #header-bottom {
     display: flex;
-    justify-content: center;
+    justify-content: left 20px;
     align-items: center;
     padding: 10px 20px;
-    background-color: #399CFF
+    background-color: #399CFF;
+    gap: 20px;
 }
+#purchase-ticket a{
+    padding: 8px 16px;
+    background-color: #ff583300;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #76BBD987;
+    padding: 5px 10px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+.dropdown-content a {
+    color: black;
+    padding: 6px 8px;
+    text-decoration: none;
+    display: block;
+    border-radius: 10px;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {
+    display: block;
+   
+}
+.dropdown:hover  {
+    background-color: #3e8e4100;
+  
+}
+#order-link {
+  align-items: center;
+    padding: 0%;
+    display: flex;
+}
+#order-link a{
+    
+    font-size: 10px;
+    padding: 2px 4px;
+    background-color: #ffffff;
+    margin: 0%;
+    color: #399CFF;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
