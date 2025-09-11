@@ -4,7 +4,7 @@ body {
     box-sizing: border-box;
 }
 header{
-    background-color: rgba(255, 0, 0, 0);
+    background-color: rgba(255, 255, 255, 0);
 }
 
 #header-top {
@@ -13,6 +13,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ffffff;
     
 }
 #header-top-container {
@@ -32,7 +33,7 @@ header{
 #header-top-links {
     display: flex;
     /* gap: 20px; */
-    font-family: Arial, sans-serif;
+ font-family: Arial, Helvetica, sans-serif;
     font-size: 22px;
 }
 .links a:link{
@@ -65,7 +66,7 @@ header{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #399CFF;
+    background-color: #0080ff;
     gap: 20px;
 }
 #header-bottom-container {
@@ -75,7 +76,12 @@ header{
 align-items: center;
     position: relative;
     
+    
 }
+#purchase-ticket {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 #purchase-ticket a{
     
     font-size: 25px;
@@ -141,7 +147,7 @@ align-items: center;
     padding: 7px 10px;
     background-color: #ffffff;
     margin: 0%;
-    color: #399CFF;
+    color: #0080ff;
     cursor: pointer;
     font-weight: bold; 
 }

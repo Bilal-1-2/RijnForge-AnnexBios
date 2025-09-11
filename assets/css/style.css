@@ -1,1 +1,11 @@
-@import "header.css";
+@import "includes/header.css";
+@import "includes/content.css";
+/* @import "includes/footer.css"; */
+
+body {
+    background-image: url("../header/background.jpg");
+
+    background-image:
+      linear-gradient(rgba(0, 0, 0,0.9), rgba(0, 0, 0, 0.9)),
+      url("../header/background.jpg");
+}
