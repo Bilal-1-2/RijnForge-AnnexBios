@@ -10,13 +10,13 @@ margin: 20px auto;
 }
 .content-title {
     font-size: 53px;
-    width: 50%;
-      background-color: rgb(255, 255, 255);
+    width: 55%;
+ background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 10px;
     font-weight: bold;
  font-family: Arial, Helvetica, sans-serif;
-    color: #399CFF;
+    color: #0080ff;
 }
 
 .filter{
@@ -26,13 +26,30 @@ margin: 20px auto;
     margin-bottom: 20px;
 }
 .filter-options{
+    display: flex;
     padding: 10px;
-    border: 1px solid #399CFF;
-    
+    font-size: 12px;
+    gap: 5px;
+    border: 1px solid #0080ff;
+    align-items: center;
     font-weight: bold;
-    color: #399CFF;
+    color: #0080ff;
     cursor: pointer;
      font-family: Arial, Helvetica, sans-serif;
     transition: background-color 0.3s, color 0.3s;
-background-color: white;
+    background-color: white;
+
+    
+   
+}
+.filter-options div {
+ width: 13px;
+    height: 13px;
+    border-radius: 50%;
+   
+    border: 1px solid #0080ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

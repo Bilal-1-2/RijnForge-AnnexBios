@@ -18,11 +18,12 @@
 <div id="content-container" >
     <div class="content-title">FILM AGENDA</div>
     <div class="filter">
-        <div class="filter-options">kfs</div>
-        <div class="filter-options">FILMS</div>
-        <div class="filter-options">DEZE WEEK</div>
-        <div class="filter-options">VANDAAG</div>
-        <div class="filter-options">CATEFORIE</div>
+        <div class="filter-options">
+            kfs</div>
+        <div class="filter-options"><div></div>FILMS</div>
+        <div class="filter-options"><div></div>DEZE WEEK</div>
+        <div class="filter-options"><div></div>VANDAAG</div>
+        <div class="filter-options"><div></div>CATEFORIE</div>
     </div>
 </div>
 
