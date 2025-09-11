@@ -3,7 +3,7 @@
       <div id="header-top">
         <div id="header-top-container">
         <div>
-          <a href="index.html">
+          <a href="index.php">
             <img class="logo" src="assets/logo/logo.PNG" alt=""
           /></a>
         </div>
@@ -21,8 +21,7 @@
         </div>
 
         <div class="dropdown">
-          Kies je film
-
+          Kies je film <img src="../icons/arrow_dropdown.svg" alt="">
           <div class="dropdown-content">
             <a href="#">film 1 </a>
             <a href="#">film 2</a>
