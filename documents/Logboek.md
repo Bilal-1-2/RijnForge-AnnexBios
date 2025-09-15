@@ -9,15 +9,23 @@ Rachael was 2 bezig met technische ontwerpen en 1.5 uur notion te lezen
 Bilal was  2 uur  bezig met header en bestanden te Regelen en 1.5 uur bezig  logo te goed te maken
 Mohammed was 3 uur bezig met debriefing en plan van aanpak maken 
 Rachael was 2 uur bezig met technische ontwerpen en 1 uur met footer
+armin niet gekomen
 
 #### **10-09-2025**
 
 Bilal heeft header gemaakt en het duurde 4 uren met  branch mergen 
 Mohammed heeft debriefing gemaakt en 2 uren bezig met ERD maken
 Rachael was  2 uren bezig met  de technische ontwerpen en heeft het afgemaakt en  1.5 uur bezig met footer 
+armin niet gekomen
 
 #### **11-09-2025**
-Bilal 
+Bilal heeft meer style toegevoegd en heeft met content begonnen het duurde 4 uren.
 mohammed heeft  ERD afgemaakt  in 1.5 uur en he is bezig met hero section
+rachel was ziek 
 
+armin niet gekomen
+
+#### **12-09-2025**
+Bilal was 2.5 bezig met content 
+mohammed was 
 

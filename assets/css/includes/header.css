@@ -6,6 +6,18 @@ body {
 header{
     background-color: rgba(255, 255, 255, 0);
 }
+.dropdown-div-arrow{
+    display: flex; 
+    justify-content: space-between; 
+    height: 16px  ; 
+    align-items:center;
+}
+.st0 {
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+}
 
 #header-top {
  width: 100%;
