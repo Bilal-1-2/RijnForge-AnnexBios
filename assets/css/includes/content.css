@@ -9,8 +9,9 @@
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
-  font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   color: #0080ff;
 }
 
@@ -19,36 +20,33 @@
   gap: 5px;
   margin-top: 10px;
   margin-bottom: 20px;
+  width: 50%;
+  
 }
-.st0 {
-    fill: none;
-    stroke: #666666;
-    stroke-width: 3;
-    stroke-miterlimit: 10;
-}
+
 
 
 .filter-options {
   display: flex;
-  padding: 10px;
-  font-size: 12px;
+  padding: 3px;
+  font-size: 14px;
   gap: 5px;
-  
   border: 1px solid #0080ff;
   align-items: center;
-  font-weight: bold;
   color: #0080ff;
   cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
+   font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   transition: background-color 0.3s, color 0.3s;
   background-color: white;
-  width: fit-content;
+  
+
 }
 .filter-options div {
   width: 13px;
   height: 13px;
   border-radius: 50%;
-
   border: 1px solid #0080ff;
   display: flex;
   justify-content: center;
@@ -88,19 +86,25 @@
 } */
 .film-info {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .film-title {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: normal;
   color: #414040;
   min-height: 50px;
 }
 .film-details {
   font-size: 12px;
-  color: #666;
-  font-family: Arial, Helvetica, sans-serif;
+   font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   overflow: hidden;
   text-overflow: ellipsis;
   padding: 5px;
@@ -110,6 +114,11 @@
   line-height: 1.4;
   position: relative;
   transition: max-height 0.5s ease;
+}
+.film-text{
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 /* .film-details:hover {
   max-height: 1000px;
@@ -126,6 +135,35 @@
   background-color: #0080ff;
   border: none;
   cursor: pointer;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   transition: background-color 0.3s;
+  align-self: center;
+}
+.content-film-agenda-btn a {
+
+  text-decoration: none;
+  color: white;
+}
+.content-film-agenda-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: white;
+  background-color: #0080ff;
+  border: none;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: background-color 0.3s;
+  align-self: center;
+  text-align: center;
+}
+.content-dropdown-icon{
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
 }

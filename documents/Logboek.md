@@ -26,6 +26,12 @@ rachel was ziek
 armin niet gekomen
 
 #### **12-09-2025**
-Bilal was 2.5 bezig met content 
-mohammed was 
+Bilal was 2 uur  bezig met content.
+mohammed was 1.5 uur bezig met hero section .
+rachel was ziek
+
+#### **15-09-2025**
+Bilal was 3 uur bezig films in de content  te zetten/
+muhammed  was afwezig 
+rachel was ziek
 

@@ -21,12 +21,10 @@
 
         <div class="dropdown">
          <div class="dropdown-div-arrow"> Kies je film 
-           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="10" viewBox="1066.5 447 87 45" fill="none" stroke="black" stroke-width="2">
-             <polyline class="st0" points="1066.5,447 1110.5,492.5 1153.5,447"/>
-           </svg>
+           <img src="assets/icons/arrow_dropdown.svg" alt="dropdown" class="nav-dropdown-icon">
          </div>
           <div class="dropdown-content">
-            
+            <option value=""></option>
             <a href="#">film 1 </a>
             <a href="#">film 2</a>
             <a href="#">film 3</a>
