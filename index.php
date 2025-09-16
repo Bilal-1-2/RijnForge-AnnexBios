@@ -122,7 +122,7 @@
           <div></div><strong>VANDAAG</strong>
         </div>
         <div class="filter-options">
-          <div></div><strong >CATEGORIE  </strong>
+          <div></div><strong>  CATEGORIE <img src="assets/icons/arrow_dropdown.png" alt=""> </strong>
         </div>
       </div>
       <div class="films-container">
