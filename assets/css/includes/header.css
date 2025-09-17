@@ -106,7 +106,7 @@ header {
 
 .dropdown-select {
   width: 216px;
-  height: 40px;
+  height: 45px;
   position: relative;
   display: inline-block;
   background-color: #3e99f5;
@@ -121,6 +121,9 @@ header {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
+    white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .dropdown-select:hover {
@@ -150,8 +153,10 @@ header {
   color: rgb(255, 255, 255);
   padding: 6px 8px;
   background-color: #66b1fd;
-
   border: none;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 .dropdown-select option:hover {
   background-color: #3e99f5;
