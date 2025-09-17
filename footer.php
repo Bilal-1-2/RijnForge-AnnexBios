@@ -11,6 +11,7 @@
 
 </body>
 
+
 <footer>
 
     <div class="footer-content">
@@ -18,10 +19,9 @@
             <img src="images/annesbioslogo.png" alt="Annesbios footer Logo" class="footerlogo">
 
             <p>
-                RijnForge is a community-driven platform dedicated to providing high-quality mods and addons for
-                various games. Our mission is to enhance the gaming experience by offering innovative and engaging
-                content created by talented developers from around the world.
-            </p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+                massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam
+                felis, </p>
 
             <div class="footer-button">Read more</div>
 
