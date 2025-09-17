@@ -31,7 +31,11 @@ mohammed was 1.5 uur bezig met hero section .
 rachel was ziek
 
 #### **15-09-2025**
-Bilal was 3 uur bezig films in de content  te zetten/
+Bilal was 3 uur bezig films in de content  te zetten
 muhammed  was afwezig 
 rachel was ziek
-
+#### **16-09-2025**
+Bilal was 3 uur bezig met styling van film agenda pagina 
+mohammed was 3 uur bezig met hero section
+rachel was 3 uur bezig met footer 
+#### **17-09-2025**
