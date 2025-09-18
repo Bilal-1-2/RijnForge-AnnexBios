@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
-  
+
   <script src="assets/js/scrollbare-header.js" defer></script>
   <title>AnnexBios 5</title>
 </head>
@@ -13,7 +13,7 @@
 <body alt="">
   <?php
   include 'assets/includes/tijdelijk-database.php';
-  include 'assets/includes/header-homepage.php';
+  include 'assets/includes/header.php';
 
   // Film data array
 
@@ -23,12 +23,11 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div class="film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class=".film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
         </div>
-
         <div class="filter-options">
           <input type="radio" id="deze-week" name="style" value="deze-week">
           <label for="deze-week"><strong>DEZE WEEK </strong></label>
@@ -53,7 +52,7 @@
       </div>
       <div class="films-container">
         <?php
-        $total = 12;
+        $total = 18;
         $count = count($data);
         for ($i = 0; $i < $total; $i++):
           $film = $data[$i % $count];
@@ -70,12 +69,14 @@
                   <?php echo htmlspecialchars($film['informatie']); ?>
                 </div>
               </div>
-              <button class="film-info-btn">MEER INFO & TICKETS</button>
+
             </div>
+            <button class="film-info-btn">MEER INFO & TICKETS</button>
           </div>
+
         <?php endfor; ?>
       </div>
-      <div class="content-film-agenda-btn" class="links"><a href="film-agenda.php">BEKIJK ALLE FILMS</a> </div>
+
     </div>
 
 
@@ -86,9 +87,6 @@
 
   </main>
 
-  <?php
-  include 'assets/includes/footer.php';
-  ?>
 </body>
 
 </html>
