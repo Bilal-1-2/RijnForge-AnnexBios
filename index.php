@@ -11,7 +11,7 @@
 <body alt="">
   <?php 
    include 'assets/includes/tijdelijk-database.php';
-  include 'assets/includes/header.php';
+  include 'assets/includes/header-homepage.php';
 
   // Film data array
 
@@ -21,11 +21,12 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div ><img style="padding:0px;  height: 50px;  width: 64;"src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class="film-agenda-menu"><img  src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
         </div>
+        
         <div class="filter-options">
           <input type="radio" id="deze-week" name="style" value="deze-week">
           <label for="deze-week"><strong>DEZE WEEK </strong></label>
@@ -59,7 +60,7 @@
             <img class="film-poster" src="<?php echo htmlspecialchars($film['poster']); ?>" alt="<?php echo htmlspecialchars($film['titel']); ?>">
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
-              <div>
+              <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
               </div>
               <div class="film-details">

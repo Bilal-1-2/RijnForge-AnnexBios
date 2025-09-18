@@ -5,12 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <script src="assets/js/read-more.js" defer></script>
   <title>AnnexBios 5</title>
 </head>
 
 <body alt="">
-  <?php 
-   include 'assets/includes/tijdelijk-database.php';
+  <?php
+  include 'assets/includes/tijdelijk-database.php';
   include 'assets/includes/header.php';
 
   // Film data array
@@ -21,7 +23,7 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div ><img style="padding:0px;  height: 50px;  width: 64;"src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class=".film-agenda-menu"><img  src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
@@ -34,19 +36,19 @@
           <input type="radio" id="vandaag" name="style" value="vandaag">
           <label for="vandaag"><strong> VANDAAG </strong></label>
         </div>
-        
-          <select  class="categorie-select" name="categorie"  onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-          
-           <option  value=""><strong>CATEGORIE </strong></option>
-            <option value="action">ACTION</option>
-            <option value="comedy">COMEDY</option>
-            <option value="drama">DRAMA</option>
-            <option value="horror">HORROR</option>
-            <option value="sci-fi">SCI-FI</option>
-            <option value="thriller">THRILLER</option>
-            <option value="animation">ANIMATION</option>
-          </select>
-        
+
+        <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+
+          <option value=""><strong>CATEGORIE </strong></option>
+          <option value="action">ACTION</option>
+          <option value="comedy">COMEDY</option>
+          <option value="drama">DRAMA</option>
+          <option value="horror">HORROR</option>
+          <option value="sci-fi">SCI-FI</option>
+          <option value="thriller">THRILLER</option>
+          <option value="animation">ANIMATION</option>
+        </select>
+
       </div>
       <div class="films-container">
         <?php
@@ -67,12 +69,14 @@
                   <?php echo htmlspecialchars($film['informatie']); ?>
                 </div>
               </div>
-              <button class="film-info-btn">MEER INFO & TICKETS</button>
+             
             </div>
+            <button class="film-info-btn">MEER INFO & TICKETS</button>
           </div>
+
         <?php endfor; ?>
       </div>
-   
+
     </div>
 
 
