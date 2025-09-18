@@ -1,5 +1,6 @@
 @import "includes/header.css";
 @import "includes/content.css";
+ @import "includes/footer.css"; 
 body {
   background-image: url("../header/background.jpg");
 
