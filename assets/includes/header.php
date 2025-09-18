@@ -1,4 +1,5 @@
 <header>
+
   <div id="header-top">
     <div id="header-top-container">
       <div>
@@ -20,16 +21,16 @@
       </div>
 
 
-      <select class="dropdown-select"  onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();' >
+      <select class="dropdown-select" onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
         <option value="">Kies je film </option>
- 
-       
-  <?php foreach( $data as $title ): ?>
-  <option value="<?php echo htmlspecialchars($title['titel']); ?>">
-    <?php echo htmlspecialchars($title['titel']); ?>
-  </option>
-  
-  <?php endforeach; ?>
+
+
+        <?php foreach ($data as $title): ?>
+          <option value="<?php echo htmlspecialchars($title['titel']); ?>">
+            <?php echo htmlspecialchars($title['titel']); ?>
+          </option>
+
+        <?php endforeach; ?>
 
       </select>
 

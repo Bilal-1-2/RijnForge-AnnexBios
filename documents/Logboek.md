@@ -39,3 +39,9 @@ Bilal was 3 uur bezig met styling van film agenda pagina
 mohammed was 3 uur bezig met hero section
 rachel was 3 uur bezig met footer 
 #### **17-09-2025**
+Bilal was 5 uur bezig met header/content/film agenda pagina stylen en maken.
+mohammed was 5 uur bezig met de hero section af te maken .
+rachel was  5 uur bezig met footer af te maken .
+
+#### **17-09-2025**
+

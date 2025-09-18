@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="assets/css/style.css">
 
-  <script src="assets/js/read-more.js" defer></script>
+  <script src="assets/js/scrollbare-header.js" defer></script>
   <title>AnnexBios 5</title>
 </head>
 
@@ -23,7 +23,7 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div class=".film-agenda-menu"><img  src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class=".film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
@@ -69,7 +69,7 @@
                   <?php echo htmlspecialchars($film['informatie']); ?>
                 </div>
               </div>
-             
+
             </div>
             <button class="film-info-btn">MEER INFO & TICKETS</button>
           </div>
