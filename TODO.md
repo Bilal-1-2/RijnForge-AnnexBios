@@ -1,0 +1,2 @@
+- [x] Fix nested CSS syntax in assets/css/includes/footer.css
+- [x] Fix class name mismatch for footer logo in assets/css/includes/footer.css
