@@ -3,6 +3,7 @@
 
 <head>
 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -17,7 +18,24 @@
     <?php include 'assets/includes/header.php'; ?>
 
     <main>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <script src="assets/js/scrollbare-header.js" defer></script>
+  <title>AnnexBios 5</title>
+</head>
 
+<body alt="">
+  <?php
+  include 'assets/includes/tijdelijk-database.php';
+  include 'assets/includes/header-homepage.php';
+
+  
+  ?>
+
+  <main>
+    
         <div class="hero-section">
             <h1 class="hero-section__title">WELKOM BIJ ANNEXBIOS 5</h1>
             <p class="hero-section__intro">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, obcaecati quod consectetur ipsam temporibus alias nemo exercitationem nulla aspernatur doloremque!</p>
@@ -38,8 +56,7 @@
                     <svg class="company-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                         <path fill="#fff" d="M128 252.6C128 148.4 214 64 320 64C426 64 512 148.4 512 252.6C512 371.9 391.8 514.9 341.6 569.4C329.8 582.2 310.1 582.2 298.3 569.4C248.1 514.9 127.9 371.9 127.9 252.6zM320 320C355.3 320 384 291.3 384 256C384 220.7 355.3 192 320 192C284.7 192 256 220.7 256 256C256 291.3 284.7 320 320 320z" />
                     </svg>
-
-                    <div class="company-container">
+                                 <div class="company-container">
                         <span class="company-adres">Berlijnplein 101
                         </span> <br>
                         <span class="company-postalcode">3541 CM Utrecht</span>
@@ -60,7 +77,66 @@
         </div>
 
         </div>
+    <div id="content-container">
+      <div class="content-title">FILM AGENDA</div>
+      <div class="filter">
+        <div class="film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class="filter-options">
+          <input type="radio" id="films" name="style" value="films">
+          <label for="films"><strong>FILMS </strong></label>
+        </div>
 
+        <div class="filter-options">
+          <input type="radio" id="deze-week" name="style" value="deze-week">
+          <label for="deze-week"><strong>DEZE WEEK </strong></label>
+        </div>
+        <div class="filter-options">
+          <input type="radio" id="vandaag" name="style" value="vandaag">
+          <label for="vandaag"><strong> VANDAAG </strong></label>
+        </div>
+
+        <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+
+          <option value=""><strong>CATEGORIE </strong></option>
+          <option value="action">ACTION</option>
+          <option value="comedy">COMEDY</option>
+          <option value="drama">DRAMA</option>
+          <option value="horror">HORROR</option>
+          <option value="sci-fi">SCI-FI</option>
+          <option value="thriller">THRILLER</option>
+          <option value="animation">ANIMATION</option>
+        </select>
+
+      </div>
+      <div class="films-container">
+        <?php
+        $total = 12;
+        $count = count($data);
+        for ($i = 0; $i < $total; $i++):
+          $film = $data[$i % $count];
+        ?>
+          <div class="film-card">
+            <img class="film-poster" src="<?php echo htmlspecialchars($film['poster']); ?>" alt="<?php echo htmlspecialchars($film['titel']); ?>">
+            <div class="film-info">
+              <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
+              <div class="film-release-date">
+                Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
+              </div>
+              <div class="film-details">
+                <div class="film-text" id="film-text-<?php echo $i; ?>">
+                  <?php echo htmlspecialchars($film['informatie']); ?>
+                </div>
+              </div>
+              <button class="film-info-btn">MEER INFO & TICKETS</button>
+            </div>
+          </div>
+        <?php endfor; ?>
+      </div>
+      <div class="content-film-agenda-btn" class="links"><a href="film-agenda.php">BEKIJK ALLE FILMS</a> </div>
+    </div>
+
+
+     
         <div id="content-container">
             <div class="content-title">FILM AGENDA</div>
             <div class="filter">
@@ -81,8 +157,17 @@
             </div>
         </div>
 
+
     </main>
 
+
+
+
+  </main>
+
+  <?php
+  include 'assets/includes/footer.php';
+  ?>
 </body>
 
 </html>
