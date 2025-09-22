@@ -4,7 +4,7 @@
 <footer>
     <div class="footer-content">
         <div class="footer-about">
-            <img src="images/annesbioslogo.png" alt="Annesbios footer Logo" class="footer-logo">
+            <img src="assets/images/annesbioslogo.png" alt="Annesbios footer Logo" class="footer-logo">
             <p>
                 Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
                 massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam

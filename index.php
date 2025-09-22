@@ -101,24 +101,34 @@
         for ($i = 0; $i < $total; $i++):
           $film = $data[$i % $count];
         ?>
-          <a href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">
-            <div class="film-card">
-              <img  class="film-poster" src="<?php echo htmlspecialchars($film['poster']); ?>"
-               alt="<?php echo htmlspecialchars($film['titel']); ?>">
-              <div class="film-info">
-                <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
-                <div class="film-release-date">
-                  Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
-                </div>
-                <div class="film-details">
-                  <div class="film-text" id="film-text-<?php echo $i; ?>">
-                    <?php echo htmlspecialchars($film['informatie']); ?>
-                  </div>
-                </div>
-                <button class="film-info-btn">MEER INFO & TICKETS</button>
+          <div class="film-card">
+            <a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">
+              <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                alt="<?php echo htmlspecialchars($film['titel']); ?>">
+            </a>
+            <div class="film-info">
+              <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
+              <div class="ratings">
+                <img src="assets/icons/ster.svg" alt="">
+                <img src="assets/icons/ster.svg" alt="">
+                <img src="assets/icons/ster.svg" alt="">
+                <img src="assets/icons/ster.svg" alt="">
+                <img src="assets/icons/ster.svg" alt="">
               </div>
+              <div class="film-release-date">
+                Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
+              </div>
+              <div class="film-details">
+                <div class="film-text" id="film-text-<?php echo $i; ?>">
+                  <?php echo htmlspecialchars($film['informatie']); ?>
+                </div>
+              </div>
+
+              <button class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button>
+
             </div>
-          </a>
+          </div>
+
         <?php endfor; ?>
       </div>
       <div class="content-film-agenda-btn links"><a href="film-agenda.php">BEKIJK ALLE FILMS</a> </div>

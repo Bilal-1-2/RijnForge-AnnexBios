@@ -11,9 +11,22 @@
   padding: 10px;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
   color: #0080ff;
 }
+.ratings  {
+  display: flex;
+  gap: 2px;
+  height: 30px;
+  align-items: center;
+  width: 40PX;
+
+}
+.ratings img{
+  width: 25px;
+  height: 25px;
+}
+
 
 .filter {
   display: flex;
@@ -49,7 +62,7 @@
   font-size: 14px;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
   color: #0080ff;
   border: #0080ff solid 1px;
   cursor: pointer;
@@ -73,7 +86,7 @@
   background-color: #ffffff;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
   border: #0080ff;
 }
 
@@ -84,7 +97,7 @@
   color: #0080ff;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
   padding: 6px 8px;
   background-color: #ffffff;
   border: none;
@@ -108,7 +121,7 @@
   align-items: center;
 }
 .filter-options {
-  height: 34px;
+  height: 40px;
   display: flex;
   padding: 2px 6px 2px 6px;
   font-size: 14px;
@@ -119,7 +132,7 @@
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   transition: background-color 0.3s, color 0.3s;
   background-color: white;
 }
@@ -165,14 +178,14 @@
 
 /* .film-details:hover {
     overflow: visible;
-    white-space: normal;
+    white-space: medium;
     height: auto;
 } */
 .film-release-date {
-  font-size: 12px;
+  font-size: 19px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   color: #414040;
   margin-top: 5px;
 }
@@ -184,20 +197,20 @@
   align-items: flex-start;
 }
 .film-title {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 5px;
+  /* margin-bottom: 5px; */
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
   color: #414040;
-  min-height: 50px;
+  min-height: 90px;
 }
 .film-details {
   font-size: 12px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -213,7 +226,7 @@
 .film-text {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   color: #616060;
   font-size: 10px;
   min-height: 50px;
@@ -221,7 +234,7 @@
 /* .film-details:hover {
   max-height: 1000px;
   overflow: visible;
-  white-space: normal;
+  white-space: medium;
   cursor: pointer;
 } */
 .film-info-btn {
@@ -235,13 +248,13 @@
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   transition: background-color 0.3s;
   align-self: center;
 }
 .content-film-agenda-btn a {
   text-decoration: none;
-  color: white;
+  color: white!important;
 }
 .content-film-agenda-btn {
   display: inline-block;
@@ -254,7 +267,7 @@
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   transition: background-color 0.3s;
   align-self: center;
   text-align: center;
