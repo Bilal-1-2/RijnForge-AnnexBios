@@ -14,6 +14,33 @@
 <body>
 
     <?php
+    // Function to convert YouTube watch URL to embed URL
+    function convertToEmbedUrl($url) {
+        // Check if it's a YouTube URL
+        if (strpos($url, 'youtube.com/watch?v=') !== false) {
+            // Extract video ID
+            $videoId = '';
+            parse_str(parse_url($url, PHP_URL_QUERY), $params);
+            if (isset($params['v'])) {
+                $videoId = $params['v'];
+            }
+
+            // Convert to embed URL with parameters to hide branding and title
+            if (!empty($videoId)) {
+                return "https://www.youtube.com/embed/" . $videoId . "?modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&controls=1&disablekb=0";
+            }
+        } elseif (strpos($url, 'youtu.be/') !== false) {
+            // Handle shortened youtu.be URLs
+            $videoId = str_replace('https://youtu.be/', '', $url);
+            if (!empty($videoId)) {
+                return "https://www.youtube.com/embed/" . $videoId . "?modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&controls=1&disablekb=0";
+            }
+        }
+
+        // Return original URL if not a YouTube URL or conversion fails
+        return $url;
+    }
+
     include 'assets/includes/tijdelijk-database.php';
     include 'assets/includes/header.php';
     // Get the film ID from the URL
@@ -86,8 +113,8 @@
         <button class="detail-ticket-btn">BUY TICKETS</button>
 
         <div class="trailer-container">
-            <iframe width="420" height="315"
-                    src="  <?php echo htmlspecialchars($film['trailers']); ?>"
+            <iframe width="100%" height="600px"
+                    src="<?php echo htmlspecialchars(convertToEmbedUrl($film['trailers'])); ?>"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>

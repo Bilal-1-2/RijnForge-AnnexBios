@@ -157,3 +157,15 @@ main {
   font-weight: 700;
   font-style: medium;
 }
+.trailer-container{
+    border: 5px solid #0080ff;
+    width: 99.5%;
+min-height: 700px;
+    margin-bottom: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+
+
+}
