@@ -1,0 +1,139 @@
+body {
+   background-color: rgb(28, 28, 28);
+   margin: 0;
+   padding: 0;
+}
+
+
+.ticket-container {
+   margin: 0 auto;
+   max-width: 1000px;
+   background-color: rgb(245, 245, 245);
+   text-align: left;
+   font-family: 'lato', sans-serif;
+   height: 300px;
+    
+}   
+
+h1 {
+   font-size: 28px;
+   font-weight: 600;
+   color: #399CFF;
+   padding: 20px 0 10px 20px;
+   margin: 0;
+}
+
+.type-prijs-aantal {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: auto;
+    height: 25px;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #797979;
+    margin: 0;
+    padding: 5px 0;
+    align-self: left;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #797979;
+    margin: 0;
+    padding: 5px 0;
+    align-items: flex-end;
+}
+
+.prijs-aantal-title {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+
+.top-line {
+    border-top: 2px solid #707070;
+    margin: 0 20px;
+    
+}
+
+.normal-prijs-aantal-container {
+    background-color: #e4e4e4;
+    width: auto;
+    height: 30px;
+    display: flex;
+    margin-top: 5px;
+    justify-content: space-between;
+    
+}
+
+.normal-prijs {
+    color: rgb(110, 100, 100);
+    font-size: 16px;
+    font-weight: 700;
+    height: 20px;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+
+h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #656565;
+    margin: 0;
+    padding: 5px 0;
+    align-items: left;
+    margin-left: 20px;
+    
+}
+
+h5 {
+     font-size: 16px;
+    font-weight: 700;
+    color: #656565;
+    margin: 0;
+    padding: 5px 0;
+    align-items: left;
+    
+}
+
+.ticket-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
+
+#aantal-tickets {
+    align-self: flex-end;
+}
+
+.ticket-selector-prijs {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    margin-right: 20px;
+}
+
+select, #aantal-tickets {
+    width: 60px;
+    height: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #656565;
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-right: 10px;
+}
