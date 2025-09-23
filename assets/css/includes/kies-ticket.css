@@ -161,7 +161,7 @@ select, #aantal-tickets {
 
 button {
     width: 25%;
-    height: 30px;
+    height: 27px;
     background-color: #399CFF;
     color: white;
     font-size: 12px;
@@ -169,5 +169,6 @@ button {
     border: none;
     cursor: pointer;
     font-family: 'lato', sans-serif;
+    padding: 5px;
 
 }
