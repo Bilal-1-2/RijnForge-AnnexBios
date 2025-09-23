@@ -4,11 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/includes/kies-ticket.css">
+    <link rel="stylesheet" href="assets/css/bestel-pagina.css">
     <title>ticket</title>
 </head>
 
 <body>
+    <?php
+    include 'assets/includes/tijdelijk-database.php';
+    include 'assets/includes/header.php';
+    ?>
+
     <div class="ticket-container">
         <h1>STAP 1: KIES JE TICKET</h1>
 
@@ -123,7 +128,9 @@
         </div>
 
 
-
+<?php
+    include 'assets/includes/footer.php';
+    ?>
 </body>
 
 </html>
