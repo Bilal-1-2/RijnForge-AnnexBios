@@ -86,16 +86,36 @@
 
                 <div class="detail-release-date">Release: <?php echo date_format($date, "d-m-Y"); ?></div>
 
-                <!-- Short description -->
+                
                 <div class="detail-description">
                     <?php echo nl2br($shortDescription); ?>
                 </div>
                 <?php if (strlen($fullDescription) > 321): ?>
                     <button class="read-more-btn" onclick="openModal()">LEES MEER</button>
                 <?php endif; ?>
-                <p class="detail-duration">Duration: <?php echo htmlspecialchars($film['duur']); ?> minutes</p>
 
-
+                <div class="detail-separator">
+                <div class="detail-genre">Genre: <?php echo htmlspecialchars($film['genre']); ?></div>
+                <div class="detail-duration">Filmlengte: <?php echo htmlspecialchars($film['duur']); ?> minutes</div>
+                <div class="detail-country">land: <?php echo htmlspecialchars($film['land']); ?></div>
+                <div class="detail-imdb-score">Imdb Score: <?php echo htmlspecialchars($film['imdb_score']); ?>/10</div>
+                <div class="detail-Director">regisseur: <?php echo htmlspecialchars($film['regisseur']); ?></div>
+              <div class="detail-writer">  acteurs: </div>
+            </div>
+                    <div class="detail-actors"> 
+                <?php
+                if (is_array($film['acteurs'])) {
+                    foreach ($film['acteurs'] as $acteur) {
+                        echo '<div class="actor-item">';
+                        echo '<img src="' . htmlspecialchars($acteur['foto']) . '" alt="' . htmlspecialchars($acteur['naam']) . '" class="actor-photo">';
+                        echo '<div class="actor-name">' . htmlspecialchars($acteur['naam']) . '</div>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<div class="detail-actors-list">Acteurs: ' . htmlspecialchars($film['acteurs']) . '</div>';
+                }
+                ?>
+            </div>
 
 
                 <div class="overlay" id="overlay">

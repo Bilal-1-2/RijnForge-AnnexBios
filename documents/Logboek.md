@@ -53,3 +53,6 @@ Bilal was 2 uur bezig met detail pagina sterren en img en detail pagina te style
 Mohammed was 2 uur bezig met stoelen in bestel pagina te maken .
 Rachel was 2 uur bezig met kies je ticket in de bestel pgina te maken.
 #### **22-09-2025**
+Bilal was 3.5 uur bezig met detail pagina .
+Rachel was 3.5 uur bezig met kies je ticket.
+Mohammed was 3.5 uur bezig met stoelen te maken.

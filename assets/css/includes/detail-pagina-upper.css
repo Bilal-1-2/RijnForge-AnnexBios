@@ -106,6 +106,7 @@ main {
   cursor: pointer;
 }
 
+
 .overlay {
   position: fixed;
   top: 0;
@@ -141,6 +142,11 @@ main {
   border-radius: 6px;
   cursor: pointer;
 }
+.detail-separator{
+    width: 100%;
+display: flex;
+flex-direction: column;
+align-items: flex-start;}
 .detail-ticket-btn {
   display: flex;
   justify-content: center;
@@ -168,4 +174,42 @@ min-height: 700px;
     background-color: black;
 
 
+}
+.detail-actors {  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  width: 100%;
+  margin-top: 20px;
+}
+
+.detail-actors-list {
+  width: 100%;
+}
+
+.actor-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.actor-photo  {
+  width: 150px;
+  height: 300px;
+
+
+  margin-bottom: 8px;
+}
+
+.actor-photo img {
+
+object-fit: cover;
+
+}
+
+.actor-name {
+  font-size: 14px;
+  font-family: "lato", sans-serif;
+  font-weight: 400;
+  color: #616060;
+  word-wrap: break-word;
 }
