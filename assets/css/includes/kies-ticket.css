@@ -11,7 +11,7 @@ body {
    background-color: rgb(245, 245, 245);
    text-align: left;
    font-family: 'lato', sans-serif;
-   height: 300px;
+   height: 350px;
     
 }   
 
@@ -57,23 +57,23 @@ h3 {
     width: 200px;
 }
 
-.top-line {
+.top-bottom-lines {
     border-top: 2px solid #707070;
     margin: 0 20px;
     
 }
 
 .normal-prijs-aantal-container {
-    background-color: #e4e4e4;
     width: auto;
     height: 30px;
     display: flex;
-    margin-top: 5px;
+    margin-top: 15px;
     justify-content: space-between;
+    margin-bottom: 15px;
     
 }
 
-.normal-prijs {
+.type-section {
     color: rgb(110, 100, 100);
     font-size: 16px;
     font-weight: 700;
@@ -136,4 +136,39 @@ select, #aantal-tickets {
     border: 1px solid #ccc;
     padding: 5px;
     margin-right: 10px;
+}
+
+.voucher-code-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    margin-bottom: 20px;
+    margin-top: 15px;
+    padding: 0 20px;
+}
+
+#voucher-code-input {
+    width: 60%;
+    height: 15px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #656565;
+    border: 1px solid #969696;
+    padding: 5px;
+}
+
+button {
+    width: 25%;
+    height: 27px;
+    background-color: #399CFF;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    font-family: 'lato', sans-serif;
+    padding: 5px;
+
 }
