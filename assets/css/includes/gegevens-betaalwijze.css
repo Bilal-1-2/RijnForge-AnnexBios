@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.gegevens-betaalwijze-container {
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: rgb(245, 245, 245);
+    text-align: left;
+    font-family: 'lato', sans-serif;
+    height: 450px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #399CFF;
+    padding: 20px 0 10px 20px;
+    margin: 0;
+}
+
+
+#firstname {
+    width: 303px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 10px;
+
+}
+
+#surname {
+    width: 303px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 0px;
+    font-size: 10px;
+
+}
+
+#email,
+#email-bevestiging {
+    width: 624px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 10px;
+}
