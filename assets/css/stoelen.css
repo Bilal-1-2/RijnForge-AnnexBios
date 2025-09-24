@@ -39,4 +39,11 @@ hr {
 
 .filmdoek-heading {
   text-transform: uppercase;
+  text-align: center;
+  color: #0080ff;
+  font-size: 2em;
+}
+
+.active {
+  background: red;
 }
