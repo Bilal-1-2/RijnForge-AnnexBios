@@ -16,13 +16,13 @@
     for ($y = 0; $y < 10; $y++) {
 
       for ($x = 0; $x < 11; $x++) {
-        echo  '<div class="chair"><div class="seat"></div></div>';
+        echo  '<div id="' . $x . '-' . $y . '" class="chair"><div class="seat"></div></div>';
       }
     }
     ?>
   </div>
 
-
+  <script src="./assets/stoelen.js"></script>
 </body>
 
 </html>

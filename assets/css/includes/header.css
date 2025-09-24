@@ -105,7 +105,7 @@ header {
   font-style: medium;
 }
 
-#purchase-ticket a {
+#purchase-ticket  {
   font-size: 25px;
   padding: 5px 8px;
   background-color: #ff583300;
@@ -133,7 +133,7 @@ header {
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
-  white-space: medium;
+  white-space: normal; /* Allow text wrapping */
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -150,29 +150,20 @@ header {
 
 .dropdown-select option {
   color: rgb(255, 255, 255);
-  /* padding: 6px 8px; */
-  background-color: #198bfd;
+ max-width: 216px;
+  padding: 6px 8px;
+  background-color: #66b1fd;
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: medium;
   border: none;
+  white-space: normal; /* Allow text wrapping in options */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .dropdown-select option:hover {
   background-color: #3e99f5;
-}
-.dropdown-select option {
-  color: rgb(255, 255, 255);
-  padding: 6px 8px;
-  background-color: #66b1fd;
-  border: none;
-  white-space: medium;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-.dropdown-select option:hover {
-  background-color: #3e99f5;
-  border: none;
 }
 .dropdown:hover .dropdown-select {
   display: block;
