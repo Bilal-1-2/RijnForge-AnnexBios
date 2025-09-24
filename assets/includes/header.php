@@ -17,7 +17,7 @@
   <div id="header-bottom">
     <div id="header-bottom-container">
       <div id="purchase-ticket" class="links">
-        <a href="">KOOP JE TICKETS</a>
+        <div >KOOP JE TICKETS</div>
       </div>
 
 
