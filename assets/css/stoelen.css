@@ -1,0 +1,42 @@
+.chair {
+  background: #0080ff;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.chair:hover {
+  background: rgb(0, 102, 204);
+}
+
+.seat {
+  background: #fff;
+  width: 3rem;
+  height: 3rem;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(11, 80px);
+  grid-template-rows: repeat(10, 80px);
+  row-gap: 1.5rem;
+
+  max-width: 880px;
+  margin: 100px auto;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 5px solid rgb(0, 102, 204);
+  margin: 1em 5em;
+  padding: 0;
+}
+
+.filmdoek-heading {
+  text-transform: uppercase;
+}

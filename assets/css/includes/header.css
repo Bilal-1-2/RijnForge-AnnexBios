@@ -49,12 +49,17 @@ header {
 }
 #header-top-links {
   display: flex;
+
+}
+#header-top-links a{
+  display: flex;
   /* gap: 20px; */
   font-family: "Lato", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 22px;
+  font-weight: 700;
+  font-style: medium;
+  font-size: 22px !important;
 }
+
 .links a:link {
   margin: 0 10px;
   text-decoration: none;
@@ -97,7 +102,7 @@ header {
 #purchase-ticket {
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
 }
 
 #purchase-ticket a {
@@ -108,7 +113,7 @@ header {
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
 }
 
 .dropdown-select {
@@ -123,12 +128,12 @@ header {
   font-size: 15px;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   color: #ffffff;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s;
-  white-space: normal;
+  white-space: medium;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -149,7 +154,7 @@ header {
   background-color: #198bfd;
   font-family: "Lato", sans-serif;
   font-weight: 400;
-  font-style: normal;
+  font-style: medium;
   border: none;
 }
 
@@ -161,7 +166,7 @@ header {
   padding: 6px 8px;
   background-color: #66b1fd;
   border: none;
-  white-space: normal;
+  white-space: medium;
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -191,7 +196,7 @@ header {
   cursor: pointer;
   font-family: "Lato", sans-serif;
   font-weight: 700;
-  font-style: normal;
+  font-style: medium;
 }
 .nav-dropdown-icon {
   width: 12px;
