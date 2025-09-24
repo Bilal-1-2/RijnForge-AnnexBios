@@ -10,7 +10,7 @@ body {
     background-color: rgb(245, 245, 245);
     text-align: left;
     font-family: 'lato', sans-serif;
-    height: 450px;
+    height: 500px;
 }
 
 h1 {
@@ -31,6 +31,7 @@ h1 {
     padding: 5px;
     margin-left: 20px;
     font-size: 10px;
+    margin-top: 10px;
 
 }
 
@@ -56,4 +57,12 @@ h1 {
     padding: 5px;
     margin-left: 20px;
     font-size: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #6E4F7D;
+    padding: 20px 0 10px 20px;
+    margin-top: 20px;
 }
