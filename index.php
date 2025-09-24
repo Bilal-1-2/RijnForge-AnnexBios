@@ -11,7 +11,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-  <title>AnnexBios 5</title>
+  <title>AnnexBios Leidscherijn</title>
+  
   <script src="assets/js/scrollbare-header.js" defer></script>
 </head>
 
@@ -24,8 +25,8 @@
   <main>
 
     <div class="hero-section">
-      <h1 class="hero-section__title">WELKOM BIJ ANNEXBIOS 5</h1>
-      <p class="hero-section__intro">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, obcaecati quod consectetur ipsam temporibus alias nemo exercitationem nulla aspernatur doloremque!</p>
+      <h1 class="hero-section__title">WELKOM BIJ ANNEXBIOS LEIDSCHERIJN</h1>
+      <p class="hero-section__intro">Lorem ipsum dolr, sit amet consectetur adipisicing elit. Iusto, obcaecati quod consectetur ipsam temporibus alias nemo exercitationem nulla aspernatur doloremque!</p>
       <a href="#" class="hero-section__link">Bekijk de draaiende films</a>
     </div>
 
