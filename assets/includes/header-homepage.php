@@ -16,17 +16,17 @@
   <div id="header-bottom">
     <div id="header-bottom-container">
       <div id="purchase-ticket" class="links">
-        <a href="">KOOP JE TICKETS</a>
+       KOOP JE TICKETS
       </div>
 
 
-      <select class="dropdown-select" onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+      <select class="dropdown-select" >
         <option value="">Kies je film </option>
 
 
         <?php foreach ($data as $title): ?>
           <option value="<?php echo htmlspecialchars($title['titel']); ?>">
-            <?php echo htmlspecialchars($title['titel']); ?>
+            <?php echo htmlspecialchars(substr($title['titel'], 0, 30)); ?><?php if (strlen($title['titel']) > 30) echo '...'; ?>
           </option>
 
         <?php endforeach; ?>
