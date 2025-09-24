@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script src="assets/js/scrollbare-header.js" defer></script>
-  <title>AnnexBios 5</title>
+  <title>AnnexBios Leidscherijn</title>
 </head>
 
 <body alt="">
