@@ -22,22 +22,29 @@
         <h2>STAP 5: KIES JE BETAALWIJZE</h2>
 
 
-        <label class="payment-option">
-            <input type="checkbox" name="payment" value="credit-card">
-            <img src="">
-            bios
-        </label>
+        <div class="custom-radio-checkbox">
+            <input type="radio" id="box1" name="checkbox-group">
+            <label for="box1"></label>
+            <img src="assets/images/Nationalebioslogo.png" alt="Nationalebioslogo" class="nationalebioslogo">
 
-        <label class="payment-option">
-            <input type="checkbox">
-            <span class="checkmark"></span>
-            maestro
-        </label>
 
-        <label class="payment-option">
-            <input type="checkbox" name="payment" value="bank-transfer">
-            ideal
-        </label>
+            <input type="radio" id="box2" name="checkbox-group">
+            <label for="box2"></label>
+            <img src="assets/images/Maestro-logo.png" alt="maetro-logo" class="maestro-logo">
+
+
+            <input type="radio" id="box3" name="checkbox-group">
+            <label for="box3"></label>
+            <img src="assets/images/ideal-logo.png" alt="iDEAL-logo" class="ideal-logo">
+        </div>
+
+
+
+            <div class="terms-checkbox">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms"></label>
+                <span class="terms-text">Ik ga akkoord met de <a href="#">algemene voorwaarden</a></span>
+            </div>
 
 
 

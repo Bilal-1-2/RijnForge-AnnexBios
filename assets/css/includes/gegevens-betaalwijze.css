@@ -63,39 +63,127 @@ h2 {
     font-size: 28px;
     font-weight: 600;
     color: #6E4F7D;
-    padding: 20px 0 10px 20px;
-    margin-top: 20px;
+    padding: 10px;
+    
 }
 
-.payment-options {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
+
+.nationalebioslogo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+    
 }
 
-.payment-options input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+.maestro-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 25px;
+    
+    
 }
 
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
+.ideal-logo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
 }
 
-.payment-options:hover input~.checkmark {
-    background-color: #ccc;
+a {
+    text-decoration: none;
+    color: #666666
 }
+
+
+
+
+.custom-radio-checkbox input {
+  display: none;
+}
+
+
+.custom-radio-checkbox label {
+  position: relative;
+  width: 20px;  
+  height: 20px;
+  border: 2px solid #1e90ff; 
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 10px; 
+  margin-left: 20px;
+  margin-bottom: 30px   ;
+}
+
+.custom-radio-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #1e90ff;
+  border-bottom: 2px solid #1e90ff;
+  transform: rotate(-45deg); 
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  
+}
+
+
+.custom-radio-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+
+
+.terms-checkbox input {
+  display: none;
+}
+
+.terms-checkbox label {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #1e90ff;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-left: 15px;
+  margin-top: 20px;
+}
+
+.terms-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid #1e90ff;
+  border-bottom: 2px solid #1e90ff;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.terms-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+.terms-text {
+    font-size: 14px;
+    color: #666666;
+    margin-left: 15px;
+    
+    
+}
+
+
+
+
+
+ 
+
+
