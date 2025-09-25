@@ -172,9 +172,15 @@
   height: auto;
   overflow: visible;
 } */
-.film-poster {
+.film-poster,
+.film-poster-btn {
   width: 100%;
   height: 55%;
+}
+.film-poster-form{
+    width: 100%;
+  height: 55%;
+
 }
 
 /* .film-details:hover {

@@ -19,7 +19,7 @@
 
 <body alt="">
   <?php
-  include 'assets/includes/tijdelijk-database.php';
+  include 'assets/includes/api-database.php';
   include 'assets/includes/header-homepage.php';
   ?>
 
@@ -104,10 +104,13 @@
           $film = $data[$i % $count];
         ?>
           <div class="film-card">
-            <a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">
-              <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
-                alt="<?php echo htmlspecialchars($film['titel']); ?>">
-            </a>
+            <form action="detail-pagina.php" method="post" class="film-poster-form">
+              <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+              <button type="submit"  style="border: none; background: none; padding: 0;">
+                <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                  alt="<?php echo htmlspecialchars($film['titel']); ?>">
+              </button>
+            </form>
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
@@ -126,7 +129,10 @@
                 </div>
               </div>
 
-              <form action="detail-pagina.php"><button type="submit" class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button></form>
+              <form action="detail-pagina.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+                <button type="submit" class="film-info-btn">MEER INFO & TICKETS</button>
+              </form>
 
             </div>
           </div>
