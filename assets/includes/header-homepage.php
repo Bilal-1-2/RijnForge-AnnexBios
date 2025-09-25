@@ -1,5 +1,4 @@
 <header>
-
   <div id="header-top">
     <div id="header-top-container">
       <div>
@@ -7,14 +6,14 @@
           <img class="logo" src="assets/logo/logo.PNG" alt="Annex Bios Logo" />
         </a>
       </div>
-      <!-- <div id="header-top-links" class="links">
+      <div id="header-top-links" class="links">
         <a href="film-agenda.php">FILM AGENDA</a>
         <a href="#">ALLE VESTIGINGEN</a>
         <a href="#">CONTACT</a>
-      </div> -->
+      </div>
     </div>
   </div>
-  <div id="header-bottom">
+ <div id="header-bottom">
     <div id="header-bottom-container">
       <form action="bestel-pagina.php" method="POST">
         <div id="purchase-ticket" class="links">

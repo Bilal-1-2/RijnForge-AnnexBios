@@ -1,0 +1,14 @@
+@import "includes/header.css";
+@import "includes/content.css";
+ @import "includes/footer.css"; 
+body {
+  /* background-image: url("../header/background.jpg"); */
+
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url("../images/background.jpg");
+}
+main {
+  /* background-color: white; */
+  width: 85%;
+  margin: 20px auto;
+}
