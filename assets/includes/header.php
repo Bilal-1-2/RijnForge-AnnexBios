@@ -16,28 +16,31 @@
   </div>
   <div id="header-bottom">
     <div id="header-bottom-container">
-      <div id="purchase-ticket" class="links">
-        <a href="">KOOP JE TICKETS</a>
-      </div>
+      <form action="bestel-pagina.php" method="POST">
+        <div id="purchase-ticket" class="links">
+          KOOP JE TICKETS
+        </div>
 
+        <div class="dropdown" id="dropdown">
+          <button type="button" class="dropdown-toggle" id="dropdownToggle">
+            Kies je film
+          </button>
 
-      <select class="dropdown-select" onfocus='this.size=10;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-        <option value="">Kies je film </option>
+          <input type="hidden" name="id" id="dropdownInput" value="">
 
+          <div class="dropdown-menu" id="dropdownMenu">
+            <?php foreach ($data as $film): ?>
+              <div class="dropdown-item" data-value="<?php echo htmlspecialchars($film['film_id']); ?>" data-title="<?php echo htmlspecialchars($film['titel']); ?>">
+                <?php echo htmlspecialchars($film['titel']); ?>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
 
-        <?php foreach ($data as $title): ?>
-          <option value="<?php echo htmlspecialchars($title['titel']); ?>">
-            <?php echo htmlspecialchars($title['titel']); ?>
-          </option>
-
-        <?php endforeach; ?>
-
-      </select>
-
-
-      <div id="order-link" class="links">
-        <a href="#">BESTEL TICKETS </a>
-      </div>
+        <div id="order-link" class="links">
+          <button type="submit" class="film-card-link">BESTEL TICKETS</button>
+        </div>
+      </form>
     </div>
   </div>
 
