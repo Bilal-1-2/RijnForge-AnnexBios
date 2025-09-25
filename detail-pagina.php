@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/detail-pagina.css">
     <script src="assets/js/lees-meer.js" defer></script>
-
+  <script src="assets/js/scrollbare-header.js" defer></script>
+  <script src="assets/js/dropdown.js" defer></script>
     <title></title>
 
 </head>
@@ -14,7 +15,6 @@
 <body>
 
     <?php
-    // Function to convert YouTube watch URL to embed URL
     function convertToEmbedUrl($url)
     {
         // Check if it's a YouTube URL
@@ -45,10 +45,17 @@
     include 'assets/includes/tijdelijk-database.php';
     include 'assets/includes/header.php';
     // Get the film ID from the URL
-    $filmId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
-    // Find the film in the data array
-    $film = null;
+    // Get the film ID from the POST data
+    $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
+    // Debug: Show what we're receiving
+    if ($filmId === 0) {
+        echo "<p>Debug: No film ID received in POST data. POST data: " . print_r($_POST, true) . "</p>";
+        exit;
+    }
+
+   
+    $film = null;
 
     foreach ($data as $item) {
         if ($item['film_id'] === $filmId) {
@@ -56,11 +63,17 @@
             break;
         }
     }
+
     if (!$film) {
-        echo "<p>Film not found.</p>";
+        echo "<p>Film not found. Looking for film ID: " . $filmId . "</p>";
+        echo "<p>Available film IDs in database: ";
+        foreach ($data as $item) {
+            echo $item['film_id'] . " (" . $item['titel'] . "), ";
+        }
+        echo "</p>";
         exit;
     }
-    // Create DateTime object for formatting the release date
+   
     $date = new DateTime($film['releasedatum']);
     ?>
     <main>

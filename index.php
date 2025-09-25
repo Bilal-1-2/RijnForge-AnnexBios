@@ -13,7 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <title>AnnexBios Leidscherijn</title>
   
-  <script src="assets/js/scrollbare-header.js" defer></script>
+      <script src="assets/js/scrollbare-header.js" defer></script>
+    <script src="assets/js/dropdown.js" defer></script>
 </head>
 
 <body alt="">
@@ -125,7 +126,7 @@
                 </div>
               </div>
 
-              <button class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button>
+              <form action="detail-pagina.php"><button type="submit" class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button></form>
 
             </div>
           </div>

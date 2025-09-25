@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script src="assets/js/scrollbare-header.js" defer></script>
+  <script src="assets/js/dropdown.js" defer></script>
   <title>AnnexBios Leidscherijn</title>
 </head>
 

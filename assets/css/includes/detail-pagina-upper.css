@@ -4,7 +4,7 @@ body {
 }
 main {
   padding-top: 50px;
-  width: 90%;
+  width: 85%;
 
   /* margin-top: 202px; */
   justify-content: center;
@@ -159,6 +159,7 @@ main {
 .detail-actors {
   display: grid;
   grid-template-columns: repeat(4, 2fr);
+  gap: 10px;
   width: 60%;
   margin-top: 20px;
 }
