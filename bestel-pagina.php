@@ -13,35 +13,69 @@
 
 <body>
     <?php
-    include 'assets/includes/tijdelijk-database.php';
+    include 'assets/includes/api-database.php';
     include 'assets/includes/header.php';
-    // Get the film ID from the POST data
+    // Get the film ID from POST data
     $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
-    // Debug: Show what we're receiving
     if ($filmId === 0) {
-        echo "<p>Debug: No film ID received in POST data. POST data: " . print_r($_POST, true) . "</p>";
+        echo "<p>No film ID provided.</p>";
         exit;
     }
 
-    // Find the film in the data array
-    $film = null;
+    // Try to fetch detailed movie data
+    $filmDetails = fetchMovieDetails($filmId);
 
-    foreach ($data as $item) {
-        if ($item['film_id'] === $filmId) {
-            $film = $item;
-            break;
+    if ($filmDetails) {
+        // Format detailed data
+        $genres = [];
+        if (isset($filmDetails['genres']) && is_array($filmDetails['genres'])) {
+            foreach ($filmDetails['genres'] as $genre) {
+                $genres[] = $genre['name'] ?? '';
+            }
         }
-    }
+        $genreString = implode(', ', array_filter($genres));
 
-    if (!$film) {
-        echo "<p>Film not found. Looking for film ID: " . $filmId . "</p>";
-        echo "<p>Available film IDs in database: ";
+        $acteurs = [];
+        if (isset($filmDetails['cast']) && is_array($filmDetails['cast'])) {
+            foreach (array_slice($filmDetails['cast'], 0, 5) as $actor) {
+                $acteurs[] = [
+                    'naam' => $actor['name'] ?? '',
+                    'foto' => $actor['profile_path'] ? 'https://image.tmdb.org/t/p/w200' . $actor['profile_path'] : ''
+                ];
+            }
+        }
+
+        $regisseur = $filmDetails['director']['name'] ?? '';
+
+        $film = [
+            "film_id" => $filmDetails['id'] ?? 0,
+            "titel" => $filmDetails['movie']['title'] ?? '',
+            "releasedatum" => $filmDetails['release_date'] ?? '',
+            "duur" => $filmDetails['runtime'] ?? 0,
+            "genre" => $genreString ?: 'Action, Thriller',
+            "imdb_score" => $filmDetails['stars'] ?? 0,
+            "regisseur" => $regisseur ?: 'Timo Tjahjanto',
+            "land" => $filmDetails['origin_country'] ?? 'US',
+            "acteurs" => $acteurs,
+            "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
+            "trailers" => '',
+            "informatie" => $filmDetails['overview'] ?? ''
+        ];
+    } else {
+        // Fallback to list data
+        $film = null;
         foreach ($data as $item) {
-            echo $item['film_id'] . " (" . $item['titel'] . "), ";
+            if ($item['film_id'] === $filmId) {
+                $film = $item;
+                break;
+            }
         }
-        echo "</p>";
-        exit;
+
+        if (!$film) {
+            echo "<p>Film not found.</p>";
+            exit;
+        }
     }
     ?>
     <main>

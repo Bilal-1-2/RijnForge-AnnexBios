@@ -42,36 +42,78 @@
         return $url;
     }
 
-    include 'assets/includes/tijdelijk-database.php';
+    include 'assets/includes/api-database.php';
     include 'assets/includes/header.php';
     // Get the film ID from the URL
     // Get the film ID from the POST data
     $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
 
-    // Debug: Show what we're receiving
     if ($filmId === 0) {
-        echo "<p>Debug: No film ID received in POST data. POST data: " . print_r($_POST, true) . "</p>";
+        echo "<p>No film ID provided.</p>";
         exit;
     }
 
-   
-    $film = null;
+    // Try to fetch detailed movie data
+    $filmDetails = fetchMovieDetails($filmId);
 
-    foreach ($data as $item) {
-        if ($item['film_id'] === $filmId) {
-            $film = $item;
-            break;
+    if ($filmDetails) {
+        // Format the detailed data to match the expected structure
+        $genres = [];
+        if (isset($filmDetails['genres']) && is_array($filmDetails['genres'])) {
+            foreach ($filmDetails['genres'] as $genre) {
+                $genres[] = $genre['name'] ?? '';
+            }
         }
-    }
+        $genreString = implode(', ', array_filter($genres));
 
-    if (!$film) {
-        echo "<p>Film not found. Looking for film ID: " . $filmId . "</p>";
-        echo "<p>Available film IDs in database: ";
+        $acteurs = [];
+        if (isset($filmDetails['cast']) && is_array($filmDetails['cast'])) {
+            foreach (array_slice($filmDetails['cast'], 0, 5) as $actor) {
+                $acteurs[] = [
+                    'naam' => $actor['name'] ?? '',
+                    'foto' => $actor['profile_path'] ? 'https://image.tmdb.org/t/p/w200' . $actor['profile_path'] : ''
+                ];
+            }
+        }
+
+        $regisseur = '';
+        if (isset($filmDetails['crew']) && is_array($filmDetails['crew'])) {
+            foreach ($filmDetails['crew'] as $crewMember) {
+                if (isset($crewMember['job']) && $crewMember['job'] === 'Director') {
+                    $regisseur = $crewMember['name'] ?? '';
+                    break;
+                }
+            }
+        }
+
+        $film = [
+            "film_id" => $filmDetails['movie']['id'] ?? 0,
+            "titel" => $filmDetails['movie']['title'] ?? '',
+            "releasedatum" => $filmDetails['movie']['release_date'] ?? '',
+            "duur" => $filmDetails['movie']['runtime'] ?? 0,
+            "genre" => $genreString ?: 'Action, Thriller',
+            "imdb_score" => $filmDetails['movie']['stars'] ?? 0,
+            "regisseur" => $regisseur ?: 'Timo Tjahjanto',
+            "land" => $filmDetails['movie']['origin_country'] ?? 'US',
+            "acteurs" => $acteurs,
+            "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
+            "trailers" => '', // Not provided
+            "informatie" => $filmDetails['movie']['overview'] ?? ''
+        ];
+    } else {
+        // Fallback to basic data from list
+        $film = null;
         foreach ($data as $item) {
-            echo $item['film_id'] . " (" . $item['titel'] . "), ";
+            if ($item['film_id'] === $filmId) {
+                $film = $item;
+                break;
+            }
         }
-        echo "</p>";
-        exit;
+
+        if (!$film) {
+            echo "<p>Film not found.</p>";
+            exit;
+        }
     }
    
     $date = new DateTime($film['releasedatum']);
@@ -121,7 +163,8 @@
                 <div class="detail-actors">
                     <?php
                     if (is_array($film['acteurs'])) {
-                        foreach ($film['acteurs'] as $acteur) {
+                        $displayActeurs = array_slice($film['acteurs'], 0, 4);
+                        foreach ($displayActeurs as $acteur) {
                             echo '<div class="actor-item">';
                             echo '<img src="' . htmlspecialchars($acteur['foto']) . '" alt="' . htmlspecialchars($acteur['naam']) . '" class="actor-photo">';
                             echo '<div class="actor-name">' . htmlspecialchars($acteur['naam']) . '</div>';
@@ -146,7 +189,10 @@
             </div>
         </div>
 
-        <button class="detail-ticket-btn">BUY TICKETS</button>
+        <form action="bestel-pagina.php" method="post">
+          <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+          <button type="submit" class="detail-ticket-btn">BUY TICKETS</button>
+        </form>
 
         <div class="trailer-container">
             <iframe width="100%" height="600px"
