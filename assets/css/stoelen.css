@@ -9,20 +9,22 @@
 }
 
 .chair:hover {
-  background: rgb(0, 102, 204);
+  background: #4da6ff;
 }
 
 .seat {
   background: #fff;
   width: 2rem;
   height: 2rem;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .parent {
   display: grid;
   grid-template-columns: repeat(11, 48px);
   grid-template-rows: repeat(10, 48px);
-  row-gap: 1.5rem;
+  row-gap: 1rem;
 
   max-width: 528px;
   margin: 100px auto;
@@ -45,7 +47,7 @@ hr {
 }
 
 .active {
-  background: #0059b3;
+  background: #004d99;
 }
 
 .legenda {
@@ -68,11 +70,20 @@ hr {
 }
 
 .legenda-item.selected {
-  background: #0059b3;
+  background: #004d99;
 }
 
 .legenda-item.reserved {
-  background: #004080;
+  background: #001a33;
+}
+
+input[type="text"] {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #0080ff;
+  border-radius: 5px;
 }
 
 @media (max-width: 600px) {
@@ -94,6 +105,8 @@ hr {
   .seat {
     width: 1.5rem;
     height: 1.5rem;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 
   .legenda-item {
@@ -105,5 +118,15 @@ hr {
 
   hr {
     margin: 1em 2em;
+  }
+
+  .filmdoek-heading {
+    font-size: 1.5em;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    border-radius: 3px;
   }
 }
