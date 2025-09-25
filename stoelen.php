@@ -11,6 +11,7 @@
 <body>
   <hr>
   <h3 class="filmdoek-heading">Filmdoek</h3>
+
   <div class="parent">
     <?php
     for ($y = 0; $y < 10; $y++) {
@@ -20,6 +21,19 @@
       }
     }
     ?>
+  </div>
+
+  <input type="text" id="selectedSeats" readonly name="selectedSeats">
+  <div class="legenda">
+    <div class="legenda-item">
+      beschikbaar
+    </div>
+    <div class="legenda-item reserved">
+      bezet
+    </div>
+    <div class="legenda-item selected">
+      selectie
+    </div>
   </div>
 
   <script src="./assets/stoelen.js"></script>

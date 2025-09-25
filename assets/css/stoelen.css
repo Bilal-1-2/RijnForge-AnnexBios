@@ -1,7 +1,7 @@
 .chair {
   background: #0080ff;
-  width: 5rem;
-  height: 5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 15px;
 
   display: flex;
@@ -14,17 +14,17 @@
 
 .seat {
   background: #fff;
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .parent {
   display: grid;
-  grid-template-columns: repeat(11, 80px);
-  grid-template-rows: repeat(10, 80px);
+  grid-template-columns: repeat(11, 48px);
+  grid-template-rows: repeat(10, 48px);
   row-gap: 1.5rem;
 
-  max-width: 880px;
+  max-width: 528px;
   margin: 100px auto;
 }
 
@@ -45,5 +45,65 @@ hr {
 }
 
 .active {
-  background: red;
+  background: #0059b3;
+}
+
+.legenda {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.legenda-item {
+  width: 5rem;
+  height: 2rem;
+  background: #0080ff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.legenda-item.selected {
+  background: #0059b3;
+}
+
+.legenda-item.reserved {
+  background: #004080;
+}
+
+@media (max-width: 600px) {
+  .parent {
+    grid-template-columns: repeat(11, 30px);
+    grid-template-rows: repeat(10, 30px);
+    row-gap: 1rem;
+
+    max-width: 330px;
+    margin: 100px auto;
+  }
+
+  .chair {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+  }
+
+  .seat {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .legenda-item {
+    width: 4rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  hr {
+    margin: 1em 2em;
+  }
 }
