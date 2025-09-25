@@ -144,21 +144,22 @@ a {
 
 .terms-checkbox label {
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   border: 2px solid #1e90ff;
   display: inline-block;
   cursor: pointer;
   box-sizing: border-box;
-  margin-left: 15px;
+  margin-left: 20px;
   margin-top: 20px;
+  
 }
 
 .terms-checkbox label::after {
   content: "";
   position: absolute;
-  left: 6px;
-  top: 2px;
+  left: 3px;
+  top: 1px;
   width: 14px;
   height: 14px;
   border-left: 2px solid #1e90ff;
@@ -177,6 +178,9 @@ a {
     color: #666666;
     margin-left: 15px;
     
+    
+    
+        
     
 }
 
