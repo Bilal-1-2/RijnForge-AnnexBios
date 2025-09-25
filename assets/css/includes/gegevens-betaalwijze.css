@@ -151,7 +151,7 @@ a {
   cursor: pointer;
   box-sizing: border-box;
   margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 25px;
   
 }
 
@@ -176,7 +176,8 @@ a {
 .terms-text {
     font-size: 14px;
     color: #666666;
-    margin-left: 15px;
+    margin-left: 10px;
+    
     
     
     
