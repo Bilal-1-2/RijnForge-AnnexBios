@@ -11,11 +11,11 @@
 $apiKey = trim("EFIdY9nTsPBguvhsjYwSiNYWpYpYYaWx");
  
 // Test movie ID (try a different one if this doesn't work)
-$movieId = 1007734;
+$movieId = 1300116;
  
 // Try different API key header names and methods
 $methods = [
-    "api-key" => "https://annexbios.gluwebsite.nl/admin/api/movies/get_movie.php?movie_id=" . $movieId,
+    "api-key" => "https://annexbios.gluwebsite.nl/admin/api/movies/get_ticket_order.php?movie_id=" . $movieId,
    // "Authorization" => "https://annexbios.gluwebsite.nl/admin/api/movies/get_movie.php?movie_id=" . $movieId,
     //"query_param" => "https://annexbios.gluwebsite.nl/admin/api/movies/get_movie.php?movie_id=" . $movieId . "&api_key=" . $apiKey
 ];

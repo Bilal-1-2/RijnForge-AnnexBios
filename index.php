@@ -20,6 +20,7 @@
 <body alt="">
   <?php
   include 'assets/includes/api-database.php';
+  include 'assets/includes/stars-filter.php';
   include 'assets/includes/header-homepage.php';
   ?>
 
@@ -114,11 +115,7 @@
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
+                <?php echo filter_stars($film['stars'] ); ?>
               </div>
               <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>

@@ -73,6 +73,41 @@ function fetchMovieDetails($id) {
     return null;
 }
 
+function fetchTicketOrders($movieId) {
+    // Clean API key (remove trailing newline and space)
+    $apiKey = trim("EFIdY9nTsPBguvhsjYwSiNYWpYpYYaWx");
+
+    // Fetch ticket orders from the API using get_ticket_order.php with movie_id
+    $url = "https://annexbios.gluwebsite.nl/admin/api/movies/get_ticket_order.php?movie_id=" . $movieId;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["api-key: " . $apiKey]);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        // cURL Error occurred, return empty array
+        curl_close($ch);
+        return [];
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode === 200) {
+        $data = json_decode($response, true);
+        if ($data && isset($data['success']) && $data['success'] && isset($data['data'])) {
+            return $data['data']; // Return the array of ticket orders
+        }
+    }
+
+    return [];
+}
+
 // Fetch data from API
 $apiData = fetchMoviesFromAPI();
 
@@ -124,9 +159,9 @@ if (empty($apiData)) {
             "imdb_score" => $movie['stars'] ?? 0,
             "regisseur" => $movie['director']['name'] ?? 'Timo Tjahjanto', // Default director
             "land" => $land['movie']['origin_country'] ?? 'US', // Not provided in API
-            "acteurs" => $acteurs, // No cast in API, remains empty
+            "acteurs" => $acteurs,
             "poster" => $movie['poster'] ?? '',
-            "trailers" => '', // API provides has_trailer boolean, but no URL
+            "trailers" => '', 
             "informatie" => $movie['overview'] ?? '',
             "stars"=>$movie['stars']??''
         ];

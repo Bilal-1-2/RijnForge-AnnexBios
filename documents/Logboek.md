@@ -56,3 +56,14 @@ Rachel was 2 uur bezig met kies je ticket in de bestel pgina te maken.
 Bilal was 3.5 uur bezig met detail pagina .
 Rachel was 3.5 uur bezig met kies je ticket.
 Mohammed was 3.5 uur bezig met stoelen te maken.
+
+#### **23-09-2025**
+Bilal was 3 uur bezig met detail pagina .
+Rachel was 3 uur bezig met formulier te maken.
+Mohammed was 3uur bezig met stoelen te maken.
+
+#### **24-09-2025**
+Bilal was 3 uur bezig met bestel pagina .
+Rachel was 3 uur bezig met formulier te maken.
+Mohammed was 3uur bezig met stoelen te maken.
+

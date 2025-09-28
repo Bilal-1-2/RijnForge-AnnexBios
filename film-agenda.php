@@ -14,6 +14,7 @@
 <body alt="">
   <?php
   include 'assets/includes/api-database.php';
+  include 'assets/includes/stars-filter.php';
   include 'assets/includes/header.php';
 
   // Film data array
@@ -53,10 +54,9 @@
       </div>
       <div class="films-container">
         <?php
-        $total = 18;
-        $count = count($data);
-        for ($i = 0; $i < $total; $i++):
-          $film = $data[$i % $count];
+       
+        foreach (  $data as $film):
+        
         ?>
           <div class="film-card">
             <form action="detail-pagina.php" method="post" class="film-poster-form">
@@ -70,11 +70,9 @@
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
+          
+                <?php echo filter_stars($film['stars'] ); ?>
+            
               </div>
               <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
@@ -92,7 +90,7 @@
             </div>
           </div>
 
-        <?php endfor; ?>
+        <?php endforeach; ?>
       </div>
 
     </div>

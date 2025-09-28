@@ -43,6 +43,7 @@
     }
 
     include 'assets/includes/api-database.php';
+    include 'assets/includes/stars-filter.php';
     include 'assets/includes/header.php';
     // Get the film ID from the URL
     // Get the film ID from the POST data
@@ -93,6 +94,7 @@
             "duur" => $filmDetails['movie']['runtime'] ?? 0,
             "genre" => $genreString ?: 'Action, Thriller',
             "imdb_score" => $filmDetails['movie']['stars'] ?? 0,
+            "stars" => $filmDetails['movie']['stars'] ?? 0,
             "regisseur" => $regisseur ?: 'Timo Tjahjanto',
             "land" => $filmDetails['movie']['origin_country'] ?? 'US',
             "acteurs" => $acteurs,
@@ -126,11 +128,7 @@
             </div>
             <div class="detail-info">
                 <div class="detail-ratings">
-                    <img src="assets/icons/ster.svg" alt="">
-                    <img src="assets/icons/ster.svg" alt="">
-                    <img src="assets/icons/ster.svg" alt="">
-                    <img src="assets/icons/ster.svg" alt="">
-                    <img src="assets/icons/ster.svg" alt="">
+                    <?php echo filter_stars($film['stars'] ); ?>
                 </div>
                 <?php
                 $fullDescription = htmlspecialchars($film['informatie']);
@@ -156,7 +154,7 @@
                     <div class="detail-genre">Genre: <?php echo htmlspecialchars($film['genre']); ?></div>
                     <div class="detail-duration">Filmlengte: <?php echo htmlspecialchars($film['duur']); ?> minutes</div>
                     <div class="detail-country">Land: <?php echo htmlspecialchars($film['land']); ?></div>
-                    <div class="detail-imdb-score">Imdb Score: <?php echo htmlspecialchars($film['imdb_score']); ?>/10</div>
+                    <div class="detail-imdb-score">Imdb Score: <?php echo htmlspecialchars($film['imdb_score']*2); ?>/10</div>
                     <div class="detail-Director">Regisseur: <?php echo htmlspecialchars($film['regisseur']); ?></div>
                     <div class="detail-writer"> Acteurs: </div>
                 </div>
