@@ -1,188 +1,156 @@
-body {
-    margin: 0;
-    padding: 0;
-    background-color: black;
-}
-
 .gegevens-betaalwijze-container {
-    margin: 0 auto;
-    max-width: 1000px;
-    background-color: rgb(245, 245, 245);
-    text-align: left;
-    font-family: 'lato', sans-serif;
-    height: 500px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgb(245, 245, 245);
+  text-align: left;
+  font-family: "lato", sans-serif;
+  height: auto;
 }
 
-h1 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #399CFF;
-    padding: 20px 0 10px 20px;
-    margin: 0;
+.gegevens-betaalwijze-container h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0080ff;
+  padding: 20px 0 10px 20px;
+  margin: 0;
 }
 
-
-#firstname {
-    width: 303px;
-    height: 30px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 2px solid #399CFF;
-    padding: 5px;
-    margin-left: 20px;
-    font-size: 10px;
-    margin-top: 10px;
-
+.gegevens-betaalwijze-container #firstname {
+  width: 303px;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 20px;
+  font-size: 10px;
+  margin-top: 10px;
 }
 
-#surname {
-    width: 303px;
-    height: 30px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 2px solid #399CFF;
-    padding: 5px;
-    margin-left: 0px;
-    font-size: 10px;
-
+.gegevens-betaalwijze-container #surname {
+  width: 303px;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 0px;
+  font-size: 10px;
 }
 
-#email,
-#email-bevestiging {
-    width: 624px;
-    height: 30px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 2px solid #399CFF;
-    padding: 5px;
-    margin-left: 20px;
-    font-size: 10px;
+.gegevens-betaalwijze-container #email,
+.gegevens-betaalwijze-container #email-bevestiging {
+  width: 624px;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 20px;
+  font-size: 10px;
 }
 
-h2 {
-    font-size: 28px;
-    font-weight: 600;
-    color: #6E4F7D;
-    padding: 10px;
-    
+.gegevens-betaalwijze-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6e4f7d;
+  padding: 10px;
 }
 
-
-
-.nationalebioslogo {
-    width: 50px;
-    height: auto;
-    margin-bottom: 20px;
-    
+.gegevens-betaalwijze-container .nationalebioslogo {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.maestro-logo {
-    width: 100px;
-    height: auto;
-    margin-bottom: 25px;
-    
-    
+.gegevens-betaalwijze-container .maestro-logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 25px;
 }
 
-.ideal-logo {
-    width: 50px;
-    height: auto;
-    margin-bottom: 20px;
+.gegevens-betaalwijze-container .ideal-logo {
+  width: 50px;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-a {
-    text-decoration: none;
-    color: #666666
+.gegevens-betaalwijze-container a {
+  text-decoration: none;
+  color: #666666;
 }
 
-
-
-
-.custom-radio-checkbox input {
+.gegevens-betaalwijze-container .custom-radio-checkbox input {
   display: none;
 }
 
-
-.custom-radio-checkbox label {
+.gegevens-betaalwijze-container .custom-radio-checkbox label {
   position: relative;
-  width: 20px;  
+  width: 20px;
   height: 20px;
-  border: 2px solid #1e90ff; 
+  border: 2px solid #0080ff;
   display: inline-block;
   cursor: pointer;
   box-sizing: border-box;
-  margin-right: 10px; 
+  margin-right: 10px;
   margin-left: 20px;
-  margin-bottom: 30px   ;
+  margin-bottom: 30px;
 }
 
-.custom-radio-checkbox label::after {
+.gegevens-betaalwijze-container .custom-radio-checkbox label::after {
   content: "";
   position: absolute;
   left: 3px;
   top: 1px;
   width: 9px;
   height: 9px;
-  border-left: 2px solid #1e90ff;
-  border-bottom: 2px solid #1e90ff;
-  transform: rotate(-45deg); 
+  border-left: 2px solid #0080ff;
+  border-bottom: 2px solid #0080ff;
+  transform: rotate(-45deg);
   opacity: 0;
   transition: opacity 0.2s ease;
-  
 }
 
-
-.custom-radio-checkbox input:checked + label::after {
+.gegevens-betaalwijze-container .custom-radio-checkbox input:checked + label::after {
   opacity: 1;
 }
 
-
-
-.terms-checkbox input {
+.gegevens-betaalwijze-container .terms-checkbox input {
   display: none;
 }
 
-.terms-checkbox label {
+.gegevens-betaalwijze-container .terms-checkbox label {
   position: relative;
   width: 25px;
   height: 25px;
-  border: 2px solid #1e90ff;
+  border: 2px solid #0080ff;
   display: inline-block;
   cursor: pointer;
   box-sizing: border-box;
   margin-left: 20px;
   margin-top: 25px;
-  
 }
 
-.terms-checkbox label::after {
+.gegevens-betaalwijze-container .terms-checkbox label::after {
   content: "";
   position: absolute;
   left: 3px;
   top: 1px;
   width: 14px;
   height: 14px;
-  border-left: 2px solid #1e90ff;
-  border-bottom: 2px solid #1e90ff;
+  border-left: 2px solid #0080ff;
+  border-bottom: 2px solid #0080ff;
   transform: rotate(-45deg);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-.terms-checkbox input:checked + label::after {
+.gegevens-betaalwijze-container .terms-checkbox input:checked + label::after {
   opacity: 1;
 }
 
-.terms-text {
-    font-size: 14px;
-    color: #666666;
-    margin-left: 10px; 
+.gegevens-betaalwijze-container .terms-text {
+  font-size: 14px;
+  color: #666666;
+  margin-left: 10px;
 }
-
-
-
-
-
- 
-
-

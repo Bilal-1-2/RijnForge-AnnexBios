@@ -17,7 +17,7 @@
     <script src="assets/js/dropdown.js" defer></script>
 </head>
 
-<body alt="">
+<body>
   <?php
   include 'assets/includes/api-database.php';
   include 'assets/includes/stars-filter.php';

@@ -19,7 +19,7 @@ body {
 h1 {
     font-size: 28px;
     font-weight: 600;
-    color: #399CFF;
+    color: #0080ff;
     padding: 20px 0 10px 20px;
     margin: 0;
 }
@@ -166,7 +166,7 @@ select,
 .voucher-code-container button {
     width: 25%;
     height: 27px;
-    background-color: #399CFF;
+    background-color: #0080ff;
     color: white;
     font-size: 12px;
     font-weight: 500;

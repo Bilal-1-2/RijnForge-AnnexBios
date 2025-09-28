@@ -1,0 +1,97 @@
+.bestel-film-card {
+  margin-bottom: 20px;
+  width: 18%;
+  height: 650px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, height 0.3s;
+  background-color: white;
+  align-items: center;
+
+  display: flex;
+  flex-direction: column;
+}
+/* .bestel-film-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: auto;
+  overflow: visible;
+} */
+.bestel-film-poster,
+.bestel-film-poster-btn {
+  width: 100%;
+  height: 55%;
+}
+.bestel-film-poster{
+    width: 100%;
+  height: 55%;
+
+}
+.bestel-ratings  {
+  display: flex;
+  gap: 2px;
+  height: 30px;
+  align-items: center;
+  width: 40PX;
+
+}
+.bestel-ratings img{
+  width: 25px;
+  height: 25px;
+}
+
+/* .bestel-film-details:hover {
+    overflow: visible;
+    white-space: medium;
+    height: auto;
+} */
+.bestel-film-release-date {
+  font-size: 19px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: medium;
+  color: #414040;
+  margin-top: 5px;
+}
+
+.bestel-film-info {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.bestel-film-title {
+  font-size: 24px;
+  font-weight: bold;
+  /* margin-bottom: 5px; */
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  font-style: medium;
+  color: #414040;
+  min-height: 90px;
+}
+.bestel-film-details {
+  font-size: 12px;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: medium;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  padding: 5px;
+  max-height: 50px;
+
+  margin-top: 10px;
+  line-height: 1.4;
+  position: relative;
+  transition: max-height 0.5s ease;
+}
+
+.bestel-film-text {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: medium;
+  color: #616060;
+  font-size: 10px;
+  min-height: 50px;
+}

@@ -16,6 +16,7 @@
     <?php
     include 'assets/includes/api-database.php';
     include 'assets/includes/price.php';
+    include 'assets/includes/stars-filter.php';
     // Get the film ID from POST data
     if (!isset($_POST['id']) || empty($_POST['id'])) {
         header('Location: index.php');
@@ -56,7 +57,7 @@
             "releasedatum" => $filmDetails['release_date'] ?? '',
             "duur" => $filmDetails['runtime'] ?? 0,
             "genre" => $genreString ?: 'Action, Thriller',
-            "imdb_score" => $filmDetails['stars'] ?? 0,
+            "stars" => $filmDetails['stars'] ?? 0,
             "regisseur" => $regisseur ?: 'Timo Tjahjanto',
             "land" => $filmDetails['origin_country'] ?? 'US',
             "acteurs" => $acteurs,
@@ -107,6 +108,8 @@
         var timesByDate = <?php echo json_encode($timesByDate); ?>;
     </script>
     <main>
+
+        <input type="hidden" name="id" value="<?php echo $filmId; ?>">
         <div class="bestel-title-container">
             <div class="div-title">TICKETS BESTELLEN</div>
             <div class="film-info">
@@ -143,165 +146,171 @@
                 </div>
             </div>
         </div>
-        <div class="ticket-container">
-            <h1>STAP 1: KIES JE TICKET</h1>
+        <div class="bestel-content-container">
+            <form id="bestel-form" method="post" action="bedankt-pagina.php">
+                <div class="ticket-container">
+                    <h1>STAP 1: KIES JE TICKET</h1>
 
-            <div class="type-prijs-aantal">
-                <div class="type-title">
-                    <h2>TYPE</h2>
+                    <div class="type-prijs-aantal">
+                        <div class="type-title">
+                            <h2>TYPE</h2>
+                        </div>
+
+                        <div class="prijs-aantal-title">
+                            <h2>PRIJS</h2>
+                            <h2>AANTAL</h2>
+                        </div>
+                    </div>
+
+
+                    <div class="top-bottom-lines"></div>
+
+                    <div class="normal-prijs-aantal-container">
+                        <div class="type-section">
+                            <h4>Normaal</h4>
+                        </div>
+
+                        <div class="ticket-selector-prijs">
+                            <h5>€<?php echo formatPrice($prijzen['normaal']); ?></h5>
+
+                            <select name="aantal-tickets-normaal" id="aantal-tickets-normaal">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="normal-prijs-aantal-container">
+                        <div class="type-section">
+                            <h4>Kind t/m 11 jaar</h4>
+                        </div>
+
+                        <div class="ticket-selector-prijs">
+                            <h5>€<?php echo formatPrice($prijzen['kind']); ?></h5>
+
+                            <select name="aantal-tickets-kind" id="aantal-tickets-kind">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="normal-prijs-aantal-container">
+                        <div class="type-section">
+                            <h4>65 +</h4>
+                        </div>
+
+                        <div class="ticket-selector-prijs">
+                            <h5>€<?php echo formatPrice($prijzen['senior']); ?></h5>
+
+                            <select name="aantal-tickets-senior" id="aantal-tickets-senior">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="top-bottom-lines"></div>
+
+                    <div class="voucher-code-container">
+                        <h3>VOUCHERCODE</h3>
+                        <input type="text" placeholder="CODE" id="voucher-code-input" name="voucher_code">
+                        <button>Toevoegen</button>
+                    </div>
                 </div>
 
-                <div class="prijs-aantal-title">
-                    <h2>PRIJS</h2>
-                    <h2>AANTAL</h2>
+                <div class="gegevens-betaalwijze-container">
+                    <h1>STAP 4: VUL JE GEGEVENS IN</h1>
+
+                    <input type="text" id="firstname" name="voornaam" placeholder="Voornaam" required>
+                    <input type="text" id="surname" name="achternaam" placeholder="Achternaam*" required><br>
+
+                    <input type="email" id="email" name="email" placeholder="E-mailadres" required><br>
+                    <input type="email" id="email-bevestiging" name="email_bevestiging" placeholder="E-mailadres*" required>
+
+                    <h2>STAP 5: KIES JE BETAALWIJZE</h2>
+
+
+                    <div class="custom-radio-checkbox">
+                        <input type="radio" id="box1" name="betaalwijze" value="nationale">
+                        <label for="box1"></label>
+                        <img src="assets/images/Nationalebioslogo.png" alt="Nationalebioslogo" class="nationalebioslogo">
+
+
+                        <input type="radio" id="box2" name="betaalwijze" value="maestro">
+                        <label for="box2"></label>
+                        <img src="assets/images/Maestro-logo.png" alt="maestro-logo" class="maestro-logo">
+
+
+                        <input type="radio" id="box3" name="betaalwijze" value="ideal">
+                        <label for="box3"></label>
+                        <img src="assets/images/ideal-logo.png" alt="iDEAL-logo" class="ideal-logo">
+                    </div>
+
+
+
+                    <div class="terms-checkbox">
+                        <input type="checkbox" id="terms" name="terms" required>
+                        <label for="terms"></label>
+                        <span class="terms-text">Ja, ik ga akkoord met de <a href="#">algemene voorwaarden</a></span>
+                    </div>
+
+                    <button type="submit">Afrekenen</button>
+
                 </div>
-            </div>
-
-
-            <div class="top-bottom-lines"></div>
-
-            <div class="normal-prijs-aantal-container">
-                <div class="type-section">
-                    <h4>Normaal</h4>
-
-                </div>
-
-
-
-                <div class="ticket-selector-prijs">
-
-                    <h5>€<?php echo formatPrice($prijzen['normaal']); ?></h5>
-
-
-                <select name="aantal-tickets-normaal" id="aantal-tickets-normaal">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-
-
-
-                </div>
-            </div>
-
-
-        <div class="normal-prijs-aantal-container">
-            <div class="type-section">
-                <h4>Kind t/m 11 jaar</h4>
-            </div>
-
-            <div class="ticket-selector-prijs">
-
-                <h5>€5,00</h5>
-
-                <select name="aantal-tickets-kinderen" id="aantal-tickets-kinderen">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </div>
-          <div class="normal-prijs-aantal-container">
-                <div class="type-section">
-                    <h4>Kind t/m 11 jaar</h4>
+            </form>
+            <div class="bestel-film-card">
+                <div  class="bestel-film-poster">
+                    <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                        alt="<?php echo htmlspecialchars($film['titel']); ?>">
                 </div>
 
+                <div class="bestel-film-info">
+                    <div class="bestel-film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
+                    <div class="bestel-ratings">
+                        <?php echo filter_stars($film['stars']); ?>
+                    </div>
+                    <div class="bestel-film-release-date">
+                        Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
+                    </div>
+                    <div class="bestel-film-details">
+                        <div class="bestel-film-text" id="film-text-<?php echo $i; ?>">
+                            <?php echo htmlspecialchars($film['informatie']); ?>
+                        </div>
+                    </div>
 
-                <div class="ticket-selector-prijs">
 
-                    <h5>€<?php echo formatPrice($prijzen['kind']); ?></h5>
 
-                    <select name="aantal-tickets" id="aantal-tickets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
                 </div>
-
-
-
-
-            </div>
-
-
-            <div class="ticket-selector-prijs">
-
-                <h5>€7,00</h5>
-
-                <select name="aantal-tickets-ouderen" id="aantal-tickets-ouderen">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
             </div>
         </div>
-
-
-
-            <div class="normal-prijs-aantal-container">
-                <div class="type-section">
-                    <h4>65 +</h4>
-                </div>
-
-                <div class="ticket-selector-prijs">
-
-                    <h5>€<?php echo formatPrice($prijzen['senior']); ?></h5>
-
-                    <select name="aantal-tickets" id="aantal-tickets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="top-bottom-lines"></div>
-
-            <div class="voucher-code-container">
-                <h3>VOUCHERCODE</h3>
-                <input type="text" placeholder="CODE" id="voucher-code-input">
-                <button>Toevoegen</button>
-            </div>
-
     </main>
     <?php
     include 'assets/includes/footer.php';
