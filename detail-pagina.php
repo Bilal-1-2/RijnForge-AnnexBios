@@ -44,18 +44,18 @@
 
     include 'assets/includes/api-database.php';
     include 'assets/includes/stars-filter.php';
-    include 'assets/includes/header.php';
     // Get the film ID from the URL
     // Get the film ID from the POST data
-    $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-
-    if ($filmId === 0) {
-        echo "<p>No film ID provided.</p>";
+    if (!isset($_POST['id']) || empty($_POST['id'])) {
+        header('Location: index.php');
         exit;
     }
+    $filmId = (int)$_POST['id'];
 
     // Try to fetch detailed movie data
     $filmDetails = fetchMovieDetails($filmId);
+
+    include 'assets/includes/header.php';
 
     if ($filmDetails) {
         // Format the detailed data to match the expected structure
@@ -87,6 +87,9 @@
             }
         }
 
+        // Determine Kijkwijzer based on genres
+        $kijkwijzer = getKijkwijzer($genreString);
+
         $film = [
             "film_id" => $filmDetails['movie']['id'] ?? 0,
             "titel" => $filmDetails['movie']['title'] ?? '',
@@ -100,7 +103,8 @@
             "acteurs" => $acteurs,
             "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
             "trailers" => '', // Not provided
-            "informatie" => $filmDetails['movie']['overview'] ?? ''
+            "informatie" => $filmDetails['movie']['overview'] ?? '',
+            "kijkwijzer" => $kijkwijzer
         ];
     } else {
         // Fallback to basic data from list
@@ -135,9 +139,21 @@
                 $shortDescription = mb_substr($fullDescription, 0, 700) . (strlen($fullDescription) > 700 ? '...' : '');
                 ?>
                 <div class="detail-viewing-guide">
-                    <img src="assets/kijkwijzers/kijkwijzer-12.png" alt="Age Rating">
-                    <img src="assets/kijkwijzers/kijkwijzer-eng.png" alt="Age Rating">
-                    <img src="assets/kijkwijzers/kijkwijzer-geweld.png" alt="Age Rating">
+                    <?php if (isset($film['kijkwijzer'])): ?>
+                        <?php 
+                        $age = $film['kijkwijzer']['age'] ?? '12';
+                        $warnings = $film['kijkwijzer']['warnings'] ?? [];
+                        ?>
+                        <img src="assets/kijkwijzers/kijkwijzer-<?php echo $age; ?>.png" alt="Kijkwijzer <?php echo $age; ?>">
+                        <?php foreach ($warnings as $warning): ?>
+                            <img src="assets/kijkwijzers/kijkwijzer-<?php echo $warning; ?>.png" alt="<?php echo ucfirst(str_replace('-', ' ', $warning)); ?>">
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <!-- Fallback hardcoded if no kijkwijzer data -->
+                        <img src="assets/kijkwijzers/kijkwijzer-12.png" alt="Kijkwijzer 12">
+                        <img src="assets/kijkwijzers/kijkwijzer-angst.png" alt="Engelse taal">
+                        <img src="assets/kijkwijzers/kijkwijzer-geweld.png" alt="Geweld">
+                    <?php endif; ?>
                 </div>
 
                 <div class="detail-release-date">Release: <?php echo date_format($date, "d-m-Y"); ?></div>

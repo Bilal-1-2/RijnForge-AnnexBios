@@ -108,6 +108,37 @@ function fetchTicketOrders($movieId) {
     return [];
 }
 
+// Function to determine Kijkwijzer based on genres
+function getKijkwijzer($genreString) {
+    $kijkwijzer = ["age" => "12", "warnings" => []];
+    $genreList = explode(', ', $genreString);
+    $horrorKeywords = ['Horror', 'Thriller', 'Mysterie'];
+    $actionKeywords = ['Actie', 'Avontuur', 'Sciencefiction', 'Fantasie'];
+    $animationKeywords = ['Animatie', 'Familie'];
+    $dramaKeywords = ['Drama', 'Komedie', 'Romantiek'];
+
+    if (array_intersect($horrorKeywords, $genreList)) {
+        $kijkwijzer['age'] = '16';
+        $kijkwijzer['warnings'] = ['geweld', 'angst', 'eng'];
+    } elseif (array_intersect($actionKeywords, $genreList)) {
+        $kijkwijzer['age'] = '12';
+        $kijkwijzer['warnings'] = ['geweld', 'eng'];
+    } elseif (array_intersect($animationKeywords, $genreList)) {
+        $kijkwijzer['age'] = 'AL';
+        $kijkwijzer['warnings'] = ['eng'];
+    } elseif (array_intersect($dramaKeywords, $genreList)) {
+        $kijkwijzer['age'] = '12';
+        $kijkwijzer['warnings'] = ['grof-taal', 'eng'];
+    } else {
+        // Default remains 12 with eng
+        $kijkwijzer['warnings'] = ['eng'];
+    }
+
+    // Ensure no duplicate warnings
+    $kijkwijzer['warnings'] = array_unique($kijkwijzer['warnings']);
+    return $kijkwijzer;
+}
+
 // Fetch data from API
 $apiData = fetchMoviesFromAPI();
 
@@ -127,6 +158,9 @@ if (empty($apiData)) {
             }
         }
         $genreString = implode(', ', array_filter($genres));
+
+        // Determine Kijkwijzer based on genres
+        $kijkwijzer = getKijkwijzer($genreString);
 
         // Extract actors array in expected format
         $acteurs = [];
@@ -158,12 +192,13 @@ if (empty($apiData)) {
             "genre" => $genreString ?: 'Action, Thriller', // Default if no genres
             "imdb_score" => $movie['stars'] ?? 0,
             "regisseur" => $movie['director']['name'] ?? 'Timo Tjahjanto', // Default director
-            "land" => $land['movie']['origin_country'] ?? 'US', // Not provided in API
+            "land" => $movie['origin_country'] ?? 'US', // Fixed: was $land['movie']
             "acteurs" => $acteurs,
-            "poster" => $movie['poster'] ?? '',
-            "trailers" => '', 
+            "poster" => $movie['poster'] ?? '', // Use 'poster' as in original API data
+            "trailers" => $movie['has_trailer'] ? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' : '', // Placeholder if has_trailer
             "informatie" => $movie['overview'] ?? '',
-            "stars"=>$movie['stars']??''
+            "stars"=>$movie['stars']??'',
+            "kijkwijzer" => $kijkwijzer
         ];
     }
 }

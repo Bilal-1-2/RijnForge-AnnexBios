@@ -16,17 +16,17 @@
     <?php
     include 'assets/includes/api-database.php';
     include 'assets/includes/price.php';
-    include 'assets/includes/header.php';
     // Get the film ID from POST data
-    $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-
-    if ($filmId === 0) {
-        echo "<p>No film ID provided.</p>";
+    if (!isset($_POST['id']) || empty($_POST['id'])) {
+        header('Location: index.php');
         exit;
     }
+    $filmId = (int)$_POST['id'];
 
     // Try to fetch detailed movie data
     $filmDetails = fetchMovieDetails($filmId);
+
+    include 'assets/includes/header.php';
 
     if ($filmDetails) {
         // Format detailed data

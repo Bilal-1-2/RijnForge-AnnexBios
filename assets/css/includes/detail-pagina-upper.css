@@ -37,16 +37,17 @@ main {
   padding: 20px;
 }
 .film-detail-poster {
-  width: 500px;
+  width: 50%;
   height: 820px;
   /* border-radius: 8px; */
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 .film-detail-poster img {
-  width: 500px;
+  width: 100%;
   height: 820px;
 }
 .detail-info {
+  width: 49%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -74,8 +75,8 @@ main {
   height: 64px;
 }
 .detail-viewing-guide img {
-  width: 48px;
-  height: 48px;
+  width: 64px;
+  height: 64px;
 }
 .detail-release-date {
   font-size: 25px;
