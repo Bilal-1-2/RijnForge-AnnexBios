@@ -4,6 +4,8 @@
 @import "includes/kies-ticket.css";
 @import " includes/gegevens-betaalwijze.css";
 @import "includes/bestel-filmcard.css";
+@import "includes/stoelen.css";
+
 main {
   width: 85%;
   justify-self: center;
@@ -23,7 +25,9 @@ body {
     width: 80%;
   display: flex;
   flex-direction: column;
+  padding: 30px;
   gap: 20px;
   background-color: rgb(245, 245, 245);
   margin-bottom: 50px;
+
 }

@@ -108,7 +108,7 @@
             <form action="detail-pagina.php" method="post" class="film-poster-form">
               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
               <button type="submit"  style="border: none; background: none; padding: 0;">
-                <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                <img src="<?php echo htmlspecialchars($film['poster']); ?>"
                   alt="<?php echo htmlspecialchars($film['titel']); ?>">
               </button>
             </form>

@@ -5,10 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/bestel-pagina.css">
+    <link rel="stylesheet" href="assets/css/includes/stoelen.css">
 
     <script src="assets/js/scrollbare-header.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
     <script src="assets/js/bestel-dropdown-filter.js" defer></script>
+    <script src="assets/js/stoelen.js" defer></script>
     <title>ticket</title>
 </head>
 
@@ -17,6 +19,15 @@
     include 'assets/includes/api-database.php';
     include 'assets/includes/price.php';
     include 'assets/includes/stars-filter.php';
+
+    // Define formatPrice if not already defined
+    if (!function_exists('formatPrice')) {
+        function formatPrice($price)
+        {
+            return number_format((float)$price, 2, ',', '');
+        }
+    }
+
     // Get the film ID from POST data
     if (!isset($_POST['id']) || empty($_POST['id'])) {
         header('Location: index.php');
@@ -28,6 +39,9 @@
     $filmDetails = fetchMovieDetails($filmId);
 
     include 'assets/includes/header.php';
+
+
+
 
     if ($filmDetails) {
         // Format detailed data
@@ -52,18 +66,18 @@
         $regisseur = $filmDetails['director']['name'] ?? '';
 
         $film = [
-            "film_id" => $filmDetails['id'] ?? 0,
+            "film_id" => $filmDetails['movie']['id'] ?? $filmDetails['id'] ?? 0,
             "titel" => $filmDetails['movie']['title'] ?? '',
-            "releasedatum" => $filmDetails['release_date'] ?? '',
-            "duur" => $filmDetails['runtime'] ?? 0,
+            "releasedatum" => $filmDetails['movie']['release_date'] ?? '',
+            "duur" => $filmDetails['movie']['runtime'] ?? $filmDetails['runtime'] ?? 0,
             "genre" => $genreString ?: 'Action, Thriller',
-            "stars" => $filmDetails['stars'] ?? 0,
+            "stars" => $filmDetails['movie']['stars'] ?? $filmDetails['stars'] ?? 0,
             "regisseur" => $regisseur ?: 'Timo Tjahjanto',
-            "land" => $filmDetails['origin_country'] ?? 'US',
+            "land" => $filmDetails['movie']['origin_country'] ?? $filmDetails['origin_country'] ?? 'US',
             "acteurs" => $acteurs,
             "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
             "trailers" => '',
-            "informatie" => $filmDetails['overview'] ?? ''
+            "informatie" => $filmDetails['movie']['overview'] ?? $filmDetails['overview'] ?? ''
         ];
     } else {
         // Fallback to list data
@@ -80,6 +94,8 @@
             exit;
         }
     }
+
+
 
     // Fetch ticket orders for this movie
     $ticketOrders = fetchTicketOrders($filmId);
@@ -246,49 +262,79 @@
                     </div>
                 </div>
 
+                <div class="stoelen-container">
+                    <h1>STAP 3: KIES JE STOELEN</h1>
+                    <hr>
+                    <h3 class="filmdoek-heading">Filmdoek</h3>
+                    <div class="parent">
+                        <?php
+                        for ($y = 0; $y < 11; $y++) {
+                            for ($x = 0; $x < 10; $x++) {
+                                echo '<div id="' . ($x + 1) . '-' . ($y + 1) . '" class="chair"><div class="seat"></div></div>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <input type="text" id="selectedSeats" name="selectedSeats" value="">
+                    <div class="legenda">
+                        <div class="legenda-item">beschikbaar</div>
+                        <div class="legenda-item reserved">bezet</div>
+                        <div class="legenda-item selected">selectie</div>
+                    </div>
+                </div>
+
                 <div class="gegevens-betaalwijze-container">
                     <h1>STAP 4: VUL JE GEGEVENS IN</h1>
-
-                    <input type="text" id="firstname" name="voornaam" placeholder="Voornaam" required>
-                    <input type="text" id="surname" name="achternaam" placeholder="Achternaam*" required><br>
-
+                    <div class="fullname">
+                        <input type="text" id="firstname" name="voornaam" placeholder="Voornaam" required>
+                        <input type="text" id="surname" name="achternaam" placeholder="Achternaam*" required><br>
+                    </div>
                     <input type="email" id="email" name="email" placeholder="E-mailadres" required><br>
                     <input type="email" id="email-bevestiging" name="email_bevestiging" placeholder="E-mailadres*" required>
 
-                    <h2>STAP 5: KIES JE BETAALWIJZE</h2>
+                    <div class="betaalwijze-container">
+                        <h2>STAP 5: KIES JE BETAALWIJZE</h2>
+                        <div class="custom-radio-checkbox">
+                            <input type="radio" id="box1" name="betaalwijze" value="nationale">
+                            <label for="box1"></label>
+                            <img src="assets/images/Nationalebioslogo.png" alt="Nationalebioslogo" class="nationalebioslogo">
 
+                            <input type="radio" id="box2" name="betaalwijze" value="maestro">
+                            <label for="box2"></label>
+                            <img src="assets/images/Maestro-logo.png" alt="maestro-logo" class="maestro-logo">
 
-                    <div class="custom-radio-checkbox">
-                        <input type="radio" id="box1" name="betaalwijze" value="nationale">
-                        <label for="box1"></label>
-                        <img src="assets/images/Nationalebioslogo.png" alt="Nationalebioslogo" class="nationalebioslogo">
+                            <input type="radio" id="box3" name="betaalwijze" value="ideal">
+                            <label for="box3"></label>
+                            <img src="assets/images/ideal-logo.png" alt="iDEAL-logo" class="ideal-logo">
+                        </div>
 
+                        <div class="terms-checkbox">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            <label for="terms"></label>
+                            <span class="terms-text">Ja, ik ga akkoord met de <a href="#">algemene voorwaarden</a></span>
+                        </div>
 
-                        <input type="radio" id="box2" name="betaalwijze" value="maestro">
-                        <label for="box2"></label>
-                        <img src="assets/images/Maestro-logo.png" alt="maestro-logo" class="maestro-logo">
-
-
-                        <input type="radio" id="box3" name="betaalwijze" value="ideal">
-                        <label for="box3"></label>
-                        <img src="assets/images/ideal-logo.png" alt="iDEAL-logo" class="ideal-logo">
+                        <button type="submit">Afrekenen</button>
                     </div>
-
-
-
-                    <div class="terms-checkbox">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms"></label>
-                        <span class="terms-text">Ja, ik ga akkoord met de <a href="#">algemene voorwaarden</a></span>
-                    </div>
-
-                    <button type="submit">Afrekenen</button>
-
                 </div>
+
+
             </form>
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="bestel-film-card">
-                <div  class="bestel-film-poster">
-                    <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                <div class="bestel-film-poster">
+                    <img style="height: 100%;  width: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
                         alt="<?php echo htmlspecialchars($film['titel']); ?>">
                 </div>
 
@@ -301,7 +347,7 @@
                         Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
                     </div>
                     <div class="bestel-film-details">
-                        <div class="bestel-film-text" id="film-text-<?php echo $i; ?>">
+                        <div class="bestel-film-text" id="film-text">
                             <?php echo htmlspecialchars($film['informatie']); ?>
                         </div>
                     </div>

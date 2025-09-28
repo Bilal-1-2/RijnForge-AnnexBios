@@ -1,8 +1,9 @@
 .gegevens-betaalwijze-container {
-  margin: 0 auto;
-  width: 100%;
+  margin: 0 ;
+  width: 60%;
   background-color: rgb(245, 245, 245);
   text-align: left;
+  justify-self: left;
   font-family: "lato", sans-serif;
   height: auto;
 }
@@ -14,9 +15,14 @@
   padding: 20px 0 10px 20px;
   margin: 0;
 }
+.fullname{
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
+}
 
 .gegevens-betaalwijze-container #firstname {
-  width: 303px;
+  width: 48%;
   height: 30px;
   font-size: 16px;
   margin-bottom: 10px;
@@ -28,7 +34,7 @@
 }
 
 .gegevens-betaalwijze-container #surname {
-  width: 303px;
+  width: 48%;
   height: 30px;
   font-size: 16px;
   margin-bottom: 10px;
@@ -57,21 +63,28 @@
   padding: 10px;
 }
 
-.gegevens-betaalwijze-container .nationalebioslogo {
-  width: 50px;
-  height: auto;
+.gegevens-betaalwijze-container .nationalebioslogo  {
+  width: 100px;
+  height: 50px;
   margin-bottom: 20px;
+}
+.gegevens-betaalwijze-container .nationalebioslogo img {
+  width: 100%;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  margin-bottom: 0;
 }
 
 .gegevens-betaalwijze-container .maestro-logo {
   width: 100px;
-  height: auto;
+  height: 50px;
   margin-bottom: 25px;
 }
 
 .gegevens-betaalwijze-container .ideal-logo {
   width: 50px;
-  height: auto;
+  height: 50px;
   margin-bottom: 20px;
 }
 
