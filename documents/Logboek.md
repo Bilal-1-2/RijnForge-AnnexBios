@@ -67,3 +67,29 @@ Bilal was 3 uur bezig met bestel pagina .
 Rachel was 3 uur bezig met formulier te maken.
 Mohammed was 3uur bezig met stoelen te maken.
 
+### Gedetailleerde Samenvatting van Uitgevoerde Werkzaamheden (Gebaseerd op Dagelijkse Entries en Code Analyse)
+
+#### Bilal (Ik):
+- **Initial Setup en Header (09-09 tot 10-09)**: Projectstructuur opgezet, header met navigatie en dropdown gemaakt (assets/js/dropdown.js), logo geïntegreerd (assets/logo/), bestanden georganiseerd in assets/css/includes/. Branch merging en basis tests uitgevoerd.
+- **Content en Styling (11-09 tot 15-09)**: Styling toegevoegd aan hoofdpagina (index.php), content secties gebouwd, films toegevoegd met posters (assets/films/), CSS bestanden zoals content.css beheerd en verwijderd waar redundant.
+- **Film Agenda Pagina (16-09 tot 17-09)**: film-agenda.php gestyled met layout voor filmoverzicht, inclusief integratie met tijdelijk-database.php voor filmdata.
+- **Detail Pagina Ontwikkeling (18-09 tot 23-09)**: detail-pagina.php volledig gebouwd met film details (titel, release, duur, genre, IMDb score), sterren rating via stars-filter.php, acteur afbeeldingen (assets/acteurs/), kijkwijzer logica (assets/kijkwijzers/), trailer embed functionaliteit, lees-meer modal (assets/js/lees-meer.js), en styling (assets/css/detail-pagina.css). API integratie via api-database.php voor gedetailleerde data, overbodige bestanden verwijderd.
+- **Bestel Pagina en Fixes (24-09)**: bestel-pagina.php ontwikkeld met ticket bestellen form, film selectie fixes, API calls voor orders (fetchTicketOrders), price.php gemaakt voor prijsberekening en validatie, integratie met stoelen.php. Kijkwijzer images toegevoegd.
+
+#### Mohammed:
+- **Hero Section (11-09 tot 18-09)**: Hero section op index.php gemaakt met achtergrond (assets/images/background.jpg), styling (assets/css/includes/hero-section.css), en functionaliteit voor scrollbare header (assets/js/scrollbare-header.js). Merges uitgevoerd voor integratie.
+- **Stoelen en Bestel Integratie (18-09 tot 24-09)**: stoelen.php gemaakt voor zaal layouts (assets/zalen/), interactieve stoel selectie met JS (assets/js/stoelen.js), integratie in bestel-pagina.php. Merges van stoelen branch, updates voor ticket selectie.
+
+#### Rachael:
+- **Footer (09-09 tot 17-09)**: Footer gemaakt met social media icons (assets/icons/), styling (assets/css/includes/footer.css), en integratie in alle pagina's.
+- **Kies Je Ticket (18-09 tot 22-09)**: Kies-je-ticket component gebouwd voor bestel-pagina.php, met dropdown filters (assets/js/bestel-dropdown-filter.js), styling (assets/css/includes/kies-ticket.css), en merge van branch.
+- **Formulier (23-09 tot 24-09)**: Bestel formulier gemaakt met styling en layout.
+
+#### Armin:
+- Niet deelgenomen aan de werkzaamheden.
+
+#### Algemene Werkzaamheden:
+- **Merges en Tests**: Meerdere branch merges uitgevoerd voor integratie van header, stoelen, detail-pagina, en kies-je-ticket. Basis tests en deletes voor cleanup.
+- **API Integratie**: api-database.php opgezet met curl calls naar externe API, fallback naar tijdelijk-database.php, formatting van data voor consistentie.
+- **Overige Updates**: Nieuwe kijkwijzer images toegevoegd voor discriminatie, drugs, grof taal, etc., ter ondersteuning van kijkwijzer functionaliteit.
+

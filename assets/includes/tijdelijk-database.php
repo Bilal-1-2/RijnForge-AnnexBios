@@ -178,4 +178,5 @@ Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien a
     "trailers" => "https://www.youtube.com/watch?v=2ZhB-YO5Tnk",
     "informatie" => "Vijf jaar na de gebeurtenissen in Jurassic World Dominion wordt geheime operatie expert Zora Bennett gecontracteerd om een bekwaam team te leiden op een uiterst geheime missie om genetisch materiaal van 's werelds drie grootste dinosaurussen veilig te stellen. Wanneer Zora's operatie kruist met een burgerfamilie wiens bootexpeditie kapseisde, stranden ze allemaal op een eiland waar ze oog in oog komen te staan met een sinistere, schokkende ontdekking die al tientallen jaren voor de wereld verborgen is gehouden."
   ]
+]
 ];
