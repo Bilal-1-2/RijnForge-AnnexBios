@@ -73,6 +73,72 @@ function fetchMovieDetails($id) {
     return null;
 }
 
+function fetchTicketOrders($movieId) {
+    // Clean API key (remove trailing newline and space)
+    $apiKey = trim("EFIdY9nTsPBguvhsjYwSiNYWpYpYYaWx");
+
+    // Fetch ticket orders from the API using get_ticket_order.php with movie_id
+    $url = "https://annexbios.gluwebsite.nl/admin/api/movies/get_ticket_order.php?movie_id=" . $movieId;
+
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["api-key: " . $apiKey]);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+
+    $response = curl_exec($ch);
+
+    // Check for cURL errors
+    if (curl_errno($ch)) {
+        // cURL Error occurred, return empty array
+        curl_close($ch);
+        return [];
+    }
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($httpCode === 200) {
+        $data = json_decode($response, true);
+        if ($data && isset($data['success']) && $data['success'] && isset($data['data'])) {
+            return $data['data']; // Return the array of ticket orders
+        }
+    }
+
+    return [];
+}
+
+// Function to determine Kijkwijzer based on genres
+function getKijkwijzer($genreString) {
+    $kijkwijzer = ["age" => "12", "warnings" => []];
+    $genreList = explode(', ', $genreString);
+    $horrorKeywords = ['Horror', 'Thriller', 'Mysterie'];
+    $actionKeywords = ['Actie', 'Avontuur', 'Sciencefiction', 'Fantasie'];
+    $animationKeywords = ['Animatie', 'Familie'];
+    $dramaKeywords = ['Drama', 'Komedie', 'Romantiek'];
+
+    if (array_intersect($horrorKeywords, $genreList)) {
+        $kijkwijzer['age'] = '16';
+        $kijkwijzer['warnings'] = ['geweld', 'angst', 'eng'];
+    } elseif (array_intersect($actionKeywords, $genreList)) {
+        $kijkwijzer['age'] = '12';
+        $kijkwijzer['warnings'] = ['geweld', 'eng'];
+    } elseif (array_intersect($animationKeywords, $genreList)) {
+        $kijkwijzer['age'] = 'AL';
+        $kijkwijzer['warnings'] = ['eng'];
+    } elseif (array_intersect($dramaKeywords, $genreList)) {
+        $kijkwijzer['age'] = '12';
+        $kijkwijzer['warnings'] = ['grof-taal', 'eng'];
+    } else {
+        // Default remains 12 with eng
+        $kijkwijzer['warnings'] = ['eng'];
+    }
+
+    // Ensure no duplicate warnings
+    $kijkwijzer['warnings'] = array_unique($kijkwijzer['warnings']);
+    return $kijkwijzer;
+}
+
 // Fetch data from API
 $apiData = fetchMoviesFromAPI();
 
@@ -92,6 +158,9 @@ if (empty($apiData)) {
             }
         }
         $genreString = implode(', ', array_filter($genres));
+
+        // Determine Kijkwijzer based on genres
+        $kijkwijzer = getKijkwijzer($genreString);
 
         // Extract actors array in expected format
         $acteurs = [];
@@ -123,12 +192,13 @@ if (empty($apiData)) {
             "genre" => $genreString ?: 'Action, Thriller', // Default if no genres
             "imdb_score" => $movie['stars'] ?? 0,
             "regisseur" => $movie['director']['name'] ?? 'Timo Tjahjanto', // Default director
-            "land" => $land['movie']['origin_country'] ?? 'US', // Not provided in API
-            "acteurs" => $acteurs, // No cast in API, remains empty
-            "poster" => $movie['poster'] ?? '',
-            "trailers" => '', // API provides has_trailer boolean, but no URL
+            "land" => $movie['origin_country'] ?? 'US', // Fixed: was $land['movie']
+            "acteurs" => $acteurs,
+            "poster" => $movie['poster'] ?? '', // Use 'poster' as in original API data
+            "trailers" => $movie['has_trailer'] ? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' : '', // Placeholder if has_trailer
             "informatie" => $movie['overview'] ?? '',
-            "stars"=>$movie['stars']??''
+            "stars"=>$movie['stars']??'',
+            "kijkwijzer" => $kijkwijzer
         ];
     }
 }

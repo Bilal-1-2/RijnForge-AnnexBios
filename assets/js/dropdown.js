@@ -59,3 +59,13 @@ bestelDropdowns.forEach(dropdown => {
     }
   });
 });
+chooseMovie = (e) => {
+  const filmId = document.getElementById('dropdownInput').value;
+  if (!filmId) {
+    e.preventDefault();
+    alert('Please select a movie first.');
+  }
+  // If filmId is set, allow the form to submit via POST
+}
+document.querySelector('#order-link button').addEventListener('click', chooseMovie);
+

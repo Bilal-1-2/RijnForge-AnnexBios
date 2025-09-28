@@ -22,11 +22,11 @@
         </div>
 
         <div class="dropdown" id="dropdown">
-          <button type="button" class="dropdown-toggle" id="dropdownToggle">
+          <button type="button" class="dropdown-toggle" id="dropdownToggle"required>
             Kies je film
           </button>
 
-          <input type="hidden" name="id" id="dropdownInput" value="">
+          <input type="hidden"  name="id" id="dropdownInput" value="" >
 
           <div class="dropdown-menu" id="dropdownMenu">
             <?php foreach ($data as $film): ?>

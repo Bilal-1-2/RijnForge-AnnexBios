@@ -8,23 +8,25 @@
 
     <script src="assets/js/scrollbare-header.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
+    <script src="assets/js/bestel-dropdown-filter.js" defer></script>
     <title>ticket</title>
 </head>
 
 <body>
     <?php
     include 'assets/includes/api-database.php';
-    include 'assets/includes/header.php';
+    include 'assets/includes/price.php';
     // Get the film ID from POST data
-    $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
-
-    if ($filmId === 0) {
-        echo "<p>No film ID provided.</p>";
+    if (!isset($_POST['id']) || empty($_POST['id'])) {
+        header('Location: index.php');
         exit;
     }
+    $filmId = (int)$_POST['id'];
 
     // Try to fetch detailed movie data
     $filmDetails = fetchMovieDetails($filmId);
+
+    include 'assets/includes/header.php';
 
     if ($filmDetails) {
         // Format detailed data
@@ -77,7 +79,33 @@
             exit;
         }
     }
+
+    // Fetch ticket orders for this movie
+    $ticketOrders = fetchTicketOrders($filmId);
+
+    // Extract unique dates and times from ticket orders
+    $dates = [];
+    $timesByDate = [];
+    foreach ($ticketOrders as $order) {
+        $date = date('d-m-Y', strtotime($order['vertoning']['starttijd']));
+        $time = date('H:i', strtotime($order['vertoning']['starttijd']));
+        if (!in_array($date, $dates)) {
+            $dates[] = $date;
+        }
+        if (!isset($timesByDate[$date])) {
+            $timesByDate[$date] = [];
+        }
+        if (!in_array($time, $timesByDate[$date])) {
+            $timesByDate[$date][] = $time;
+        }
+    }
+
+    // Get prices from the first ticket order (assuming same for all)
+    $prijzen = isset($ticketOrders[0]['prijzen']) ? $ticketOrders[0]['prijzen'] : ['normaal' => 9, 'kind' => 5, 'senior' => 7];
     ?>
+    <script>
+        var timesByDate = <?php echo json_encode($timesByDate); ?>;
+    </script>
     <main>
         <div class="bestel-title-container">
             <div class="div-title">TICKETS BESTELLEN</div>
@@ -91,12 +119,12 @@
                     </button>
 
 
-                    <input type="hidden" name="film" class="bestel-dropdown-input">
+                    <input type="hidden" name="datum" class="bestel-dropdown-input">
 
                     <div class="bestel-dropdown-menu">
-                        <?php foreach ($data as $title): ?>
-                            <div class="bestel-dropdown-item" data-value="<?php echo htmlspecialchars($title['titel']); ?>">
-                                <?php echo htmlspecialchars($title['titel']); ?>
+                        <?php foreach ($dates as $date): ?>
+                            <div class="bestel-dropdown-item" data-value="<?php echo htmlspecialchars($date); ?>">
+                                <?php echo htmlspecialchars($date); ?>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -107,14 +135,10 @@
                     </button>
 
 
-                    <input type="hidden" name="film" class="bestel-dropdown-input">
+                    <input type="hidden" name="tijdstip" class="bestel-dropdown-input">
 
                     <div class="bestel-dropdown-menu">
-                        <?php foreach ($data as $title): ?>
-                            <div class="bestel-dropdown-item" data-value="<?php echo htmlspecialchars($title['titel']); ?>">
-                                <?php echo htmlspecialchars($title['titel']); ?>
-                            </div>
-                        <?php endforeach; ?>
+                        <!-- Times will be populated by JS -->
                     </div>
                 </div>
             </div>
@@ -146,7 +170,7 @@
 
                 <div class="ticket-selector-prijs">
 
-                    <h5>€9,00</h5>
+                    <h5>€<?php echo formatPrice($prijzen['normaal']); ?></h5>
 
 
                 <select name="aantal-tickets-normaal" id="aantal-tickets-normaal">
@@ -200,7 +224,7 @@
 
                 <div class="ticket-selector-prijs">
 
-                    <h5>€5,00</h5>
+                    <h5>€<?php echo formatPrice($prijzen['kind']); ?></h5>
 
                     <select name="aantal-tickets" id="aantal-tickets">
                         <option value="0">0</option>
@@ -252,7 +276,7 @@
 
                 <div class="ticket-selector-prijs">
 
-                    <h5>€7,00</h5>
+                    <h5>€<?php echo formatPrice($prijzen['senior']); ?></h5>
 
                     <select name="aantal-tickets" id="aantal-tickets">
                         <option value="0">0</option>
