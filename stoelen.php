@@ -11,18 +11,32 @@
 <body>
   <hr>
   <h3 class="filmdoek-heading">Filmdoek</h3>
+
   <div class="parent">
     <?php
-    for ($y = 0; $y < 10; $y++) {
+    for ($y = 0; $y < 11; $y++) {
 
-      for ($x = 0; $x < 11; $x++) {
-        echo  '<div id="' . $x . '-' . $y . '" class="chair"><div class="seat"></div></div>';
+      for ($x = 0; $x < 10; $x++) {
+        echo  '<div id="' .   ($x + 1) . '-' . ($y + 1) . '" class="chair"><div class="seat"></div></div>';
       }
     }
     ?>
   </div>
 
-  <script src="./assets/stoelen.js"></script>
+  <input type="text" id="selectedSeats" readonly name="selectedSeats">
+  <div class="legenda">
+    <div class="legenda-item">
+      beschikbaar
+    </div>
+    <div class="legenda-item reserved">
+      bezet
+    </div>
+    <div class="legenda-item selected">
+      selectie
+    </div>
+  </div>
+
+  <script src="./assets/js/stoelen.js"></script>
 </body>
 
 </html>
