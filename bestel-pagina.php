@@ -148,19 +148,20 @@
 
                     <h5>€9,00</h5>
 
-                    <select name="aantal-tickets" id="aantal-tickets">
-                        <option value="0">0</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                    </select>
+
+                <select name="aantal-tickets-normaal" id="aantal-tickets-normaal">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
 
 
 
@@ -168,10 +169,34 @@
             </div>
 
 
-            <div class="normal-prijs-aantal-container">
+        <div class="normal-prijs-aantal-container">
+            <div class="type-section">
+                <h4>Kind t/m 11 jaar</h4>
+            </div>
+
+            <div class="ticket-selector-prijs">
+
+                <h5>€5,00</h5>
+
+                <select name="aantal-tickets-kinderen" id="aantal-tickets-kinderen">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+          <div class="normal-prijs-aantal-container">
                 <div class="type-section">
                     <h4>Kind t/m 11 jaar</h4>
                 </div>
+
 
                 <div class="ticket-selector-prijs">
 
@@ -196,6 +221,27 @@
 
 
             </div>
+
+
+            <div class="ticket-selector-prijs">
+
+                <h5>€7,00</h5>
+
+                <select name="aantal-tickets-ouderen" id="aantal-tickets-ouderen">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+        </div>
 
 
 

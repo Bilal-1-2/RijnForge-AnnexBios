@@ -1,0 +1,188 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.gegevens-betaalwijze-container {
+    margin: 0 auto;
+    max-width: 1000px;
+    background-color: rgb(245, 245, 245);
+    text-align: left;
+    font-family: 'lato', sans-serif;
+    height: 500px;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #399CFF;
+    padding: 20px 0 10px 20px;
+    margin: 0;
+}
+
+
+#firstname {
+    width: 303px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 10px;
+    margin-top: 10px;
+
+}
+
+#surname {
+    width: 303px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 0px;
+    font-size: 10px;
+
+}
+
+#email,
+#email-bevestiging {
+    width: 624px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 2px solid #399CFF;
+    padding: 5px;
+    margin-left: 20px;
+    font-size: 10px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #6E4F7D;
+    padding: 10px;
+    
+}
+
+
+
+.nationalebioslogo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+    
+}
+
+.maestro-logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 25px;
+    
+    
+}
+
+.ideal-logo {
+    width: 50px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #666666
+}
+
+
+
+
+.custom-radio-checkbox input {
+  display: none;
+}
+
+
+.custom-radio-checkbox label {
+  position: relative;
+  width: 20px;  
+  height: 20px;
+  border: 2px solid #1e90ff; 
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 10px; 
+  margin-left: 20px;
+  margin-bottom: 30px   ;
+}
+
+.custom-radio-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #1e90ff;
+  border-bottom: 2px solid #1e90ff;
+  transform: rotate(-45deg); 
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  
+}
+
+
+.custom-radio-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+
+
+.terms-checkbox input {
+  display: none;
+}
+
+.terms-checkbox label {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #1e90ff;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-top: 25px;
+  
+}
+
+.terms-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid #1e90ff;
+  border-bottom: 2px solid #1e90ff;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.terms-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+.terms-text {
+    font-size: 14px;
+    color: #666666;
+    margin-left: 10px; 
+}
+
+
+
+
+
+ 
+
+
