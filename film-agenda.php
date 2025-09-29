@@ -25,7 +25,7 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div class=".film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class="film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
