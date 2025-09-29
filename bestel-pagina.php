@@ -30,9 +30,8 @@
 
     // Get the film ID from POST data
     if (!isset($_POST['id']) || empty($_POST['id'])) {
-        // header('Location: index.php');
-        // exit;
-        $filmId = 1; // Default for testing
+        header('Location: index.php');
+        exit;
     } else {
         $filmId = (int)$_POST['id'];
     }

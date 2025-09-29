@@ -103,46 +103,86 @@
     include 'assets/includes/header.php';
     ?>
 
-    <div class="bedankt-pagina-container">
-        <h1>Bedankt voor je bestelling!</h1>
-        <p>Je ontvangt zo snel mogelijk een bevestigingsmail met daarin je tickets.</p>
+    <div class="bedankt-container">
+        <div class="bedankt-header">
+            <h1 class="bedankt-title">Bedankt voor je bestelling!</h1>
+            <p class="bedankt-subtitle">Je ontvangt zo snel mogelijk een bevestigingsmail met daarin je tickets.</p>
+        </div>
 
-        <div class="order-summary">
-            <h2>Besteloverzicht</h2>
-            <div class="order-film">
-                <?php if (isset($film['poster']) && !empty($film['poster'])): ?>
-                    <img src="<?php echo htmlspecialchars($film['poster']); ?>" alt="<?php echo htmlspecialchars($film['titel']); ?>" class="order-poster">
-                <?php endif; ?>
-                <div class="order-film-info">
-                    <h3><?php echo htmlspecialchars($film['titel']); ?></h3>
-                    <p><strong>Bioscoop:</strong> <?php echo htmlspecialchars(!empty($selectedBioscoop) ? $selectedBioscoop : $bioscoop); ?></p>
-                    <p><strong>Zaal:</strong> <?php echo htmlspecialchars(!empty($selectedZaal) ? $selectedZaal : $zaal); ?></p>
-                    <p><strong>Datum & Tijd:</strong> <?php echo htmlspecialchars($datum . ' om ' . $tijdstip); ?></p>
-                    <p><strong>Stoelen:</strong> <?php echo htmlspecialchars(implode(', ', $formattedSeats)); ?></p>
+        <div class="order-overview">
+            <div class="overview-section">
+                <h2 class="overview-title">Besteloverzicht</h2>
+                <div class="movie-info">
+                    <?php if (isset($film['poster']) && !empty($film['poster'])): ?>
+                        <img src="<?php echo htmlspecialchars($film['poster']); ?>" alt="<?php echo htmlspecialchars($film['titel']); ?>" class="movie-poster">
+                    <?php endif; ?>
+                    <div class="movie-details">
+                        <h3><?php echo htmlspecialchars($film['titel']); ?></h3>
+                        <p><?php echo htmlspecialchars($film['titel']); ?></p>
+                    </div>
+                </div>
+                <div class="location-info">
+                    <div class="location-item">
+                        <span class="location-label">Bioscoop:</span> <?php echo htmlspecialchars(!empty($selectedBioscoop) ? $selectedBioscoop : $bioscoop); ?>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-label">Zaal:</span> <?php echo htmlspecialchars(!empty($selectedZaal) ? $selectedZaal : $zaal); ?>
+                    </div>
+                    <div class="location-item">
+                        <span class="location-label">Datum & Tijd:</span> <?php echo htmlspecialchars($datum . ' om ' . $tijdstip); ?>
+                    </div>
+                </div>
+                <div class="seats-info">
+                    <span class="location-label">Stoelen:</span>
+                    <ul class="seats-list">
+                        <?php foreach ($formattedSeats as $seat): ?>
+                            <li class="seat-item"><?php echo htmlspecialchars($seat); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
                 </div>
             </div>
-            <div class="order-tickets">
-                <h4>Tickets</h4>
-                <p>Normaal: <?php echo $normaal; ?> x €<?php echo formatPrice($prijzen['normaal']); ?> = €<?php echo formatPrice($normaal * $prijzen['normaal']); ?></p>
-                <p>Kind: <?php echo $kind; ?> x €<?php echo formatPrice($prijzen['kind']); ?> = €<?php echo formatPrice($kind * $prijzen['kind']); ?></p>
-                <p>Senior: <?php echo $senior; ?> x €<?php echo formatPrice($prijzen['senior']); ?> = €<?php echo formatPrice($senior * $prijzen['senior']); ?></p>
-                <p><strong>Totaal: €<?php echo formatPrice($total); ?></strong></p>
-            </div>
-            <div class="order-customer">
-                <h4>Klantgegevens</h4>
-                <p><strong>Naam:</strong> <?php echo htmlspecialchars($voornaam . ' ' . $achternaam); ?></p>
-                <p><strong>Email:</strong> <?php echo htmlspecialchars($email); ?></p>
-                <p><strong>Betaalwijze:</strong> <?php echo htmlspecialchars($betaalwijze); ?></p>
+            <div class="tickets-section">
+                <h3 class="overview-title">Tickets</h3>
+                <div class="ticket-type">
+                    <span>Normaal: <?php echo $normaal; ?> x €<?php echo formatPrice($prijzen['normaal']); ?></span>
+                    <span>= €<?php echo formatPrice($normaal * $prijzen['normaal']); ?></span>
+                </div>
+                <div class="ticket-type">
+                    <span>Kind: <?php echo $kind; ?> x €<?php echo formatPrice($prijzen['kind']); ?></span>
+                    <span>= €<?php echo formatPrice($kind * $prijzen['kind']); ?></span>
+                </div>
+                <div class="ticket-type">
+                    <span>Senior: <?php echo $senior; ?> x €<?php echo formatPrice($prijzen['senior']); ?></span>
+                    <span>= €<?php echo formatPrice($senior * $prijzen['senior']); ?></span>
+                </div>
+                <div class="ticket-total">
+                    Totaal: €<?php echo formatPrice($total); ?>
+                </div>
             </div>
         </div>
 
-        <a href="index.php" class="terug-naar-home-button">Terug naar home</a>
+        <div class="customer-info">
+            <h2 class="customer-title">Klantgegevens</h2>
+            <div class="customer-details">
+                <div class="detail-item">
+                    <span class="detail-label">Naam:</span> <?php echo htmlspecialchars($voornaam . ' ' . $achternaam); ?>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Email:</span> <?php echo htmlspecialchars($email); ?>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Betaalwijze:</span> <?php echo htmlspecialchars($betaalwijze); ?>
+                </div>
+            </div>
+        </div>
 
-        <?php
+        <a href="index.php" class="home-button">Terug naar home</a>
+
+     </div>
+ <?php
         include 'assets/includes/footer.php';
         ?>
 
-
 </body>
-
+  
 </html>
