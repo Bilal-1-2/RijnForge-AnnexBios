@@ -183,6 +183,18 @@ if (empty($apiData)) {
             }
         }
 
+        // Fetch showtimes for this movie
+        $ticketOrders = fetchTicketOrders($movie['id'] ?? 0);
+        $showtimes = [];
+        foreach ($ticketOrders as $order) {
+            if (isset($order['vertoning']['starttijd'])) {
+                $date = date('Y-m-d', strtotime($order['vertoning']['starttijd']));
+                if (!in_array($date, $showtimes)) {
+                    $showtimes[] = $date;
+                }
+            }
+        }
+
         $data[] = [
             "film_id" => $movie['id'] ?? 0,
             "titel" => $movie['title'] ?? '',
@@ -197,7 +209,8 @@ if (empty($apiData)) {
             "trailers" => $movie['has_trailer'] ? 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' : '', // Placeholder if has_trailer
             "informatie" => $movie['overview'] ?? '',
             "stars"=>$movie['stars']??'',
-            "kijkwijzer" => $kijkwijzer
+            "kijkwijzer" => $kijkwijzer,
+            "showtimes" => $showtimes
         ];
     }
 }
