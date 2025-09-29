@@ -1,0 +1,140 @@
+.chair {
+  background: #0080ff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.chair:hover {
+  background: #4da6ff;
+}
+
+.chair.selected {
+  background: #004d99;
+}
+
+.chair.reserved {
+  background: #001a33;
+}
+
+.seat {
+  background: #fff;
+  width: 2rem;
+  height: 2rem;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: repeat(11, 48px);
+  grid-template-rows: repeat(10, 48px);
+  row-gap: 1rem;
+
+  max-width: 528px;
+  margin: 100px auto;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 5px solid rgb(0, 102, 204);
+  margin: 1em 5em;
+  padding: 0;
+}
+
+.filmdoek-heading {
+  text-transform: uppercase;
+  text-align: center;
+  color: #0080ff;
+  font-size: 2em;
+}
+
+.active {
+  background: #004d99;
+}
+
+.legenda {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.legenda-item {
+  width: 5rem;
+  height: 2rem;
+  background: #0080ff;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.legenda-item.selected {
+  background: #004d99;
+}
+
+.legenda-item.reserved {
+  background: #001a33;
+}
+
+input[type="text"] {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid #0080ff;
+  border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+  .parent {
+    grid-template-columns: repeat(11, 30px);
+    grid-template-rows: repeat(10, 30px);
+    row-gap: 1rem;
+
+    max-width: 330px;
+    margin: 100px auto;
+  }
+
+  .chair {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 10px;
+  }
+
+  .seat {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .legenda-item {
+    width: 4rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+  }
+
+  hr {
+    margin: 1em 2em;
+  }
+
+  .filmdoek-heading {
+    font-size: 1.5em;
+  }
+
+  input[type="text"] {
+    font-size: 0.9rem;
+    padding: 0.3rem;
+    border-radius: 3px;
+  }
+}

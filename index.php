@@ -11,21 +11,24 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-  <title>AnnexBios 5</title>
-  <script src="assets/js/scrollbare-header.js" defer></script>
+  <title>AnnexBios Leidscherijn</title>
+  
+      <script src="assets/js/scrollbare-header.js" defer></script>
+    <script src="assets/js/dropdown.js" defer></script>
 </head>
 
-<body alt="">
+<body>
   <?php
-  include 'assets/includes/tijdelijk-database.php';
+  include 'assets/includes/api-database.php';
+  include 'assets/includes/stars-filter.php';
   include 'assets/includes/header-homepage.php';
   ?>
 
   <main>
 
     <div class="hero-section">
-      <h1 class="hero-section__title">WELKOM BIJ ANNEXBIOS 5</h1>
-      <p class="hero-section__intro">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto, obcaecati quod consectetur ipsam temporibus alias nemo exercitationem nulla aspernatur doloremque!</p>
+      <h1 class="hero-section__title">WELKOM BIJ ANNEXBIOS LEIDSCHERIJN</h1>
+      <p class="hero-section__intro">Lorem ipsum dolr, sit amet consectetur adipisicing elit. Iusto, obcaecati quod consectetur ipsam temporibus alias nemo exercitationem nulla aspernatur doloremque!</p>
       <a href="#" class="hero-section__link">Bekijk de draaiende films</a>
     </div>
 
@@ -102,18 +105,17 @@
           $film = $data[$i % $count];
         ?>
           <div class="film-card">
-            <a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">
-              <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
-                alt="<?php echo htmlspecialchars($film['titel']); ?>">
-            </a>
+            <form action="detail-pagina.php" method="post" class="film-poster-form">
+              <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+              <button type="submit"  style="border: none; background: none; padding: 0;">
+                <img src="<?php echo htmlspecialchars($film['poster']); ?>"
+                  alt="<?php echo htmlspecialchars($film['titel']); ?>">
+              </button>
+            </form>
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
+                <?php echo filter_stars($film['stars'] ); ?>
               </div>
               <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
@@ -124,7 +126,10 @@
                 </div>
               </div>
 
-              <button class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button>
+              <form action="detail-pagina.php" method="post">
+                <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+                <button type="submit" class="film-info-btn">MEER INFO & TICKETS</button>
+              </form>
 
             </div>
           </div>

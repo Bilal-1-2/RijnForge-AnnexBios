@@ -1,0 +1,40 @@
+
+.step-3{
+    color: #0080ff;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+.contianer{
+    display: flex;
+        border:3px solid #0080ff;
+    padding: 20px;
+    gap: 40px;
+}
+.controll-poster{
+    height: 300px;
+    width: 200px;
+}
+.controll-poster img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.controll-when{
+    display: flex;
+}
+.controll-info{
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+      color: #505050;
+      font-weight: 300;
+}
+.controll-title{
+    font-size: 24px;
+ 
+}
+.controll-viewing-guide img{
+ height: 50px;
+ width: 50px;
+}

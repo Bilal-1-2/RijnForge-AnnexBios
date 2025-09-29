@@ -1,3 +1,85 @@
 @import "includes/header.css";
- @import "includes/footer.css"; 
- @import "includes/kies-ticket.css"; 
+@import "includes/footer.css";
+@import "includes/bestel-title.css";
+@import "includes/kies-ticket.css";
+@import " includes/gegevens-betaalwijze.css";
+@import "includes/bestel-filmcard.css";
+@import "includes/stoelen.css";
+@import "includes/control.css";
+
+main {
+  width: 85%;
+  justify-self: center;
+  /* gap: 300px; */
+  display: flex;
+  flex-direction: column;
+}
+body {
+  background-color: rgb(0, 0, 0);
+}
+.bestel-content-container {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 50px;
+}
+#bestel-form {
+    width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 20px;
+  background-color: rgb(245, 245, 245);
+  margin-bottom: 50px;
+
+}
+
+/* Responsive Design for Bestel Pagina */
+@media (max-width: 1024px) {
+  main {
+    width: 90%;
+  }
+
+  .bestel-content-container {
+    gap: 20px;
+  }
+
+  #bestel-form {
+    width: 85%;
+    padding: 25px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 95%;
+  }
+
+  .bestel-content-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #bestel-form {
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .bestel-content-container {
+    gap: 15px;
+  }
+
+  #bestel-form {
+    padding: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+}

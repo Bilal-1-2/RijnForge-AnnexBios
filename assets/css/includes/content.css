@@ -172,9 +172,29 @@
   height: auto;
   overflow: visible;
 } */
-.film-poster {
+.film-poster,
+.film-poster-btn {
   width: 100%;
   height: 55%;
+}
+.film-poster-form{
+    width: 100%;
+  height: 55%;
+
+}
+
+.film-poster-form button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.film-poster-form img {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
 }
 
 /* .film-details:hover {
@@ -307,5 +327,169 @@ input[type="radio"]:checked {
 
 .categorie-select {
   -ms-overflow-style: 1one;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content-title {
+    font-size: 45px;
+    width: 60%;
+  }
+
+  .films-container {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .film-card {
+    height: 550px;
+  }
+
+  .film-title {
+    font-size: 20px;
+    min-height: 70px;
+  }
+
+  .film-details {
+    font-size: 11px;
+    max-height: 45px;
+  }
+
+  .film-text {
+    font-size: 9px;
+    min-height: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-title {
+    font-size: 35px;
+    width: 80%;
+    padding: 8px;
+  }
+
+  .filter {
+    width: 100%;
+    /* flex-direction: column; */
+    gap: 10px;
+    height: auto;
+  }
+
+  .categorie-select {
+    width: 100%;
+  }
+
+  .films-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .film-card {
+    height: 500px;
+  }
+
+  .film-poster,
+  .film-poster-btn {
+    height: 50%;
+  }
+
+  .film-title {
+    font-size: 18px;
+    min-height: 60px;
+  }
+
+  .film-details {
+    font-size: 10px;
+    max-height: 40px;
+  }
+
+  .film-text {
+    font-size: 8px;
+    min-height: 40px;
+  }
+
+  .film-info-btn,
+  .content-film-agenda-btn {
+    padding: 6px 8px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content-title {
+    font-size: 28px;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .ratings {
+    height: 25px;
+  }
+
+  .ratings img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .filter {
+    margin-bottom: 10px;
+    display: grid;
+            grid-template-columns: repeat(2, 2fr);
+
+  }
+
+  .film-agenda-menu {
+    display: none;
+    width: 40px;
+    height: 35px;
+  }
+
+  .films-container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .film-card {
+    height: auto;
+    min-height: 400px;
+  }
+
+  .film-poster,
+  .film-poster-btn {
+    height: 40%;
+  }
+
+  .film-info {
+    padding: 8px;
+  }
+
+  .film-title {
+    font-size: 20px;
+    min-height: auto;
+  }
+
+  .film-details {
+    font-size: 14px;
+    max-height: none;
+    height: auto;
+  }
+
+  .film-text {
+    font-size: 12px;
+    min-height: auto;
+    height: auto;
+  }
+
+  .film-info-btn,
+  .content-film-agenda-btn {
+    padding: 5px 6px;
+    font-size: 11px;
+    width: 100%;
+  }
+
+  input[type="radio" i] {
+    width: 12px;
+    height: 12px;
+  }
 }
 
