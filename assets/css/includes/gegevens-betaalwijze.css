@@ -19,10 +19,11 @@
   display: flex;
   align-items: baseline;
   flex-direction: row;
+  gap: 10px;
 }
 
 .gegevens-betaalwijze-container #firstname {
-  width: 48%;
+  width: 49.5%;
   height: 30px;
   font-size: 16px;
   margin-bottom: 10px;
@@ -34,7 +35,7 @@
 }
 
 .gegevens-betaalwijze-container #surname {
-  width: 48%;
+  width: 49.5%;
   height: 30px;
   font-size: 16px;
   margin-bottom: 10px;
@@ -46,7 +47,7 @@
 
 .gegevens-betaalwijze-container #email,
 .gegevens-betaalwijze-container #email-bevestiging {
-  width: 624px;
+  width: 100%;
   height: 30px;
   font-size: 16px;
   margin-bottom: 10px;
@@ -166,4 +167,11 @@
   font-size: 14px;
   color: #666666;
   margin-left: 10px;
+}
+.bestel-btn{
+  background-color: #0080ff;
+  font-size: 24px;
+  color: white;
+  height: 50px;
+  border: none;
 }

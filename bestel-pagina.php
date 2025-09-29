@@ -9,7 +9,7 @@
 
     <script src="assets/js/scrollbare-header.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
-    <script src="assets/js/bestel-dropdown-filter.js" defer></script>
+    <script src="assets/js/bestel-dropdown-filter.js"></script>
     <script src="assets/js/stoelen.js" defer></script>
     <title>ticket</title>
 </head>
@@ -147,6 +147,7 @@
     <script>
         var timesByDate = <?php echo json_encode($timesByDate); ?>;
         var vertoningen = <?php echo json_encode($vertoningen); ?>;
+        var prijzen = <?php echo json_encode($prijzen); ?>;
     </script>
     <main>
 
@@ -180,6 +181,8 @@
 
 
                     <input type="hidden" name="tijdstip" class="bestel-dropdown-input">
+                    <input type="hidden" name="bioscoop" id="selectedBioscoop" value="">
+                    <input type="hidden" name="zaal" id="selectedZaal" value="">
 
                     <div class="bestel-dropdown-menu">
                         <!-- Times will be populated by JS -->
@@ -333,7 +336,10 @@
                             </div>
                             <div class="controll-bioscoop"> <?php echo htmlspecialchars($film['bioscoop']) ?></div>
                             <div class="controll-when">wanneer: <div class="controll-when-1"> </div></div>
-                            <div>Geselecteerde stoelen: <span id="selectedSeatsDisplay"></span></div>
+                            <div> stoelen: <span id="selectedSeatsDisplay"></span></div>
+                            <div class="controll-tickets"> Tickets:</div>
+                            <div class="controll-tickets-price"> Totaal:</div>
+
                         </div>
                     </div>
                 </div>
@@ -369,11 +375,11 @@
                             <span class="terms-text">Ja, ik ga akkoord met de <a href="#">algemene voorwaarden</a></span>
                         </div>
 
-                        <button type="submit">Afrekenen</button>
+                       
                     </div>
                 </div>
 
-
+ <button  class="bestel-btn"type="submit">Afrekenen</button>
             </form>
 
 

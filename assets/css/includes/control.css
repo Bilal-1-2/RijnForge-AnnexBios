@@ -1,6 +1,8 @@
 
 .step-3{
     color: #0080ff;
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 .contianer{
     display: flex;
@@ -21,7 +23,18 @@
     display: flex;
 }
 .controll-info{
+    align-self: center;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px; 
+      color: #505050;
+      font-weight: 300;
+}
+.controll-title{
+    font-size: 24px;
+ 
+}
+.controll-viewing-guide img{
+ height: 50px;
+ width: 50px;
 }

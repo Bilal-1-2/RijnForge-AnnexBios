@@ -49,12 +49,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function updateSelectedSeats() {
     const selectedSeats = [];
+    const formattedSeats = [];
     stoelen.forEach(function (stoel) {
       if (stoel.classList.contains("selected")) {
         selectedSeats.push(stoel.id);
+        const [seatNum, rowNum] = stoel.id.split('-');
+        formattedSeats.push(`Rij ${rowNum} Stoel ${seatNum}`);
       }
     });
     document.getElementById("selectedSeats").value = selectedSeats.join(", ");
+    const displaySpan = document.getElementById("selectedSeatsDisplay");
+    if (displaySpan) {
+      displaySpan.textContent = formattedSeats.join(', ');
+    }
     console.log("Geselecteerde stoelen:", selectedSeats);
   }
 
@@ -70,4 +77,24 @@ document.addEventListener("DOMContentLoaded", function () {
       stoel.style.cursor = "default";
     });
   });
+
+  function updateTotals() {
+    const normaal = parseInt(document.getElementById("aantal-tickets-normaal").value) || 0;
+    const kind = parseInt(document.getElementById("aantal-tickets-kind").value) || 0;
+    const senior = parseInt(document.getElementById("aantal-tickets-senior").value) || 0;
+    const total = normaal * prijzen.normaal + kind * prijzen.kind + senior * prijzen.senior;
+    const ticketsText = `Normaal: ${normaal}, Kind: ${kind}, Senior: ${senior}`;
+    document.querySelector('.controll-tickets').textContent = `Tickets: ${ticketsText}`;
+    document.querySelector('.controll-tickets-price').textContent = `Totaal: €${total.toFixed(2).replace('.', ',')}`;
+  }
+
+  // Update totals when ticket selects change
+  ticketSelects.forEach(function (select) {
+    select.addEventListener("change", function () {
+      updateTotals();
+    });
+  });
+
+  // Initial update
+  updateTotals();
 });
