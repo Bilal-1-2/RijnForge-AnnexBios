@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
     const datumDropdown = document.querySelector('.bestel-dropdown[data-type="datum"]');
     const datumToggle = document.querySelector('.bestel-dropdown[data-type="datum"] .bestel-dropdown-toggle');
-    const datumInput = document.querySelector('.bestel-dropdown[data-type="datum"] .bestel-dropdown-input');
+    const datumInput = document.querySelector('input[name="datum"]');
     const datumMenu = document.querySelector('.bestel-dropdown[data-type="datum"] .bestel-dropdown-menu');
     const tijdstipMenu = document.querySelector('.bestel-dropdown[data-type="tijdstip"] .bestel-dropdown-menu');
     const tijdstipToggle = document.querySelector('.bestel-dropdown[data-type="tijdstip"] .bestel-dropdown-toggle');
-    const tijdstipInput = document.querySelector('.bestel-dropdown[data-type="tijdstip"] .bestel-dropdown-input');
+    const tijdstipInput = document.querySelector('input[name="tijdstip"]');
 
     if (datumDropdown) {
         datumDropdown.querySelectorAll('.bestel-dropdown-item').forEach(item => {

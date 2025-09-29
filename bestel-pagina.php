@@ -163,8 +163,6 @@
                     </button>
 
 
-                    <input type="hidden" name="datum" class="bestel-dropdown-input">
-
                     <div class="bestel-dropdown-menu">
                         <?php foreach ($dates as $date): ?>
                             <div class="bestel-dropdown-item" data-value="<?php echo htmlspecialchars($date); ?>">
@@ -179,10 +177,6 @@
                     </button>
 
 
-                    <input type="hidden" name="tijdstip" class="bestel-dropdown-input">
-                    <input type="hidden" name="bioscoop" id="selectedBioscoop" value="">
-                    <input type="hidden" name="zaal" id="selectedZaal" value="">
-
                     <div class="bestel-dropdown-menu">
                         <!-- Times will be populated by JS -->
                     </div>
@@ -191,6 +185,11 @@
         </div>
         <div class="bestel-content-container">
             <form id="bestel-form" method="post" action="bedankt-pagina.php">
+                <input type="hidden" name="id" value="<?php echo $filmId; ?>">
+                <input type="hidden" name="datum" class="bestel-dropdown-input">
+                <input type="hidden" name="tijdstip" class="bestel-dropdown-input">
+                <input type="hidden" name="bioscoop" id="selectedBioscoop" value="">
+                <input type="hidden" name="zaal" id="selectedZaal" value="">
                 <div class="ticket-container">
                     <h1>STAP 1: KIES JE TICKET</h1>
 
