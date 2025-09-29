@@ -206,3 +206,98 @@ gap:20px;
   font-weight: 700;
   border: none;
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .logo {
+    width: 200px;
+  }
+
+  #header-top-links a {
+    font-size: 18px !important;
+  }
+
+  .dropdown {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  #header-top-container {
+    flex-direction: column;
+    gap: 10px;
+    padding: 5px 10px;
+  }
+
+  .logo {
+    width: 150px;
+  }
+
+  #header-top-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #header-top-links a {
+    font-size: 16px !important;
+  }
+
+  #header-bottom-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  #purchase-ticket {
+    font-size: 20px;
+    padding: 5px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  #header-top {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  #header-top-container {
+    width: 95%;
+    padding: 5px 10px;
+  }
+
+  .logo {
+    width: 120px;
+  }
+
+  #header-top-links {
+    display: none; /* Hide links on mobile, perhaps add hamburger later */
+  }
+
+  #header-bottom {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  #header-bottom-container {
+    width: 95%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .dropdown {
+    width: 100%;
+  }
+
+  #purchase-ticket {
+    font-size: 18px;
+    padding: 5px 5px;
+  }
+
+  .order-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+}

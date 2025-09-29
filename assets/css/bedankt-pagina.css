@@ -185,6 +185,25 @@
     background: #0056b3;
 }
 
+@media (max-width: 1024px) {
+    .bedankt-container {
+        max-width: 700px;
+        padding: 30px 15px;
+    }
+
+    .bedankt-title {
+        font-size: 2.2em;
+    }
+
+    .overview-section {
+        padding: 25px;
+    }
+
+    .customer-info {
+        padding: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     .bedankt-container {
         padding: 20px 10px;
@@ -215,5 +234,60 @@
     .ticket-type {
         flex-direction: column;
         align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .bedankt-container {
+        padding: 15px 5px;
+    }
+
+    .bedankt-title {
+        font-size: 1.8em;
+    }
+
+    .bedankt-subtitle {
+        font-size: 1em;
+    }
+
+    .order-overview {
+        padding: 20px;
+    }
+
+    .overview-title {
+        font-size: 1.3em;
+    }
+
+    .movie-poster {
+        width: 60px;
+        height: 90px;
+    }
+
+    .movie-details h3 {
+        font-size: 1.1em;
+    }
+
+    .location-item {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+
+    .seat-item {
+        padding: 4px 8px;
+        font-size: 0.8em;
+    }
+
+    .customer-info {
+        padding: 20px;
+    }
+
+    .customer-title {
+        font-size: 1.3em;
+    }
+
+    .home-button {
+        width: 150px;
+        padding: 12px 20px;
+        font-size: 1em;
     }
 }

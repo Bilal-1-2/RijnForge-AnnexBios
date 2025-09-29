@@ -32,3 +32,54 @@ body {
   margin-bottom: 50px;
 
 }
+
+/* Responsive Design for Bestel Pagina */
+@media (max-width: 1024px) {
+  main {
+    width: 90%;
+  }
+
+  .bestel-content-container {
+    gap: 20px;
+  }
+
+  #bestel-form {
+    width: 85%;
+    padding: 25px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 95%;
+  }
+
+  .bestel-content-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #bestel-form {
+    width: 100%;
+    padding: 20px;
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .bestel-content-container {
+    gap: 15px;
+  }
+
+  #bestel-form {
+    padding: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+}
