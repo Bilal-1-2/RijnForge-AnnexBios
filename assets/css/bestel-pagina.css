@@ -5,6 +5,7 @@
 @import " includes/gegevens-betaalwijze.css";
 @import "includes/bestel-filmcard.css";
 @import "includes/stoelen.css";
+@import "includes/control.css";
 
 main {
   width: 85%;

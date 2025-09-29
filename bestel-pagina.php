@@ -30,15 +30,25 @@
 
     // Get the film ID from POST data
     if (!isset($_POST['id']) || empty($_POST['id'])) {
-        header('Location: index.php');
-        exit;
+        // header('Location: index.php');
+        // exit;
+        $filmId = 1; // Default for testing
+    } else {
+        $filmId = (int)$_POST['id'];
     }
-    $filmId = (int)$_POST['id'];
+
+    // Fetch ticket orders for this movie first to get bioscoop and zaal
+    $ticketOrders = fetchTicketOrders($filmId);
+
+    // Set bioscoop and zaal from ticket orders if available
+    $bioscoopFromTickets = isset($ticketOrders[0]['bioscoop']['name']) ? $ticketOrders[0]['bioscoop']['name'] : 'AnnexBios Leidscherijn';
+    $zaalFromTickets = isset($ticketOrders[0]['bioscoop']['zaal']) ? $ticketOrders[0]['bioscoop']['zaal'] : '';
 
     // Try to fetch detailed movie data
     $filmDetails = fetchMovieDetails($filmId);
 
     include 'assets/includes/header.php';
+
 
 
 
@@ -64,6 +74,7 @@
         }
 
         $regisseur = $filmDetails['director']['name'] ?? '';
+         $kijkwijzer = getKijkwijzer($genreString);
 
         $film = [
             "film_id" => $filmDetails['movie']['id'] ?? $filmDetails['id'] ?? 0,
@@ -77,7 +88,11 @@
             "acteurs" => $acteurs,
             "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
             "trailers" => '',
-            "informatie" => $filmDetails['movie']['overview'] ?? $filmDetails['overview'] ?? ''
+            "informatie" => $filmDetails['movie']['overview'] ?? $filmDetails['overview'] ?? '',
+            "kijkwijzer" => $kijkwijzer,
+            "bioscoop" => $bioscoopFromTickets,
+            "zaal" => $zaalFromTickets,
+
         ];
     } else {
         // Fallback to list data
@@ -93,16 +108,18 @@
             echo "<p>Film not found.</p>";
             exit;
         }
+        // Add bioscoop if not present in fallback data
+        if (!isset($film['bioscoop'])) {
+            $film['bioscoop'] = 'AnnexBios Leidscherijn';
+        }
     }
 
 
 
-    // Fetch ticket orders for this movie
-    $ticketOrders = fetchTicketOrders($filmId);
-
-    // Extract unique dates and times from ticket orders
+    // Extract unique dates and times from ticket orders, and collect vertoningen details
     $dates = [];
     $timesByDate = [];
+    $vertoningen = [];
     foreach ($ticketOrders as $order) {
         $date = date('d-m-Y', strtotime($order['vertoning']['starttijd']));
         $time = date('H:i', strtotime($order['vertoning']['starttijd']));
@@ -115,6 +132,13 @@
         if (!in_array($time, $timesByDate[$date])) {
             $timesByDate[$date][] = $time;
         }
+        if (!isset($vertoningen[$date])) {
+            $vertoningen[$date] = [];
+        }
+        $vertoningen[$date][$time] = [
+            'zaal' => $order['bioscoop']['zaal'] ?? '',
+            'bioscoop' => $order['bioscoop']['name'] ?? 'AnnexBios Leidscherijn'
+        ];
     }
 
     // Get prices from the first ticket order (assuming same for all)
@@ -122,6 +146,7 @@
     ?>
     <script>
         var timesByDate = <?php echo json_encode($timesByDate); ?>;
+        var vertoningen = <?php echo json_encode($vertoningen); ?>;
     </script>
     <main>
 
@@ -263,7 +288,7 @@
                 </div>
 
                 <div class="stoelen-container">
-                    <h1>STAP 3: KIES JE STOELEN</h1>
+                    <h1>STAP 2: KIES JE STOELEN</h1>
                     <hr>
                     <h3 class="filmdoek-heading">Filmdoek</h3>
                     <div class="parent">
@@ -273,13 +298,43 @@
                                 echo '<div id="' . ($x + 1) . '-' . ($y + 1) . '" class="chair"><div class="seat"></div></div>';
                             }
                         }
+
                         ?>
+                         <input type="hidden" id="selectedSeats" name="selectedSeats" value="">
                     </div>
-                    <input type="text" id="selectedSeats" name="selectedSeats" value="">
+                    
                     <div class="legenda">
                         <div class="legenda-item">beschikbaar</div>
                         <div class="legenda-item reserved">bezet</div>
                         <div class="legenda-item selected">selectie</div>
+                    </div>
+                </div>
+                <div class="step-3-container">
+                    <div class="step-3"> STAP 3: CONTROLEER JE BESTELLING</div>
+                    <div class="contianer">
+                        <div class="controll-poster"><img src="<?php echo htmlspecialchars($film['poster']) ?>" alt=""></div>
+                        <div class="controll-info">
+                            <div class="controll-title"><?php echo htmlspecialchars($film['titel']) ?></div>
+                            <div class="controll-viewing-guide"> <?php if (isset($film['kijkwijzer'])): ?>
+                                    <?php
+                                                                        $age = $film['kijkwijzer']['age'] ?? '12';
+                                                                        $warnings = $film['kijkwijzer']['warnings'] ?? [];
+                                    ?>
+                                    <img src="assets/kijkwijzers/kijkwijzer-<?php echo $age; ?>.png" alt="Kijkwijzer <?php echo $age; ?>">
+                                    <?php foreach ($warnings as $warning): ?>
+                                        <img src="assets/kijkwijzers/kijkwijzer-<?php echo $warning; ?>.png" alt="<?php echo ucfirst(str_replace('-', ' ', $warning)); ?>">
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <!-- Fallback hardcoded if no kijkwijzer data -->
+                                    <img src="assets/kijkwijzers/kijkwijzer-12.png" alt="Kijkwijzer 12">
+                                    <img src="assets/kijkwijzers/kijkwijzer-angst.png" alt="Engelse taal">
+                                    <img src="assets/kijkwijzers/kijkwijzer-geweld.png" alt="Geweld">
+                                <?php endif; ?>
+                            </div>
+                            <div class="controll-bioscoop"> <?php echo htmlspecialchars($film['bioscoop']) ?></div>
+                            <div class="controll-when">wanneer: <div class="controll-when-1"> </div></div>
+                            <div>Geselecteerde stoelen: <span id="selectedSeatsDisplay"></span></div>
+                        </div>
                     </div>
                 </div>
 

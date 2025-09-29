@@ -1,0 +1,27 @@
+
+.step-3{
+    color: #0080ff;
+}
+.contianer{
+    display: flex;
+        border:3px solid #0080ff;
+    padding: 20px;
+    gap: 40px;
+}
+.controll-poster{
+    height: 300px;
+    width: 200px;
+}
+.controll-poster img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.controll-when{
+    display: flex;
+}
+.controll-info{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

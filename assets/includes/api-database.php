@@ -122,16 +122,15 @@ function getKijkwijzer($genreString) {
         $kijkwijzer['warnings'] = ['geweld', 'angst'];
     } elseif (array_intersect($actionKeywords, $genreList)) {
         $kijkwijzer['age'] = '12';
-        $kijkwijzer['warnings'] = ['geweld', 'eng'];
+        $kijkwijzer['warnings'] = ['geweld', 'angst'];
     } elseif (array_intersect($animationKeywords, $genreList)) {
         $kijkwijzer['age'] = 'AL';
-        $kijkwijzer['warnings'] = [''];
+        $kijkwijzer['warnings'] = [];
     } elseif (array_intersect($dramaKeywords, $genreList)) {
         $kijkwijzer['age'] = '12';
         $kijkwijzer['warnings'] = ['grof-taal'];
     } else {
-        // Default remains 12 with eng
-        // $kijkwijzer['warnings'] = ['eng'];
+        // Default remains 12 with no warnings
     }
 
     // Ensure no duplicate warnings

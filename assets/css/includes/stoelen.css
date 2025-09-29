@@ -12,6 +12,14 @@
   background: #4da6ff;
 }
 
+.chair.selected {
+  background: #004d99;
+}
+
+.chair.reserved {
+  background: #001a33;
+}
+
 .seat {
   background: #fff;
   width: 2rem;

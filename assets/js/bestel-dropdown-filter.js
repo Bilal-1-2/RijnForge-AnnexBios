@@ -17,6 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 div.className = 'bestel-dropdown-item';
                 div.dataset.value = time;
                 div.textContent = time;
+                div.addEventListener('click', function() {
+                    const selectedTime = this.dataset.value;
+                    tijdstipToggle.textContent = selectedTime;
+                    tijdstipInput.value = selectedTime;
+                    tijdstipMenu.classList.remove('open');
+                    const selectedDate = datumInput.value;
+                    if (selectedDate) {
+                        const controllWhen = document.querySelector('.controll-when-1');
+                        controllWhen.innerHTML = selectedDate + ' om ' + selectedTime;
+                        if (vertoningen[selectedDate] && vertoningen[selectedDate][selectedTime]) {
+                            const vertoning = vertoningen[selectedDate][selectedTime];
+                            const controllBioscoop = document.querySelector('.controll-bioscoop');
+                            controllBioscoop.innerHTML = vertoning.bioscoop + ' - ' + vertoning.zaal;
+                        }
+                    }
+                });
                 tijdstipMenu.appendChild(div);
             });
             // Set datum selection
