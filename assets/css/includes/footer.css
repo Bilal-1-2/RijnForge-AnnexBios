@@ -40,19 +40,28 @@ footer {
     color: white;
     text-align: justify;
     line-height: 1.5;
-    font-family: 'Arial', sans-serif;
     margin-top: 10px;
+     font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: medium;
 }
 
 .footer-button {
-    background-color: rgb(230, 230, 230);
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 2px;
-    width: 25%;
+    width: 40%;
     height: 30px;
-    font: bold 12px Arial, sans-serif;
-    color: rgb(156, 156, 156);
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: rgb(163, 160, 160);
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
 }
 
 .footer-navigate {
@@ -60,16 +69,32 @@ footer {
     height: 80px;
     display: flex;
     flex-direction: column;
-    font-family: Arial;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
 }
 
 .footer-links {
     width: 20%;
     height: 80px;
     display: flex;
-    font-family: Arial;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
     flex-direction: column;
     text-decoration: none;
+}
+.footer-links h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+}
+.footer-navigate h2{
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: white;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
 }
 
 a {
@@ -77,7 +102,8 @@ a {
     color: white;
     font-size: 12px;
     margin-bottom: 10px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
 }
 
 .footer-bottom {
@@ -88,7 +114,8 @@ a {
     bottom: 0;
     color: white;
     font-size: 12px;
-    font-family: 'Arial', sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
     margin-top: 100px;
 }
 
@@ -97,7 +124,8 @@ a {
     padding: 0;
     font-size: 12px;
     color: white;
-    font-family: 'Arial', sans-serif;
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
     margin-left: 120px;
 }
 
@@ -128,4 +156,183 @@ a {
 .social-media-icons {
     display: flex;
     gap: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  footer {
+    height: 250px;
+  }
+
+  .footer-content {
+    width: 80%;
+    margin-left: 40px;
+    margin-top: 25px;
+  }
+
+  .footer-logo {
+    width: 60%;
+    height: 60px;
+  }
+
+  .footer-about {
+    width: 30%;
+  }
+
+  .footer-navigate,
+  .footer-links {
+    width: 25%;
+  }
+
+  .footer-links h2,
+  .footer-navigate h2 {
+    font-size: 20px;
+  }
+
+  .footer-bottom p {
+    margin-left: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .footer-content {
+    width: 90%;
+    margin-left: 20px;
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    width: 50%;
+    height: 50px;
+  }
+
+  .footer-about {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-about p {
+    font-size: 9px;
+  }
+
+  .footer-button {
+    width: 50%;
+    height: 25px;
+    font-size: 11px;
+    padding: 8px;
+  }
+
+  .footer-navigate,
+  .footer-links {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-links h2,
+  .footer-navigate h2 {
+    font-size: 18px;
+  }
+
+  a {
+    font-size: 11px;
+  }
+
+  .footer-bottom {
+    margin-top: 50px;
+  }
+
+  .footer-bottom p {
+    margin-left: 20px;
+    font-size: 11px;
+  }
+
+  .social-media-icons {
+    gap: 8px;
+  }
+
+  .icon-circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .icon-circle img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  footer {
+    height: auto;
+    padding: 15px 0;
+  }
+
+  .footer-content {
+    width: 95%;
+    margin-left: 10px;
+    margin-top: 15px;
+    gap: 15px;
+  }
+
+  .footer-logo {
+    width: 40%;
+    height: 40px;
+  }
+
+  .footer-about {
+    width: 100%;
+  }
+
+  .footer-about p {
+    font-size: 8px;
+    line-height: 1.4;
+  }
+
+  .footer-button {
+    width: 60%;
+    height: 20px;
+    font-size: 10px;
+    padding: 6px;
+  }
+
+  .footer-links h2,
+  .footer-navigate h2 {
+    font-size: 16px;
+  }
+
+  a {
+    font-size: 10px;
+  }
+
+  .footer-bottom {
+    margin-top: 30px;
+    padding: 8px 0;
+  }
+
+  .footer-bottom p {
+    margin-left: 10px;
+    font-size: 10px;
+  }
+
+  .social-media-icons {
+    gap: 6px;
+  }
+
+  .icon-circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .icon-circle img {
+    width: 16px;
+    height: 16px;
+  }
 }

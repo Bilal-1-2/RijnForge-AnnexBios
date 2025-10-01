@@ -1,0 +1,177 @@
+.gegevens-betaalwijze-container {
+  margin: 0 ;
+  width: 60%;
+  background-color: rgb(245, 245, 245);
+  text-align: left;
+  justify-self: left;
+  font-family: "lato", sans-serif;
+  height: auto;
+}
+
+.gegevens-betaalwijze-container h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #0080ff;
+  padding: 20px 0 10px 20px;
+  margin: 0;
+}
+.fullname{
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.gegevens-betaalwijze-container #firstname {
+  width: 49.5%;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 20px;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.gegevens-betaalwijze-container #surname {
+  width: 49.5%;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 0px;
+  font-size: 10px;
+}
+
+.gegevens-betaalwijze-container #email,
+.gegevens-betaalwijze-container #email-bevestiging {
+  width: 100%;
+  height: 30px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  border: 2px solid #0080ff;
+  padding: 5px;
+  margin-left: 20px;
+  font-size: 10px;
+}
+
+.gegevens-betaalwijze-container h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #6e4f7d;
+  padding: 10px;
+}
+
+.gegevens-betaalwijze-container .nationalebioslogo  {
+  width: 100px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+.gegevens-betaalwijze-container .nationalebioslogo img {
+  width: 100%;
+  height: auto;
+  max-height: 50px;
+  object-fit: contain;
+  margin-bottom: 0;
+}
+
+.gegevens-betaalwijze-container .maestro-logo {
+  width: 100px;
+  height: 50px;
+  margin-bottom: 25px;
+}
+
+.gegevens-betaalwijze-container .ideal-logo {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.gegevens-betaalwijze-container a {
+  text-decoration: none;
+  color: #666666;
+}
+
+.gegevens-betaalwijze-container .custom-radio-checkbox input {
+  display: none;
+}
+
+.gegevens-betaalwijze-container .custom-radio-checkbox label {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #0080ff;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.gegevens-betaalwijze-container .custom-radio-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 9px;
+  height: 9px;
+  border-left: 2px solid #0080ff;
+  border-bottom: 2px solid #0080ff;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gegevens-betaalwijze-container .custom-radio-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+.gegevens-betaalwijze-container .terms-checkbox input {
+  display: none;
+}
+
+.gegevens-betaalwijze-container .terms-checkbox label {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #0080ff;
+  display: inline-block;
+  cursor: pointer;
+  box-sizing: border-box;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+
+.gegevens-betaalwijze-container .terms-checkbox label::after {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 1px;
+  width: 14px;
+  height: 14px;
+  border-left: 2px solid #0080ff;
+  border-bottom: 2px solid #0080ff;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gegevens-betaalwijze-container .terms-checkbox input:checked + label::after {
+  opacity: 1;
+}
+
+.gegevens-betaalwijze-container .terms-text {
+  font-size: 14px;
+  color: #666666;
+  margin-left: 10px;
+}
+.bestel-btn{
+  background-color: #0080ff;
+  font-size: 24px;
+  color: white;
+  height: 50px;
+  border: none;
+}

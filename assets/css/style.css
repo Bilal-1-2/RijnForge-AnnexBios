@@ -2,15 +2,62 @@
 @import "includes/header.css";
 @import "includes/content.css";
 @import "includes/footer.css"; 
+/* @import "includes/footer.css"; */
+@import "includes/hero-section.css";
+
+*,
+*::before,
+*::after {
+  /* margin: 0; */
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
+  font-family: "lato", sans-serif;
+
   background-image: url("../header/background.jpg");
 
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-    url("../header/background.jpg");
+    url("../images/background.jpg");
 }
+
+a {
+  color: #fff;
+  text-decoration: none;
+  
+}
+
+ul {
+  list-style: none;
+}
+
+
 main {
   /* background-color: white; */
   width: 85%;
   margin: 20px auto;
+
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  main {
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    width: 95%;
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 100%;
+    margin: 5px auto;
+    padding: 0 10px;
+  }
 }
