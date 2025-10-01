@@ -74,7 +74,7 @@ Mohammed was 6 uur bezig met ? te maken.
 #### **26-09-2025**
 Bilal was 3 uur bezig met api web te maken .
 Rachel was 3 uur bezig met bedankt pagina te maken.
-Mohammed was 3 uur bezig met ? te maken.
+
 
 #### **28/29-09-2025**
 Bilal was 16 uur bezig met api web te maken, inclusief verbeteringen aan booking flows, seat selection, responsive design en API-integraties via api-database.php.
@@ -103,13 +103,13 @@ Gebaseerd op git logs, commits stemmen overeen met logboek activiteiten. Auteurs
 
 ### Wat (Bilal) Deed:
 - Header, content, film agenda, detail pagina, booking pagina, API, styling, responsive design, merges.
-- Belangrijke commits: Header voltooiing, content updates (films toevoegen), detail pagina iteraties, booking pagina refactoring, API integratie, responsive fixes.
+- Belangrijke commits: Header voltooiing, content updates (films toevoegen), detail pagina iteraties, booking pagina refactoring, API integratie, responsive fixes, bedankt pagina.
 
 
 ### Wat (Mohammed) Deed:
 - Stoelen, hero section, ratings, debriefing, database-gerelateerde verwijderingen/merges.
 ### Wat (Rachael) Deed:
--  Footer, kies je ticket, gegevens-betaalwijze, bedankt pagina, terms, logos, social icons, merges.
+-  Footer, kies je ticket, gegevens-betaalwijze, terms, logos, social icons, merges.
 
 
 

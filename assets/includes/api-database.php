@@ -172,7 +172,7 @@ if (empty($apiData)) {
             }
         }
 
-        // Find director from crew
+       
         $regisseur = '';
         if (isset($movie['crew']) && is_array($movie['crew'])) {
             foreach ($movie['crew'] as $crewMember) {
@@ -183,7 +183,7 @@ if (empty($apiData)) {
             }
         }
 
-        // Fetch showtimes for this movie
+        
         $ticketOrders = fetchTicketOrders($movie['id'] ?? 0);
         $showtimes = [];
         foreach ($ticketOrders as $order) {
