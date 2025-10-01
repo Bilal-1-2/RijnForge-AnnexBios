@@ -7,12 +7,14 @@
   <link rel="stylesheet" href="assets/css/style.css">
 
   <script src="assets/js/scrollbare-header.js" defer></script>
+  <script src="assets/js/dropdown.js" defer></script>
   <title>AnnexBios Leidscherijn</title>
 </head>
 
 <body alt="">
   <?php
-  include 'assets/includes/tijdelijk-database.php';
+  include 'assets/includes/api-database.php';
+  include 'assets/includes/stars-filter.php';
   include 'assets/includes/header.php';
 
   // Film data array
@@ -23,7 +25,7 @@
     <div id="content-container">
       <div class="content-title">FILM AGENDA</div>
       <div class="filter">
-        <div class=".film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
+        <div class="film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
           <input type="radio" id="films" name="style" value="films">
           <label for="films"><strong>FILMS </strong></label>
@@ -52,25 +54,25 @@
       </div>
       <div class="films-container">
         <?php
-        $total = 18;
-        $count = count($data);
-        for ($i = 0; $i < $total; $i++):
-          $film = $data[$i % $count];
+       
+        foreach (  $data as $film):
+
         ?>
-          <div class="film-card">
-            <a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">
-              <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
-                alt="<?php echo htmlspecialchars($film['titel']); ?>">
-            </a>
+          <div class="film-card" data-genre="<?php echo strtolower(str_replace(', ', ' ', $film['genre'])); ?>" data-release-date="<?php echo $film['releasedatum']; ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
+            <form action="detail-pagina.php" method="post" class="film-poster-form">
+              <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+              <button type="submit" style="border: none; background: none; padding: 0;">
+                <img style="height: 100%;" src="<?php echo htmlspecialchars($film['poster']); ?>"
+                  alt="<?php echo htmlspecialchars($film['titel']); ?>">
+              </button>
+            </form>
 
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
-                <img src="assets/icons/ster.svg" alt="">
+          
+                <?php echo filter_stars($film['stars'] ); ?>
+            
               </div>
               <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
@@ -81,12 +83,14 @@
                 </div>
               </div>
 
-              <button class="film-info-btn"><a class="film-poster" href="detail-pagina.php?id=<?php echo $film['film_id']; ?>" class="film-card-link">MEER INFO & TICKETS</a></button>
-
+             <form action="detail-pagina.php" method="post">
+               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
+               <button type="submit" class="film-info-btn">MEER INFO & TICKETS</button>
+             </form>
             </div>
           </div>
 
-        <?php endfor; ?>
+        <?php endforeach; ?>
       </div>
 
     </div>
@@ -102,6 +106,7 @@
   <?php
   include 'assets/includes/footer.php';
   ?>
+  <script src="assets/js/film-filters.js" defer></script>
 </body>
 
 </html>

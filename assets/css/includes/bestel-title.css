@@ -1,0 +1,102 @@
+
+.bestel-title-container {
+    margin-top:70px;
+    color: #0080ff;
+    text-align: center;
+    font-size: 2rem;
+    font-family: lato, sans-serif;
+    font-style: medium;
+    font-weight: 700;
+    width: 100%;
+}
+.div-title {
+    padding: 20px;
+    background-color: #ffffff;
+    font-size: 50px;
+    text-align: left;
+}
+
+.film-info {
+  align-items: flex-start;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 16px;
+    display: flex;
+  width: 35%;
+  background-color: black;
+  gap: 10px;
+  display: flex;
+}
+.film-title{
+  color: #0080ff;
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: "Lato", sans-serif;
+  padding: 12px;
+  width: 33%;
+  text-align: left;
+}
+.bestel-dropdown {
+
+  background: #ffffff;
+  position: relative;
+ width: 33%;
+  font-family: "Lato", sans-serif;
+  display: inline-block;
+  align-self: flex-start;
+
+}
+
+.bestel-dropdown-toggle {
+  background: #ffffff;
+  color: #0080ff;
+  padding:12px ;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 400;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.bestel-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #0080ff;
+  border-radius: 6px;
+  margin-top: 4px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  display: none;
+  z-index: 1000;
+}
+
+.bestel-dropdown-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.bestel-dropdown-menu.open {
+  display: block;
+}
+
+.bestel-dropdown-item {
+  padding: 8px 12px;
+  color: #0080ff;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.bestel-dropdown-item:hover {
+  background: #c5d7e9;
+}

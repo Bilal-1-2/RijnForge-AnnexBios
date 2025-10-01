@@ -27,3 +27,40 @@ min-height: 700px;
 
 
 }
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .detail-ticket-btn {
+    font-size: 25px;
+    padding: 15px;
+  }
+
+  .trailer-container {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-ticket-btn {
+    font-size: 22px;
+    padding: 12px;
+  }
+
+  .trailer-container {
+    min-height: 500px;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-ticket-btn {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .trailer-container {
+    min-height: 300px;
+    margin-bottom: 30px;
+    border-width: 3px;
+  }
+}

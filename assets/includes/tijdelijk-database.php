@@ -18,7 +18,8 @@ $data = [
     "poster" => "https://image.tmdb.org/t/p/w1280/3TriEvr5SmYFwhmVdfb8C9Fyobl.jpg",
     "trailers" => "https://youtu.be/bMgfsdYoEEo",
     "informatie" => "The Conjuring: Last Rites van New Line Cinema is het negende deel in het Conjuring-universum, dat al goed is voor een bioscoopopbrengst van ruim 2 miljard dollar. De film wordt geregisseerd door veteraan Michael Chaves en geproduceerd door James Wan en Peter Safran, zonder wie de franchise er niet was geweest. Met The Conjuring: Last Rites, dat gebaseerd is op een waargebeurd verhaal, wordt er weer een bloedstollend hoofdstuk toegevoegd aan het iconische Conjuring-universum. Vera Farmiga en Patrick Wilson komen nog één keer samen als de befaamde paranormale onderzoekers Ed en Lorraine Warren voor een laatste zaak in een meeslepend en angstaanjagend nieuw deel van de over de hele wereld succesvolle franchise.
-Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien als Ed en Lorraines dochter Judy Warren en haar vriendje Tony Spera. En verder ook Steve Coulter, die terugkeert als priester Gordon, Rebecca Calder, Elliot Cowan, Kíla Lord Cassidy, Beau Gadsdon, John Brotherton en Shannon Kook. Chaves regisseert de film naar een scenario van Ian Goldberg, Richard Naing en David Leslie Johnson-McGoldrick en een treatment van David Leslie Johnson-McGoldrick en James Wan, dat gebaseerd is op de door Chad Hayes en Carey W. Hayes gecreëerde personages. De uitvoerend producenten zijn Michael Clear, Judson Scott, Hans Ritter, David Leslie Johnson-McGoldrick, Natalia Safran, John Rickard en Michael Chaves. Achter de schermen wordt Chaves bijgestaan door zijn creatieve team dat onder anderen bestaat uit director of photography Eli Born, production designer John Frankish, editors Elliot Greenberg en Gregory Plotkin, visual effects supervisor Scott Edelstein, visual effects producer Eric Bruneau en kostuumontwerper Graham Churchyard. De casting is in handen van Rose Wicksteed en Sophie Kingston-Smith en de muziek is gecomponeerd door Benjamin Wallfisch, met Ian Broucek als music supervisor. New Line Cinema presenteert The Conjuring: Last Rites, een productie van The Safran Company en Atomic Monster. De film wordt wereldwijd gedistribueerd door Warner Bros. Pictures."
+Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien als Ed en Lorraines dochter Judy Warren en haar vriendje Tony Spera. En verder ook Steve Coulter, die terugkeert als priester Gordon, Rebecca Calder, Elliot Cowan, Kíla Lord Cassidy, Beau Gadsdon, John Brotherton en Shannon Kook. Chaves regisseert de film naar een scenario van Ian Goldberg, Richard Naing en David Leslie Johnson-McGoldrick en een treatment van David Leslie Johnson-McGoldrick en James Wan, dat gebaseerd is op de door Chad Hayes en Carey W. Hayes gecreëerde personages. De uitvoerend producenten zijn Michael Clear, Judson Scott, Hans Ritter, David Leslie Johnson-McGoldrick, Natalia Safran, John Rickard en Michael Chaves. Achter de schermen wordt Chaves bijgestaan door zijn creatieve team dat onder anderen bestaat uit director of photography Eli Born, production designer John Frankish, editors Elliot Greenberg en Gregory Plotkin, visual effects supervisor Scott Edelstein, visual effects producer Eric Bruneau en kostuumontwerper Graham Churchyard. De casting is in handen van Rose Wicksteed en Sophie Kingston-Smith en de muziek is gecomponeerd door Benjamin Wallfisch, met Ian Broucek als music supervisor. New Line Cinema presenteert The Conjuring: Last Rites, een productie van The Safran Company en Atomic Monster. De film wordt wereldwijd gedistribueerd door Warner Bros. Pictures.",
+    "kijkwijzer" => ["age" => "16", "warnings" => ["geweld", "angst", "eng"]]
   ],
   [
     "film_id" => 2,
@@ -37,7 +38,8 @@ Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien a
     ],
     "poster" => "https://filmhallen.nl/content/uploads/sites/4/2025/06/The-Roses_ps_1_jpg_sd-high_2025-Searchlight-Pictures-scaled-729x1080.jpg%22",
     "trailers" => "https://www.youtube.com/watch?v=XkgMaS5gbaA",
-    "informatie" => "Onder de façade van een perfect stel ontstaat een kruitvat van concurrentie en wrok, wanneer de professionele dromen van de man in duigen vallen."
+    "informatie" => "Onder de façade van een perfect stel ontstaat een kruitvat van concurrentie en wrok, wanneer de professionele dromen van de man in duigen vallen.",
+    "kijkwijzer" => ["age" => "12", "warnings" => ["grof-taal", "eng"]]
   ],
   [
     "film_id" => 3,
@@ -56,27 +58,12 @@ Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien a
     ],
     "poster" => "https://image.tmdb.org/t/p/w1280/kOzwIr0R7WhaFgoYUZFLPZA2RBZ.jpg",
     "trailers" => "https://www.youtube.com/watch?v=Sh8yqcozfn8",
-    "informatie" => "Als er losgeld van een muziekmagnaat wordt geëist, staat hij voor een zwaar moreel dilemma. Kan hij zijn gezin en nalatenschap beschermen?"
+    "informatie" => "Als er losgeld van een muziekmagnaat wordt geëist, staat hij voor een zwaar moreel dilemma. Kan hij zijn gezin en nalatenschap beschermen?",
+    "kijkwijzer" => ["age" => "16", "warnings" => ["geweld", "angst", "eng"]]
   ],
   [
     "film_id" => 4,
     "titel" => "F1 - The Movie",
-    "releasedatum" => "2025-06-26",
-    "duur" => 156,
-    "genre" => "Action, Drama, Sport",
-    "imdb_score" => 8.1,
-    "regisseur" => "Joseph Kosinski",
-    "land" => "USA",
-    "acteurs" => [
-      ["naam" => "Brad Pitt", "foto" => "assets/acteurs/BryceDallas.jpg"],
-      ["naam" => "Damson Idris", "foto" => "assets/acteurs/Chris_Pratt.jpg"],
-      ["naam" => "Javier Bardem", "foto" => "assets/acteurs/rafe_spall.jpg"],
-      ["naam" => "Tobey Maguire", "foto" => "assets/acteurs/Toby_Jones.jpg"]
-    ],
-    "poster" => "https://image.tmdb.org/t/p/w1280/4khsAOhh6si1Qbx8lWqYQTk6gA5.jpg",
-    "trailers" => "https://www.youtube.com/watch?v=ge_ABjtYx88",
-    "informatie" => "Race legende Sonny Hayes wordt uit zijn pensioen gehaald om een worstelend Formule 1-team te leiden, en een jonge hotshot-coureur te begeleiden, terwijl hij nog een kans op glorie najaagt."
-  ],
   [
     "film_id" => 5,
     "titel" => "Demon Slayer: Kimetsu no Yaiba Infinity Castle ",
@@ -191,4 +178,4 @@ Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien a
     "trailers" => "https://www.youtube.com/watch?v=2ZhB-YO5Tnk",
     "informatie" => "Vijf jaar na de gebeurtenissen in Jurassic World Dominion wordt geheime operatie expert Zora Bennett gecontracteerd om een bekwaam team te leiden op een uiterst geheime missie om genetisch materiaal van 's werelds drie grootste dinosaurussen veilig te stellen. Wanneer Zora's operatie kruist met een burgerfamilie wiens bootexpeditie kapseisde, stranden ze allemaal op een eiland waar ze oog in oog komen te staan met een sinistere, schokkende ontdekking die al tientallen jaren voor de wereld verborgen is gehouden."
   ]
-];
+]];
