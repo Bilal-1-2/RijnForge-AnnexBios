@@ -103,11 +103,11 @@ Gebaseerd op git logs, commits stemmen overeen met logboek activiteiten. Auteurs
 
 ### Wat (Bilal) Deed:
 - Header, content, film agenda, detail pagina, booking pagina, API, styling, responsive design, merges.
-- Belangrijke commits: Header voltooiing, content updates (films toevoegen), detail pagina iteraties, booking pagina refactoring, API integratie, responsive fixes, bedankt pagina.
+- Belangrijke commits: Header voltooiing, content updates (films toevoegen), detail pagina iteraties, booking pagina refactoring, API integratie, responsive fixes, bedankt pagina, ratings.
 
 
 ### Wat (Mohammed) Deed:
-- Stoelen, hero section, ratings, debriefing, database-gerelateerde verwijderingen/merges.
+- Stoelen, hero section, debriefing, database-gerelateerde verwijderingen/merges.
 ### Wat (Rachael) Deed:
 -  Footer, kies je ticket, gegevens-betaalwijze, terms, logos, social icons, merges.
 
