@@ -91,3 +91,14 @@
   font-size: 10px;
   min-height: 50px;
 }
+@media (max-width: 1024px) {
+  .bestel-film-card {
+    width: 22%;
+  }
+}
+
+@media (max-width: 840px) {
+  .bestel-film-card {
+   display: none;
+  }
+}

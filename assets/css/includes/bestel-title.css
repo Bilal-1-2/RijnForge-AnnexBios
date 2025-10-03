@@ -100,3 +100,85 @@
 .bestel-dropdown-item:hover {
   background: #c5d7e9;
 }
+
+@media (max-width: 1024px) {
+  .film-info {
+    width: 40%;
+  }
+
+  .film-title {
+    width: 35%;
+  }
+
+  .bestel-dropdown {
+    width: 35%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bestel-title-container {
+    font-size: 1.5rem;
+  }
+
+  .div-title {
+    font-size: 40px;
+  }
+
+  .film-info {
+    width: 70%;
+    /* flex-direction: column; */
+    gap: 15px;
+  }
+
+  .film-title {
+    width: 100%;
+  }
+
+  .bestel-dropdown {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 650px) {
+  .bestel-title-container {
+    font-size: 1.2rem;
+    margin-top: 50px;
+  }
+
+  .div-title {
+    font-size: 30px;
+    padding: 15px;
+  }
+
+
+
+  .film-title {
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .bestel-dropdown-toggle {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .bestel-dropdown-item {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  
+  .film-info {
+    width: 200px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+}
