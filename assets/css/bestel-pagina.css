@@ -62,7 +62,7 @@ body {
 
   #bestel-form {
     width: 100%;
-    padding: 20px;
+    padding: 0px;
     gap: 15px;
   }
 }
@@ -78,7 +78,7 @@ body {
   }
 
   #bestel-form {
-    padding: 15px;
+    padding: 0px;
     gap: 10px;
     margin-bottom: 20px;
   }

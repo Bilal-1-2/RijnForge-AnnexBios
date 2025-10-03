@@ -14,6 +14,7 @@
   <title>AnnexBios Leidscherijn</title>
   
       <script src="assets/js/scrollbare-header.js" defer></script>
+      <script src="assets/js/film-filters.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
 </head>
 
@@ -104,7 +105,7 @@
         for ($i = 0; $i < $total; $i++):
           $film = $data[$i % $count];
         ?>
-          <div class="film-card">
+          <div class="film-card" data-genre="<?php echo strtolower(str_replace(', ', ' ', $film['genre'])); ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
             <form action="detail-pagina.php" method="post" class="film-poster-form">
               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
               <button type="submit"  style="border: none; background: none; padding: 0;">
