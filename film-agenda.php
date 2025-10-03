@@ -17,7 +17,18 @@
   include 'assets/includes/stars-filter.php';
   include 'assets/includes/header.php';
 
-  // Film data array
+  // Collect unique genres from the data
+  $uniqueGenres = [];
+  foreach ($data as $film) {
+      $genres = explode(', ', $film['genre']);
+      foreach ($genres as $genre) {
+          $genre = trim($genre);
+          if (!in_array($genre, $uniqueGenres)) {
+              $uniqueGenres[] = $genre;
+          }
+      }
+  }
+  sort($uniqueGenres);
 
   ?>
 
@@ -40,15 +51,10 @@
         </div>
 
         <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-
           <option value=""><strong>CATEGORIE </strong></option>
-          <option value="action">ACTION</option>
-          <option value="comedy">COMEDY</option>
-          <option value="drama">DRAMA</option>
-          <option value="horror">HORROR</option>
-          <option value="sci-fi">SCI-FI</option>
-          <option value="thriller">THRILLER</option>
-          <option value="animation">ANIMATION</option>
+          <?php foreach ($uniqueGenres as $genre): ?>
+            <option value="<?php echo strtolower($genre); ?>"><?php echo strtoupper($genre); ?></option>
+          <?php endforeach; ?>
         </select>
 
       </div>

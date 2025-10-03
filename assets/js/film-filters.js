@@ -1,44 +1,83 @@
+// Dit script beheert het filteren van films op basis van datum en categorie in de filmagenda.
 document.addEventListener('DOMContentLoaded', function() {
+    // Selecteer alle filmkaarten, radio buttons voor stijl en de categorie select.
     const filmCards = document.querySelectorAll('.film-card');
     const styleRadios = document.querySelectorAll('input[name="style"]');
     const categorieSelect = document.querySelector('.categorie-select');
 
+    // Functie om de filters toe te passen op de filmkaarten.
     function applyFilters() {
-        const selectedStyle = document.querySelector('input[name="style"]:checked')?.value || 'films';
+        // Haal de geselecteerde stijl en categorie op.
+        const selectedStyle = document.querySelector('input[name="style"]:checked')?.value;
         const selectedCategory = categorieSelect.value.toLowerCase();
 
-        const today = new Date();
-        const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
-        const weekAgo = new Date(today);
-        weekAgo.setDate(today.getDate() - 7);
-        const weekAgoStr = weekAgo.toISOString().split('T')[0];
+        // Controleer of er filters zijn geselecteerd.
+        if (selectedStyle || selectedCategory) {
+            // Bereken de datums voor vandaag en een week geleden.
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0];
+            const weekAgo = new Date(today);
+            weekAgo.setDate(today.getDate() - 7);
+            const weekAgoStr = weekAgo.toISOString().split('T')[0];
 
-        filmCards.forEach(card => {
-            const showtimes = JSON.parse(card.dataset.showtimes || '[]');
-            const genres = card.dataset.genre || '';
+            // Array om overeenkomende kaarten op te slaan.
+            const matchingCards = [];
 
-            let showByDate = true;
-            if (selectedStyle === 'vandaag') {
-                showByDate = showtimes.includes(todayStr);
-            } else if (selectedStyle === 'deze-week') {
-                showByDate = showtimes.some(date => date >= weekAgoStr && date <= todayStr);
-            } // 'films' shows all
+            // Loop door alle filmkaarten om te controleren welke voldoen aan de filters.
+            filmCards.forEach(card => {
+                // Haal de vertoningstijden en genres op uit de data-attributen.
+                const showtimes = JSON.parse(card.dataset.showtimes || '[]');
+                const genres = card.dataset.genre || '';
 
-            let showByCategory = true;
-            if (selectedCategory) {
-                showByCategory = genres.includes(selectedCategory);
-            }
+                // Controleer op datumfilter.
+                let showByDate = true;
+                if (selectedStyle === 'vandaag') {
+                    // Toon alleen films die vandaag draaien.
+                    showByDate = showtimes.includes(todayStr);
+                } else if (selectedStyle === 'deze-week') {
+                    // Toon films die deze week draaien.
+                    showByDate = showtimes.some(date => date >= weekAgoStr && date <= todayStr);
+                } else if (selectedStyle === 'films') {
+                    // Toon alle films.
+                }
 
-            card.style.display = (showByDate && showByCategory) ? 'block' : 'none';
-        });
+                // Controleer op categoriefilter.
+                let showByCategory = true;
+                if (selectedCategory) {
+                    // Controleer of het genre overeenkomt.
+                    showByCategory = genres.includes(selectedCategory);
+                }
+
+                // Als beide voorwaarden waar zijn, voeg toe aan overeenkomende kaarten.
+                if (showByDate && showByCategory) {
+                    matchingCards.push(card);
+                }
+            });
+
+            // Verberg eerst alle kaarten.
+            filmCards.forEach(card => {
+                card.style.display = 'none';
+            });
+
+            // Toon de eerste 12 overeenkomende kaarten.
+            matchingCards.slice(0, 12).forEach(card => {
+                card.style.display = 'block';
+            });
+        } else {
+            // Geen filters geselecteerd, toon de eerste 12 films.
+            filmCards.forEach((card, index) => {
+                card.style.display = index < 12 ? 'block' : 'none';
+            });
+        }
     }
 
-    // Event listeners
+    // Voeg event listeners toe aan de radio buttons voor stijl.
     styleRadios.forEach(radio => {
         radio.addEventListener('change', applyFilters);
     });
+    // Voeg event listener toe aan de categorie select.
     categorieSelect.addEventListener('change', applyFilters);
 
-    // Initial filter application (default: all films, no category)
+    // Pas de filters toe bij het laden van de pagina.
     applyFilters();
 });
