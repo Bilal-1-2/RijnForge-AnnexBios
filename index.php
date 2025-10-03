@@ -14,6 +14,7 @@
   <title>AnnexBios Leidscherijn</title>
   
       <script src="assets/js/scrollbare-header.js" defer></script>
+      <script src="assets/js/film-filters.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
 </head>
 
@@ -22,6 +23,19 @@
   include 'assets/includes/api-database.php';
   include 'assets/includes/stars-filter.php';
   include 'assets/includes/header-homepage.php';
+
+  // Collect unique genres from the data
+  $uniqueGenres = [];
+  foreach ($data as $film) {
+      $genres = explode(', ', $film['genre']);
+      foreach ($genres as $genre) {
+          $genre = trim($genre);
+          if (!in_array($genre, $uniqueGenres)) {
+              $uniqueGenres[] = $genre;
+          }
+      }
+  }
+  sort($uniqueGenres);
   ?>
 
   <main>
@@ -71,7 +85,7 @@
       <div class="filter">
         <div class="film-agenda-menu"><img src="assets/icons/menu-svgrepo-com.svg" alt=""></div>
         <div class="filter-options">
-          <input type="radio" id="films" name="style" value="films">
+          <input type="radio" id="films" name="style" value="films" checked>
           <label for="films"><strong>FILMS </strong></label>
         </div>
 
@@ -85,26 +99,18 @@
         </div>
 
         <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-
           <option value=""><strong>CATEGORIE </strong></option>
-          <option value="action">ACTION</option>
-          <option value="comedy">COMEDY</option>
-          <option value="drama">DRAMA</option>
-          <option value="horror">HORROR</option>
-          <option value="sci-fi">SCI-FI</option>
-          <option value="thriller">THRILLER</option>
-          <option value="animation">ANIMATION</option>
+          <?php foreach ($uniqueGenres as $genre): ?>
+            <option value="<?php echo strtolower($genre); ?>"><?php echo strtoupper($genre); ?></option>
+          <?php endforeach; ?>
         </select>
 
       </div>
       <div class="films-container">
         <?php
-        $total = 12;
-        $count = count($data);
-        for ($i = 0; $i < $total; $i++):
-          $film = $data[$i % $count];
+        foreach ($data as $i => $film):
         ?>
-          <div class="film-card">
+          <div class="film-card" data-genre="<?php echo strtolower(str_replace(', ', ' ', $film['genre'])); ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
             <form action="detail-pagina.php" method="post" class="film-poster-form">
               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
               <button type="submit"  style="border: none; background: none; padding: 0;">
@@ -134,7 +140,7 @@
             </div>
           </div>
 
-        <?php endfor; ?>
+        <?php endforeach; ?>
       </div>
       <div class="content-film-agenda-btn links"><a href="film-agenda.php">BEKIJK ALLE FILMS</a> </div>
     </div>

@@ -9,7 +9,7 @@
       <div id="header-top-links" class="links">
         <a href="film-agenda.php">FILM AGENDA</a>
         <a href="#">ALLE VESTIGINGEN</a>
-        <a href="#">CONTACT</a>
+        <a href="contact.php">CONTACT</a>
       </div>
     </div>
   </div>
