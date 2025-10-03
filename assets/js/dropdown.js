@@ -36,7 +36,7 @@ const bestelDropdowns = document.querySelectorAll('.bestel-dropdown');
 bestelDropdowns.forEach(dropdown => {
   const bestelToggle = dropdown.querySelector('.bestel-dropdown-toggle');
   const bestelMenu = dropdown.querySelector('.bestel-dropdown-menu');
-  const bestelInput = dropdown.querySelector('.bestel-dropdown-input');
+  const bestelInput = document.querySelector(`input[name="${dropdown.dataset.type}"]`);
 
   // Open of sluit het bestel dropdown menu bij klik op de toggle.
   bestelToggle.addEventListener('click', () => {

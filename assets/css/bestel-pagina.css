@@ -70,7 +70,7 @@ body {
 @media (max-width: 480px) {
   main {
     width: 100%;
-    padding: 0 10px;
+    /* padding: 0 10px; */
   }
 
   .bestel-content-container {

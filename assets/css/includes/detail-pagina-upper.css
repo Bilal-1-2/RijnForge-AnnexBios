@@ -261,7 +261,7 @@ main {
 
   .detail-title {
     font-size: 30px;
-    padding: 10px;
+    padding: 0px;
     text-align: center;
   }
 
@@ -321,7 +321,7 @@ main {
 @media (max-width: 480px) {
   main {
     width: 100%;
-    padding: 0 10px;
+    /* padding: 0 10px; */
   }
 
   .detail-title {
@@ -331,15 +331,15 @@ main {
   }
 
   .film-detail-poster {
-    height: 350px;
+    height: 450px;
   }
 
   .film-detail-poster img {
-    height: 350px;
+    height: 450px;
   }
 
   .detail-info {
-    padding: 10px;
+    padding:0px;
   }
 
   .detail-ratings img,
