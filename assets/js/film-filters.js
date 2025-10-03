@@ -1,5 +1,8 @@
 // Dit script beheert het filteren van films op basis van datum en categorie in de filmagenda.
 document.addEventListener('DOMContentLoaded', function() {
+    // Controleer of we op de film-agenda pagina zijn
+    const isFilmAgenda = window.location.pathname.includes('film-agenda.php');
+
     // Selecteer alle filmkaarten, radio buttons voor stijl en de categorie select.
     const filmCards = document.querySelectorAll('.film-card');
     const styleRadios = document.querySelectorAll('input[name="style"]');
@@ -59,15 +62,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 card.style.display = 'none';
             });
 
-            // Toon de eerste 12 overeenkomende kaarten.
-            matchingCards.slice(0, 12).forEach(card => {
-                card.style.display = 'block';
-            });
+            // Toon alle overeenkomende kaarten of de eerste 12.
+            if (isFilmAgenda) {
+                matchingCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            } else {
+                matchingCards.slice(0, 12).forEach(card => {
+                    card.style.display = 'block';
+                });
+            }
         } else {
-            // Geen filters geselecteerd, toon de eerste 12 films.
-            filmCards.forEach((card, index) => {
-                card.style.display = index < 12 ? 'block' : 'none';
-            });
+            // Geen filters geselecteerd, toon alle films of de eerste 12.
+            if (isFilmAgenda) {
+                filmCards.forEach(card => {
+                    card.style.display = 'block';
+                });
+            } else {
+                filmCards.forEach((card, index) => {
+                    card.style.display = index < 12 ? 'block' : 'none';
+                });
+            }
         }
     }
 
