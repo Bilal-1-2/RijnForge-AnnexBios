@@ -25,28 +25,133 @@ const FILM_PRIJZEN = ['normaal' => 9, 'kind' => 5, 'senior' => 7];
 --------------------------------------------------------------- */
 
 // Bepaalt de Kijkwijzer op basis van de genres (Engels of Nederlands).
-function getKijkwijzer($genreString)
+function getKijkwijzer($genreString, $informatie = '')
 {
-    $kijkwijzer = ['age' => '12', 'warnings' => []];
-    $genreList = array_map('trim', explode(',', $genreString));
+    // Volgorde van laag naar hoog, zodat we leeftijden kunnen vergelijken.
+    $leeftijden = ['AL' => 0, '6' => 6, '9' => 9, '12' => 12, '14' => 14, '16' => 16, '18' => 18];
 
-    $horror    = ['Horror', 'Thriller', 'Mystery', 'Mysterie'];
-    $actie     = ['Action', 'Actie', 'Adventure', 'Avontuur', 'Sci-Fi', 'Sciencefiction', 'Fantasy', 'Fantasie'];
-    $animatie  = ['Animation', 'Animatie', 'Family', 'Familie'];
-    $drama     = ['Drama', 'Comedy', 'Komedie', 'Romance', 'Romantiek', 'Musical'];
+    // Genre => [minimumleeftijd, waarschuwingen]
+    $genreRegels = [
+        // Horror / spanning
+        'horror'         => ['16', ['geweld', 'angst']],
+        'thriller'       => ['16', ['geweld', 'angst']],
+        'mystery'        => ['12', ['angst']],
+        'mysterie'       => ['12', ['angst']],
+        'crime'          => ['14', ['geweld']],
+        'misdaad'        => ['14', ['geweld']],
+        'war'            => ['14', ['geweld', 'angst']],
+        'oorlog'         => ['14', ['geweld', 'angst']],
 
-    if (array_intersect($horror, $genreList)) {
-        $kijkwijzer = ['age' => '16', 'warnings' => ['geweld', 'angst']];
-    } elseif (array_intersect($actie, $genreList)) {
-        $kijkwijzer = ['age' => '12', 'warnings' => ['geweld', 'angst']];
-    } elseif (array_intersect($animatie, $genreList)) {
-        $kijkwijzer = ['age' => 'AL', 'warnings' => []];
-    } elseif (array_intersect($drama, $genreList)) {
-        $kijkwijzer = ['age' => '12', 'warnings' => ['grof-taal']];
+        // Actie / avontuur
+        'action'         => ['12', ['geweld']],
+        'actie'          => ['12', ['geweld']],
+        'adventure'      => ['9',  ['angst']],
+        'avontuur'       => ['9',  ['angst']],
+        'sci-fi'         => ['12', ['angst']],
+        'sciencefiction' => ['12', ['angst']],
+        'fantasy'        => ['9',  ['angst']],
+        'fantasie'       => ['9',  ['angst']],
+        'western'        => ['14', ['geweld']],
+
+        // Familie / animatie
+        'animation'      => ['AL', []],
+        'animatie'       => ['AL', []],
+        'family'         => ['AL', []],
+        'familie'        => ['AL', []],
+
+        // Drama / komedie / romantiek
+        'drama'          => ['12', []],
+        'comedy'         => ['6',  []],
+        'komedie'        => ['6',  []],
+        'romance'        => ['12', []],
+        'romantiek'      => ['12', []],
+        'musical'        => ['AL', []],
+        'music'          => ['AL', []],
+        'muziek'         => ['AL', []],
+        'documentary'    => ['9',  []],
+        'documentaire'   => ['9',  []],
+        'history'        => ['12', []],
+        'geschiedenis'   => ['12', []],
+    ];
+
+    // Minimumleeftijd per waarschuwing.
+    $waarschuwingMinimum = [
+        'geweld'        => '12',
+        'angst'         => '9',
+        'seks'          => '16',
+        'discriminatie' => '12',
+        'drugs-alcohol' => '14',
+        'grof-taal'     => '12',
+    ];
+
+    // Trefwoorden in de beschrijving => waarschuwing.
+    $trefwoorden = [
+        'geweld'        => ['geweld', 'moord', 'huurmoordenaar', 'gewelddadig', 'bloed', 'oorlog', 'vechten', 'overval', 'losgeld'],
+        'angst'         => ['angstaanjagend', 'bloedstollend', 'demon', 'spook', 'paranormaal', 'nachtmerrie', 'verdwijn', 'sinistere', 'kwaad', 'dood'],
+        'seks'          => ['seks', 'erotisch', 'naakt'],
+        'discriminatie' => ['racisme', 'discriminatie', 'segregatie'],
+        'drugs-alcohol' => ['drugs', 'alcohol', 'verslaafd', 'verslaving'],
+        'grof-taal'     => ['grof taalgebruik', 'schelden', 'vloeken'],
+    ];
+
+    $leeftijd = 'AL';
+    $waarschuwingen = [];
+
+    // 1 + 2: genres doorlopen.
+    $genreLijst = array_map('trim', explode(',', $genreString));
+    foreach ($genreLijst as $genre) {
+        $sleutel = strtolower($genre);
+        if (!isset($genreRegels[$sleutel])) {
+            continue;
+        }
+        [$genreLeeftijd, $genreWaarschuwingen] = $genreRegels[$sleutel];
+        if ($leeftijden[$genreLeeftijd] > $leeftijden[$leeftijd]) {
+            $leeftijd = $genreLeeftijd;
+        }
+        $waarschuwingen = array_merge($waarschuwingen, $genreWaarschuwingen);
     }
 
-    $kijkwijzer['warnings'] = array_values(array_unique($kijkwijzer['warnings']));
-    return $kijkwijzer;
+    // Geen enkel genre herkend: veilige standaardwaarde.
+    if ($leeftijd === 'AL' && empty($waarschuwingen) && !array_intersect(array_map('strtolower', $genreLijst), ['animation', 'animatie', 'family', 'familie', 'musical', 'music', 'muziek'])) {
+        $leeftijd = '12';
+    }
+
+    // 3: trefwoorden in de beschrijving.
+    $tekst = strtolower($informatie);
+    if ($tekst !== '') {
+        foreach ($trefwoorden as $waarschuwing => $woorden) {
+            foreach ($woorden as $woord) {
+                if (strpos($tekst, $woord) !== false) {
+                    $waarschuwingen[] = $waarschuwing;
+                    break;
+                }
+            }
+        }
+    }
+
+    // 4: minimumleeftijd per waarschuwing toepassen.
+    foreach ($waarschuwingen as $waarschuwing) {
+        $min = $waarschuwingMinimum[$waarschuwing] ?? 'AL';
+        if ($leeftijden[$min] > $leeftijden[$leeftijd]) {
+            $leeftijd = $min;
+        }
+    }
+
+    // Animatie/familie zonder zware waarschuwingen blijft "AL" of "6":
+    // alleen "angst" bij een animatiefilm verhoogt niet automatisch naar 9.
+    $isKinderfilm = (bool) array_intersect(
+        array_map('strtolower', $genreLijst),
+        ['animation', 'animatie', 'family', 'familie']
+    );
+    if ($isKinderfilm && !array_intersect($waarschuwingen, ['geweld', 'seks', 'drugs-alcohol'])) {
+        $leeftijd = ($leeftijden[$leeftijd] > 6) ? '6' : $leeftijd;
+        $waarschuwingen = array_diff($waarschuwingen, ['angst']);
+    }
+
+    return [
+        'age'      => $leeftijd,
+        'warnings' => array_values(array_unique($waarschuwingen)),
+    ];
 }
 
 // Maakt van een naam een bestandsnaam: "Jack O'Connell" -> "jack-o-connell".
@@ -537,8 +642,7 @@ Naast Farmiga en Wilson zijn in de film ook Mia Tomlinson en Ben Hardy te zien a
 $data = [];
 foreach ($films as $film) {
     $film['stars'] = $film['stars'] ?? round(($film['imdb_score'] ?? 0) / 2, 1);
-    $film['kijkwijzer'] = $film['kijkwijzer'] ?? getKijkwijzer($film['genre']);
-    // Poster: eerst lokaal bestand (assets/films/film-<id>.jpg), dan URL, dan placeholder.
+$film['kijkwijzer'] = $film['kijkwijzer'] ?? getKijkwijzer($film['genre'], $film['informatie'] ?? '');    // Poster: eerst lokaal bestand (assets/films/film-<id>.jpg), dan URL, dan placeholder.
     $lokalePoster = 'assets/films/film-' . $film['film_id'] . '.jpg';
     if (file_exists(__DIR__ . '/../films/film-' . $film['film_id'] . '.jpg')) {
         $film['poster'] = $lokalePoster;
@@ -546,15 +650,17 @@ foreach ($films as $film) {
         $film['poster'] = posterPlaceholder($film['titel']);
     }
 
-    // Acteursfoto: eerst lokaal bestand (acteurs/<naam>.jpg), dan opgegeven pad, dan placeholder.
-    foreach ($film['acteurs'] as $i => $acteur) {
-        $slug = slugify($acteur['naam']);
-        if (file_exists(__DIR__ . '/../../acteurs/' . $slug . '.jpg')) {
-            $film['acteurs'][$i]['foto'] = 'acteurs/' . $slug . '.jpg';
-        } elseif (empty($acteur['foto'])) {
-            $film['acteurs'][$i]['foto'] = actorPlaceholder();
-        }
+// Acteursfoto:  dan opgegeven pad, dan placeholder.
+foreach ($film['acteurs'] as $i => $acteur) {
+    $slug = slugify($acteur['naam']);              // "Jonathan Bailey" -> "jonathan-bailey"
+    $bestand = __DIR__ . '/../acteurs/' . $slug . '.jpg';   // html/assets/acteurs/jonathan-bailey.jpg
+
+    if (file_exists($bestand)) {
+        $film['acteurs'][$i]['foto'] = 'assets/acteurs/' . $slug . '.jpg';
+    } elseif (empty($acteur['foto'])) {
+        $film['acteurs'][$i]['foto'] = actorPlaceholder();
     }
+}
 
     $showtimes = [];
     foreach (getVertoningen($film['film_id']) as $order) {

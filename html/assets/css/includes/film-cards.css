@@ -116,9 +116,9 @@
 }
 
 /* Kleine tablet: 3 kolommen */
-@media (max-width: 768px) {
+@media (max-width: 850px) {
   .films-container {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 10px;
   }
 }
