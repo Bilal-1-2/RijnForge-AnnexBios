@@ -13,7 +13,7 @@
 
 <body alt="">
   <?php
-  include 'assets/includes/api-database.php';
+  require_once 'assets/includes/tijdelijk-database.php';
   include 'assets/includes/stars-filter.php';
   include 'assets/includes/header.php';
 
@@ -53,18 +53,18 @@
         <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
           <option value=""><strong>CATEGORIE </strong></option>
           <?php foreach ($uniqueGenres as $genre): ?>
-            <option value="<?php echo strtolower($genre); ?>"><?php echo strtoupper($genre); ?></option>
+            <option value="<?php echo htmlspecialchars(strtolower($genre)); ?>"><?php echo htmlspecialchars(strtoupper($genre)); ?></option>
           <?php endforeach; ?>
         </select>
 
       </div>
       <div class="films-container">
         <?php
-       
-        foreach (  $data as $film):
+
+        foreach ($data as $i => $film):
 
         ?>
-          <div class="film-card" data-genre="<?php echo strtolower(str_replace(', ', ' ', $film['genre'])); ?>" data-release-date="<?php echo $film['releasedatum']; ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
+          <div class="film-card" data-genre="<?php echo htmlspecialchars(strtolower(str_replace(', ', ' ', $film['genre']))); ?>" data-release-date="<?php echo htmlspecialchars($film['releasedatum']); ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
             <form action="detail-pagina.php" method="post" class="film-poster-form">
               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
               <button type="submit" style="border: none; background: none; padding: 0;">
@@ -76,9 +76,9 @@
             <div class="film-info">
               <div class="film-title"><?php echo htmlspecialchars($film['titel']); ?></div>
               <div class="ratings">
-          
+
                 <?php echo filter_stars($film['stars'] ); ?>
-            
+
               </div>
               <div class="film-release-date">
                 Release: <?php echo htmlspecialchars($film['releasedatum']); ?>
@@ -100,12 +100,6 @@
       </div>
 
     </div>
-
-
-
-
-
-
 
   </main>
 

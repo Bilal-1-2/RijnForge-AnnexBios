@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const styleRadios = document.querySelectorAll('input[name="style"]');
     const categorieSelect = document.querySelector('.categorie-select');
 
+    // Datum als YYYY-MM-DD in de lokale tijdzone (toISOString gebruikt UTC en kan een dag afwijken).
+    function toLocalDateStr(date) {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, '0');
+        const d = String(date.getDate()).padStart(2, '0');
+        return `${y}-${m}-${d}`;
+    }
+
     // Functie om de filters toe te passen op de filmkaarten.
     function applyFilters() {
         // Haal de geselecteerde stijl en categorie op.
@@ -16,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Controleer of er filters zijn geselecteerd.
         if (selectedStyle || selectedCategory) {
-            // Bereken de datums voor vandaag en een week geleden.
+            // Bereken de datums voor vandaag en over een week.
             const today = new Date();
-            const todayStr = today.toISOString().split('T')[0];
-            const weekAgo = new Date(today);
-            weekAgo.setDate(today.getDate() - 7);
-            const weekAgoStr = weekAgo.toISOString().split('T')[0];
+            const todayStr = toLocalDateStr(today);
+            const weekAhead = new Date(today);
+            weekAhead.setDate(today.getDate() + 7);
+            const weekAheadStr = toLocalDateStr(weekAhead);
 
             // Array om overeenkomende kaarten op te slaan.
             const matchingCards = [];
@@ -38,8 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Toon alleen films die vandaag draaien.
                     showByDate = showtimes.includes(todayStr);
                 } else if (selectedStyle === 'deze-week') {
-                    // Toon films die deze week draaien.
-                    showByDate = showtimes.some(date => date >= weekAgoStr && date <= todayStr);
+                    // Toon films die de komende 7 dagen draaien.
+                    showByDate = showtimes.some(date => date >= todayStr && date <= weekAheadStr);
                 } else if (selectedStyle === 'films') {
                     // Toon alle films.
                 }
@@ -65,22 +73,22 @@ document.addEventListener('DOMContentLoaded', function() {
             // Toon alle overeenkomende kaarten of de eerste 12.
             if (isFilmAgenda) {
                 matchingCards.forEach(card => {
-                    card.style.display = 'block';
+                    card.style.display = '';
                 });
             } else {
                 matchingCards.slice(0, 12).forEach(card => {
-                    card.style.display = 'block';
+                    card.style.display = '';
                 });
             }
         } else {
             // Geen filters geselecteerd, toon alle films of de eerste 12.
             if (isFilmAgenda) {
                 filmCards.forEach(card => {
-                    card.style.display = 'block';
+                    card.style.display = '';
                 });
             } else {
                 filmCards.forEach((card, index) => {
-                    card.style.display = index < 12 ? 'block' : 'none';
+                    card.style.display = index < 12 ? '' : 'none';
                 });
             }
         }

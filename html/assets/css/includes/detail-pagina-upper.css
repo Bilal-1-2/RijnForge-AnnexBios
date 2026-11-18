@@ -196,7 +196,7 @@ main {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 1120px) {
   main {
     width: 90%;
   }
@@ -237,6 +237,7 @@ main {
   .detail-description {
     font-size: 15px;
   }
+  
 
   .detail-actors {
     grid-template-columns: repeat(3, 1fr);

@@ -15,21 +15,16 @@
 <body>
 
     <?php
-    include 'assets/includes/api-database.php';
-    include 'assets/includes/price.php';
+    require_once 'assets/includes/tijdelijk-database.php';
+    include_once 'assets/includes/price.php';
     include 'assets/includes/stars-filter.php';
-    include 'assets/includes/tijdelijk-database.php';
-
-    // Define formatPrice if not already defined
-    if (!function_exists('formatPrice')) {
-        function formatPrice($price)
-        {
-            return number_format((float)$price, 2, ',', '');
-        }
-    }
 
     // Get POST data
     $filmId = isset($_POST['id']) ? (int)$_POST['id'] : 0;
+    if (!$filmId) {
+        header('Location: index.php');
+        exit;
+    }
     $datum = isset($_POST['datum']) ? $_POST['datum'] : '';
     $tijdstip = isset($_POST['tijdstip']) ? $_POST['tijdstip'] : '';
     $selectedSeats = isset($_POST['selectedSeats']) ? $_POST['selectedSeats'] : '';
@@ -43,47 +38,17 @@
     $selectedBioscoop = isset($_POST['bioscoop']) ? $_POST['bioscoop'] : '';
     $selectedZaal = isset($_POST['zaal']) ? $_POST['zaal'] : '';
 
-    // Fetch film details
-    $filmDetails = fetchMovieDetails($filmId);
-    $film = null;
-    if ($filmDetails) {
-        $genres = [];
-        if (isset($filmDetails['genres']) && is_array($filmDetails['genres'])) {
-            foreach ($filmDetails['genres'] as $genre) {
-                $genres[] = $genre['name'] ?? '';
-            }
-        }
-        $genreString = implode(', ', array_filter($genres));
-        $acteurs = [];
-        if (isset($filmDetails['cast']) && is_array($filmDetails['cast'])) {
-            foreach (array_slice($filmDetails['cast'], 0, 5) as $actor) {
-                $acteurs[] = [
-                    'naam' => $actor['name'] ?? '',
-                    'foto' => $actor['profile_path'] ? 'https://image.tmdb.org/t/p/w200' . $actor['profile_path'] : ''
-                ];
-            }
-        }
-        $regisseur = $filmDetails['director']['name'] ?? '';
-         $kijkwijzer = getKijkwijzer($genreString);
-        $film = [
-            "titel" => $filmDetails['movie']['title'] ?? '',
-            "poster" => $filmDetails['movie']['poster_path'] ? 'https://image.tmdb.org/t/p/w500' . $filmDetails['movie']['poster_path'] : '',
-            "kijkwijzer" => $kijkwijzer,
-        ];
-    } else {
-        foreach ($data as $item) {
-            if ($item['film_id'] === $filmId) {
-                $film = $item;
-                break;
-            }
-        }
+    // Film uit de lokale database
+    $film = getFilmById($filmId);
+    if (!$film) {
+        header('Location: index.php');
+        exit;
     }
 
-    // Fetch ticket orders to get prijzen and bioscoop
-    $ticketOrders = fetchTicketOrders($filmId);
-    $prijzen = isset($ticketOrders[0]['prijzen']) ? $ticketOrders[0]['prijzen'] : ['normaal' => 9, 'kind' => 5, 'senior' => 7];
-    $bioscoop = isset($ticketOrders[0]['bioscoop']['name']) ? $ticketOrders[0]['bioscoop']['name'] : 'AnnexBios Leidscherijn';
-    $zaal = isset($ticketOrders[0]['bioscoop']['zaal']) ? $ticketOrders[0]['bioscoop']['zaal'] : '';
+    // Prijzen en bioscoop uit de lokale database
+    $prijzen = FILM_PRIJZEN;
+    $bioscoop = BIOSCOOP_NAAM;
+    $zaal = '';
 
     // Calculate total
     $total = $normaal * $prijzen['normaal'] + $kind * $prijzen['kind'] + $senior * $prijzen['senior'];
@@ -113,12 +78,12 @@
             <div class="overview-section">
                 <h2 class="overview-title">Besteloverzicht</h2>
                 <div class="movie-info">
-                    <?php if (isset($film['poster']) && !empty($film['poster'])): ?>
+                    <?php if (!empty($film['poster'])): ?>
                         <img src="<?php echo htmlspecialchars($film['poster']); ?>" alt="<?php echo htmlspecialchars($film['titel']); ?>" class="movie-poster">
                     <?php endif; ?>
                     <div class="movie-details">
                         <h3><?php echo htmlspecialchars($film['titel']); ?></h3>
-                        <p><?php echo htmlspecialchars($film['titel']); ?></p>
+                        <p><?php echo htmlspecialchars($film['genre']); ?></p>
                     </div>
                 </div>
                 <div class="location-info">
@@ -184,5 +149,5 @@
         ?>
 
 </body>
-  
+
 </html>

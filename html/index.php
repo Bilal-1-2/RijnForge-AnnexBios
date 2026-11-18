@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
   <title>AnnexBios Leidscherijn</title>
-  
+
       <script src="assets/js/scrollbare-header.js" defer></script>
       <script src="assets/js/film-filters.js" defer></script>
     <script src="assets/js/dropdown.js" defer></script>
@@ -20,7 +20,7 @@
 
 <body>
   <?php
-  include 'assets/includes/api-database.php';
+  require_once 'assets/includes/tijdelijk-database.php';
   include 'assets/includes/stars-filter.php';
   include 'assets/includes/header-homepage.php';
 
@@ -101,7 +101,7 @@
         <select class="categorie-select" name="categorie" onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
           <option value=""><strong>CATEGORIE </strong></option>
           <?php foreach ($uniqueGenres as $genre): ?>
-            <option value="<?php echo strtolower($genre); ?>"><?php echo strtoupper($genre); ?></option>
+            <option value="<?php echo htmlspecialchars(strtolower($genre)); ?>"><?php echo htmlspecialchars(strtoupper($genre)); ?></option>
           <?php endforeach; ?>
         </select>
 
@@ -110,7 +110,7 @@
         <?php
         foreach ($data as $i => $film):
         ?>
-          <div class="film-card" data-genre="<?php echo strtolower(str_replace(', ', ' ', $film['genre'])); ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
+          <div class="film-card" data-genre="<?php echo htmlspecialchars(strtolower(str_replace(', ', ' ', $film['genre']))); ?>" data-showtimes="<?php echo htmlspecialchars(json_encode($film['showtimes'])); ?>">
             <form action="detail-pagina.php" method="post" class="film-poster-form">
               <input type="hidden" name="id" value="<?php echo $film['film_id']; ?>">
               <button type="submit"  style="border: none; background: none; padding: 0;">

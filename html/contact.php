@@ -14,7 +14,7 @@
 <body>
 
     <?php
-    include 'assets/includes/api-database.php';
+    require_once 'assets/includes/tijdelijk-database.php';
     include 'assets/includes/header.php'; ?>
 
     <main>

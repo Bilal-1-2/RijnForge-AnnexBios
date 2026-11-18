@@ -1,0 +1,163 @@
+/*
+  Responsieve filmkaarten (index.php en film-agenda.php).
+  Wordt NA content.css geladen en overschrijft de vaste hoogtes daar.
+
+  - Kaart groeit mee met de inhoud (geen vaste hoogte meer)
+  - Kaarten in dezelfde rij zijn even hoog
+  - De knop "MEER INFO & TICKETS" staat altijd onderaan de kaart
+  - Aantal kolommen past zich automatisch aan de breedte aan
+*/
+
+.films-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr)); /* 5 films per rij */
+  gap: 12px;
+  align-items: stretch;
+}
+
+.film-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 0;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Poster: vaste verhouding 2:3 in plaats van een percentage van de kaarthoogte */
+.film-poster,
+.film-poster-btn,
+.film-poster-form {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+  flex: none;
+}
+
+.film-poster-form button {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.film-poster-form img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tekstgedeelte vult de rest van de kaart */
+.film-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.film-title {
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.25;
+  min-height: 2.5em; /* ruimte voor 2 regels, zodat sterren gelijk staan */
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.film-release-date {
+  font-size: clamp(14px, 1.3vw, 17px);
+}
+
+/* Beschrijving: maximaal 3 regels, netjes afgekapt met "..." */
+.film-details {
+  max-height: none;
+  overflow: visible;
+  padding: 5px 0;
+  margin-top: 8px;
+}
+
+.film-text {
+  font-size: 11px;
+  line-height: 1.4;
+  min-height: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Het formulier met de knop duwt zichzelf naar de onderkant van de kaart */
+.film-info > form {
+  margin-top: auto;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.film-info-btn {
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  padding: 10px 8px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Tablet en kleine laptop */
+@media (max-width: 1024px) {
+  .films-container {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .film-info-btn {
+    font-size: 13px;
+  }
+}
+
+/* Kleine tablet: 3 kolommen */
+@media (max-width: 768px) {
+  .films-container {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+}
+
+/* Grote telefoon: 2 kolommen */
+@media (max-width: 650px) {
+  .films-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Telefoon: één kolom */
+@media (max-width: 480px) {
+  .films-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 15px;
+  }
+
+  .film-card {
+    width: 100%;
+    max-width: 360px;
+    min-height: 0;
+  }
+
+  .film-title {
+    font-size: 20px;
+    min-height: 0;
+  }
+
+  .film-text {
+    font-size: 13px;
+  }
+
+  .film-info-btn {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 8px;
+  }
+}
