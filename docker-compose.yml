@@ -1,0 +1,83 @@
+networks:
+  dev:
+
+services:
+  apache:
+    build:
+      context: ./apache
+      dockerfile: apache.dockerfile
+    hostname: "apache.container"
+    container_name: "apache"
+    volumes:
+      - ${SITES_ROOT}:/var/www/html/
+    environment:
+      - PROJECT_DIR=/var/www/html
+    ports:
+      - 80:80
+    depends_on:
+      - php_fpm
+    networks:
+      - dev
+
+  php_fpm:
+    build:
+      context: ./php-fpm
+      dockerfile: php.dockerfile
+    hostname: "fpm.container"
+    container_name: "fpm"
+    volumes:
+      - ${SITES_ROOT}:/var/www/html/
+    ports:
+      - 9000:9000
+    depends_on:
+      - redis
+      - mysql_db
+    networks:
+      - dev
+
+  redis:
+    image: redis:6.0-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    hostname: "redis.container"
+    container_name: "redis"
+    ports:
+      - 6379:6379
+    networks:
+      - dev
+
+  mysql_db:
+    image: mysql:latest
+    # command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    networks:
+      - dev
+  phpmyadmin:
+    image: phpmyadmin:latest
+    restart: always
+    environment:
+      PMA_HOST: mysql_db
+      PMA_ABSOLUTE_URI: http://localhost/phpmyadmin/
+    depends_on:
+      - mysql_db
+    networks:
+      - dev
+volumes:
+  mysql_data:
+# creating a service for npm, this will allow us
+# to run npm commands on the docker setup
+# the entrypoint config tells this container that
+# whenever it is called it should run that command
+# we will pass whatever options are needed from outside
+# npm:
+#   image: node:12-alpine
+#   container_name: npm
+#   volumes:
+#     - /Users/kborghols/Sites/localhost:/var/www/html/
+#   working_dir: /var/www/html
+#   entrypoint: ['npm']
